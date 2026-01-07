@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arshiya Shaik - Software Engineer & AI Developer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Particle Background -->
+    <canvas id="particle-canvas"></canvas>
+    
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" aria-label="Toggle theme">
+        <i class="fas fa-moon"></i>
+    </button>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Arshiya Shaik</div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#certifications" class="nav-link">Certifications</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text-section">
+                <p class="hero-greeting">Hi there! 👋 I'm</p>
+                <h1 class="hero-name">Arshiya Shaik</h1>
+                <div class="hero-role-container">
+                    <span class="role-prefix">I'm a </span>
+                    <span class="role-text-dynamic"></span>
+                </div>
+                <p class="hero-bio">
+                    Passionate software engineer with 3 years of experience building AI-powered solutions. 
+                    Working with LangChain, multi-agent systems, and enterprise automation. 
+                    Oracle Certified Java Developer and active open-source contributor at Omdena.
+                </p>
+                
+                <div class="hero-cta">
+                    <a href="#contact" class="btn btn-primary">
+                        <span>Get In Touch</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </a>
+                    <a href="#projects" class="btn btn-secondary">
+                        <span>View Projects</span>
+                        <i class="fas fa-arrow-down"></i>
+                    </a>
+                </div>
+                
+                <div class="hero-social">
+                    <a href="https://www.linkedin.com/in/shaik-arshiya-642k/" target="_blank" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://github.com/arshi9854" target="_blank" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="mailto:sarshiya613@gmail.com" aria-label="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="hero-visual">
+                <div class="hero-card">
+                    <div class="card-item">
+                        <i class="fas fa-briefcase"></i>
+                        <div>
+                            <h3>3+</h3>
+                            <p>Years Experience</p>
+                        </div>
+                    </div>
+                    <div class="card-item">
+                        <i class="fas fa-project-diagram"></i>
+                        <div>
+                            <h3>6+</h3>
+                            <p>Projects Completed</p>
+                        </div>
+                    </div>
+                    <div class="card-item">
+                        <i class="fas fa-award"></i>
+                        <div>
+                            <h3>2</h3>
+                            <p>Awards Received</p>
+                        </div>
+                    </div>
+                    <div class="card-item">
+                        <i class="fas fa-code-branch"></i>
+                        <div>
+                            <h3>Open Source</h3>
+                            <p>Active Contributor</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="scroll-down">
+            <span></span>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>I'm a passionate Software Engineer with 3 years of experience specializing in AI-driven automation and enterprise solutions. I hold a Bachelor's degree in Electronics and Communication Engineering from Bangalore Institute of Technology (GPA: 8.8) and am an Oracle Certified Professional Java SE 11 Developer.</p>
+                    <p>At LTIMindtree, I worked with CITI Bank to design multi-agent systems using LangChain and LangGraph, reducing manual processing time by 40%. I've led automation initiatives achieving 85% test coverage and orchestrated zero-downtime deployments maintaining 99.8% system availability.</p>
+                    <p>I'm an active open-source contributor at Omdena, working on real-world AI projects including CropLogic, an AI-powered farming intelligence platform. I've received recognition through the Outstanding Contributor Award and Spot Award for my impactful contributions.</p>
+                    
+                    <div class="education-awards">
+                        <div class="info-card">
+                            <h3><i class="fas fa-graduation-cap"></i> Education</h3>
+                            <p><strong>Bangalore Institute of Technology</strong></p>
+                            <p>B.E. in Electronics & Communication</p>
+                            <p>Aug 2017 – Mar 2021 | GPA: 8.8</p>
+                        </div>
+                        <div class="info-card">
+                            <h3><i class="fas fa-certificate"></i> Certification</h3>
+                            <p><strong>Oracle Certified Professional</strong></p>
+                            <p>Java SE 11 Developer</p>
+                        </div>
+                        <div class="info-card">
+                            <h3><i class="fas fa-trophy"></i> Awards</h3>
+                            <p><strong>Spot Award</strong> - LTIMindtree</p>
+                            <p><strong>Outstanding Contributor</strong> - Omdena</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2 class="section-title">Professional Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Software Engineer</h3>
+                        <h4>LTIMindtree | CITI Bank</h4>
+                        <p class="timeline-date">Aug 2021 – Dec 2024 | Bengaluru, India</p>
+                        <ul class="achievement-list">
+                            <li>Designed and deployed multi-agent systems using LangChain and LangGraph, reducing manual processing time by 40%</li>
+                            <li>Optimized and deployed Ollama-based language models in enterprise environments for cost-effective AI solutions</li>
+                            <li>Implemented AI agents interfacing with JIRA, ServiceNow, and Oracle to automate ticket routing and release management</li>
+                            <li>Led TOSCA Commander automation across 13 enterprise applications, achieving 85% test automation coverage</li>
+                            <li>Orchestrated Oracle AFCS/EPM/ERP releases with 3+ teams, maintaining 99.8% system availability</li>
+                            <li>Engineered Power BI dashboards with real-time CI/CD metrics, improving release efficiency by 30%</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Open Source Contributor</h3>
+                        <h4>Omdena</h4>
+                        <p class="timeline-date">Ongoing</p>
+                        <ul class="achievement-list">
+                            <li>Building CropLogic, an AI-powered farming intelligence platform for small and medium holder farms</li>
+                            <li>Developing deterministic log normalization and classification pipeline</li>
+                            <li>Built interactive dashboards to analyze COVID-19 impact on crime rates in Italy</li>
+                            <li>Developed LLM-powered data analysis agent for cross-functional teams</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>Medical Chatbot</h3>
+                    <p class="project-tech">Python | LLMs | LangChain | Pinecone | Flask | AWS</p>
+                    <p>End-to-end Medical Chatbot with contextual Q&A using retrieval-augmented generation. Dockerized AWS CI/CD pipeline with GitHub Actions for production deployment.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/arshi9854" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i> View Code
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <h3>Knowledge Graph Generator</h3>
+                    <p class="project-tech">Ollama | Streamlit | PyVis | LangChain</p>
+                    <p>Local, offline-capable tool using LLMGraphTransformer with Gemma3 & Ollama to parse text into structured entity-relationship graphs with interactive visualization.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/arshi9854" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i> View Code
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h3>Log Classification System</h3>
+                    <p class="project-tech">Sentence Transformers | Logistic Regression | FastAPI | LLMs</p>
+                    <p>Hybrid log classification combining regex, sentence-transformer embeddings, and LLMs. FastAPI production API with ML-to-LLM fallback for low-data scenarios.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/arshi9854" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i> View Code
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-spider"></i>
+                    </div>
+                    <h3>AI Web Scraper</h3>
+                    <p class="project-tech">Selenium | BrightData | Ollama | Pandas</p>
+                    <p>Robust AI-driven web scraping system with proxy rotation, semantic parsing using Ollama LLMs, and scalable data pipelines for reliable extraction.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/arshi9854" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i> View Code
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Data Analysis Agent</h3>
+                    <p class="project-tech">Python | LLMs | Pandas | Data Visualization</p>
+                    <p>Intelligent data analysis agent powered by LLMs that automates exploratory data analysis, generates insights, and creates visualizations from datasets.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/arshi9854" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i> View Code
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <h3>Chat with Multiple PDFs</h3>
+                    <p class="project-tech">LangChain | Vector DB | RAG | Streamlit</p>
+                    <p>Interactive application enabling conversational queries across multiple PDF documents using RAG architecture and vector embeddings for accurate context retrieval.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/arshi9854" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i> View Code
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="certifications">
+        <div class="container">
+            <h2 class="section-title">Certifications</h2>
+            <div class="certifications-grid">
+                <div class="cert-card">
+                    <div class="cert-badge">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>Oracle Certified Professional</h3>
+                    <p class="cert-issuer">Oracle</p>
+                    <p class="cert-title">Java SE 11 Developer</p>
+                    <div class="cert-date">Professional Certification</div>
+                </div>
+
+                <div class="cert-card">
+                    <div class="cert-badge">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3>AI Innovation Challenge</h3>
+                    <p class="cert-issuer">Omdena</p>
+                    <p class="cert-title">Building CropLogic: AI-Powered Farming Intelligence for Smallholder and Medium Farms</p>
+                    <div class="cert-date">November 18, 2025</div>
+                    <p class="cert-role">ML Engineer</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3><i class="fas fa-code"></i> Programming</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">PL/SQL</span>
+                        <span class="skill-tag">JavaScript</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-database"></i> Database</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Oracle</span>
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">MongoDB</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-brain"></i> AI & Data Science</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">AI</span>
+                        <span class="skill-tag">LLMs</span>
+                        <span class="skill-tag">Pandas</span>
+                        <span class="skill-tag">NumPy</span>
+                        <span class="skill-tag">Matplotlib</span>
+                        <span class="skill-tag">Seaborn</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-globe"></i> Web Development</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">HTML</span>
+                        <span class="skill-tag">CSS</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">NodeJS</span>
+                        <span class="skill-tag">FastAPI</span>
+                        <span class="skill-tag">Streamlit</span>
+                        <span class="skill-tag">Flask</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-layer-group"></i> Libraries & Frameworks</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">LangChain</span>
+                        <span class="skill-tag">HuggingFace</span>
+                        <span class="skill-tag">SmolVLM</span>
+                        <span class="skill-tag">YOLO</span>
+                        <span class="skill-tag">Ollama</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-tools"></i> Development Tools</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">VS Code</span>
+                        <span class="skill-tag">PyCharm</span>
+                        <span class="skill-tag">Eclipse</span>
+                        <span class="skill-tag">Kiro</span>
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">LM Studio</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-chart-bar"></i> Visualization</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Power BI</span>
+                        <span class="skill-tag">Tableau</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="contact-subtitle">I'm always open to discussing new projects, opportunities, or collaborations.</p>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email</h3>
+                    <a href="mailto:sarshiya613@gmail.com">sarshiya613@gmail.com</a>
+                </div>
+                <div class="contact-card">
+                    <i class="fas fa-phone"></i>
+                    <h3>Phone</h3>
+                    <a href="tel:+14082397686">+1 (408) 239-7686</a>
+                </div>
+                <div class="contact-card">
+                    <i class="fab fa-linkedin"></i>
+                    <h3>LinkedIn</h3>
+                    <a href="https://www.linkedin.com/in/shaik-arshiya-642k/" target="_blank">Connect with me</a>
+                </div>
+                <div class="contact-card">
+                    <i class="fab fa-github"></i>
+                    <h3>GitHub</h3>
+                    <a href="https://github.com/arshi9854" target="_blank">View my work</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Arshiya Shaik. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="https://www.linkedin.com/in/shaik-arshiya-642k/" target="_blank">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/arshi9854" target="_blank">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="mailto:sarshiya613@gmail.com">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="advanced-script.js"></script>
+</body>
+</html>
