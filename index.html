@@ -192,89 +192,286 @@
         <div class="container">
             <h2 class="section-title">Featured Projects</h2>
             <div class="projects-grid">
+
+                <!-- Medical Chatbot -->
                 <div class="project-card">
-                    <div class="project-icon">
-                        <i class="fas fa-robot"></i>
+                    <div class="project-preview">
+                        <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="400" height="200" fill="#0f0f1a"/>
+                            <!-- Chat UI mockup -->
+                            <rect x="20" y="15" width="360" height="30" rx="6" fill="#1a1a2e"/>
+                            <circle cx="38" cy="30" r="8" fill="#6366f1"/>
+                            <text x="52" y="34" font-family="monospace" font-size="11" fill="#a0a0c0">Medical Assistant</text>
+                            <circle cx="370" cy="30" r="6" fill="#22c55e"/>
+                            <!-- User message -->
+                            <rect x="160" y="55" width="210" height="36" rx="10" fill="#6366f1"/>
+                            <text x="173" y="70" font-family="monospace" font-size="9" fill="white">What are symptoms of</text>
+                            <text x="173" y="83" font-family="monospace" font-size="9" fill="white">Type 2 Diabetes?</text>
+                            <!-- Bot message -->
+                            <rect x="20" y="102" width="240" height="52" rx="10" fill="#1e1e3a"/>
+                            <text x="32" y="117" font-family="monospace" font-size="8" fill="#a0ffa0">Common symptoms include:</text>
+                            <text x="32" y="129" font-family="monospace" font-size="8" fill="#c0c0e0">• Increased thirst &amp; urination</text>
+                            <text x="32" y="141" font-family="monospace" font-size="8" fill="#c0c0e0">• Fatigue &amp; blurred vision</text>
+                            <text x="32" y="153" font-family="monospace" font-size="8" fill="#c0c0e0">• Slow healing wounds</text>
+                            <!-- Input bar -->
+                            <rect x="20" y="165" width="320" height="25" rx="12" fill="#1a1a2e" stroke="#6366f1" stroke-width="1"/>
+                            <text x="34" y="181" font-family="monospace" font-size="9" fill="#555577">Ask a medical question...</text>
+                            <rect x="350" y="165" width="30" height="25" rx="12" fill="#6366f1"/>
+                            <text x="358" y="181" font-family="monospace" font-size="12" fill="white">→</text>
+                        </svg>
                     </div>
-                    <h3>Medical Chatbot</h3>
-                    <p class="project-tech">Python | LLMs | LangChain | Pinecone | Flask | AWS</p>
-                    <p>End-to-end Medical Chatbot with contextual Q&A using retrieval-augmented generation. Dockerized AWS CI/CD pipeline with GitHub Actions for production deployment.</p>
-                    <div class="project-links">
-                        <a href="https://github.com/arshi9854" target="_blank" class="project-link">
-                            <i class="fab fa-github"></i> View Code
-                        </a>
+                    <div class="project-body">
+                        <div class="project-header">
+                            <h3>Medical Chatbot</h3>
+                            <a href="https://github.com/arshi9854" target="_blank" class="project-link"><i class="fab fa-github"></i></a>
+                        </div>
+                        <p class="project-tech">LangChain · Pinecone · Flask · AWS · Docker</p>
+                        <p>RAG-powered medical Q&A system that retrieves accurate clinical context from a vector database. Dockerized with full CI/CD on AWS via GitHub Actions.</p>
                     </div>
                 </div>
 
+                <!-- Knowledge Graph -->
                 <div class="project-card">
-                    <div class="project-icon">
-                        <i class="fas fa-project-diagram"></i>
+                    <div class="project-preview">
+                        <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="400" height="200" fill="#0f0f1a"/>
+                            <!-- Nodes -->
+                            <circle cx="200" cy="95" r="22" fill="#6366f1" opacity="0.9"/>
+                            <text x="200" y="99" text-anchor="middle" font-family="monospace" font-size="9" fill="white">LangChain</text>
+                            <circle cx="90" cy="50" r="16" fill="#8b5cf6" opacity="0.85"/>
+                            <text x="90" y="54" text-anchor="middle" font-family="monospace" font-size="8" fill="white">Ollama</text>
+                            <circle cx="310" cy="50" r="16" fill="#8b5cf6" opacity="0.85"/>
+                            <text x="310" y="54" text-anchor="middle" font-family="monospace" font-size="8" fill="white">Gemma3</text>
+                            <circle cx="75" cy="145" r="16" fill="#a78bfa" opacity="0.8"/>
+                            <text x="75" y="149" text-anchor="middle" font-family="monospace" font-size="8" fill="white">PyVis</text>
+                            <circle cx="320" cy="145" r="16" fill="#a78bfa" opacity="0.8"/>
+                            <text x="320" y="149" text-anchor="middle" font-family="monospace" font-size="8" fill="white">Entity</text>
+                            <circle cx="200" cy="175" r="14" fill="#c4b5fd" opacity="0.75"/>
+                            <text x="200" y="179" text-anchor="middle" font-family="monospace" font-size="8" fill="white">Graph</text>
+                            <!-- Edges -->
+                            <line x1="200" y1="73" x2="90" y2="66" stroke="#6366f1" stroke-width="1.5" opacity="0.6"/>
+                            <line x1="200" y1="73" x2="310" y2="66" stroke="#6366f1" stroke-width="1.5" opacity="0.6"/>
+                            <line x1="178" y1="108" x2="91" y2="129" stroke="#8b5cf6" stroke-width="1.5" opacity="0.6"/>
+                            <line x1="222" y1="108" x2="304" y2="129" stroke="#8b5cf6" stroke-width="1.5" opacity="0.6"/>
+                            <line x1="200" y1="117" x2="200" y2="161" stroke="#a78bfa" stroke-width="1.5" opacity="0.6"/>
+                            <line x1="86" y1="160" x2="186" y2="170" stroke="#a78bfa" stroke-width="1" opacity="0.4"/>
+                            <line x1="306" y1="160" x2="214" y2="170" stroke="#a78bfa" stroke-width="1" opacity="0.4"/>
+                            <!-- Glow -->
+                            <circle cx="200" cy="95" r="30" fill="none" stroke="#6366f1" stroke-width="1" opacity="0.3"/>
+                        </svg>
                     </div>
-                    <h3>Knowledge Graph Generator</h3>
-                    <p class="project-tech">Ollama | Streamlit | PyVis | LangChain</p>
-                    <p>Local, offline-capable tool using LLMGraphTransformer with Gemma3 & Ollama to parse text into structured entity-relationship graphs with interactive visualization.</p>
-                    <div class="project-links">
-                        <a href="https://github.com/arshi9854" target="_blank" class="project-link">
-                            <i class="fab fa-github"></i> View Code
-                        </a>
+                    <div class="project-body">
+                        <div class="project-header">
+                            <h3>Knowledge Graph Generator</h3>
+                            <a href="https://github.com/arshi9854" target="_blank" class="project-link"><i class="fab fa-github"></i></a>
+                        </div>
+                        <p class="project-tech">Ollama · LangChain · PyVis · Streamlit</p>
+                        <p>Offline-capable tool that parses any text into interactive entity-relationship graphs using Gemma3 + LLMGraphTransformer. Runs entirely locally.</p>
                     </div>
                 </div>
 
+                <!-- Log Classifier -->
                 <div class="project-card">
-                    <div class="project-icon">
-                        <i class="fas fa-file-alt"></i>
+                    <div class="project-preview">
+                        <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="400" height="200" fill="#0a0a0f"/>
+                            <!-- Terminal header -->
+                            <rect x="0" y="0" width="400" height="26" fill="#1a1a2e"/>
+                            <circle cx="16" cy="13" r="5" fill="#ff5f57"/>
+                            <circle cx="32" cy="13" r="5" fill="#febc2e"/>
+                            <circle cx="48" cy="13" r="5" fill="#28c840"/>
+                            <text x="170" y="17" font-family="monospace" font-size="9" fill="#666699">log_classifier.py</text>
+                            <!-- Log lines -->
+                            <text x="12" y="46" font-family="monospace" font-size="9" fill="#666699">$ POST /classify</text>
+                            <text x="12" y="62" font-family="monospace" font-size="9" fill="#4ade80">✓ [INFO] Server started on port 8000</text>
+                            <text x="12" y="78" font-family="monospace" font-size="9" fill="#f87171">✗ [ERROR] NullPointerException → ML model</text>
+                            <rect x="260" y="68" width="110" height="16" rx="4" fill="rgba(248,113,113,0.15)" stroke="#f87171" stroke-width="1"/>
+                            <text x="268" y="79" font-family="monospace" font-size="8" fill="#f87171">ERROR · 97.3%</text>
+                            <text x="12" y="94" font-family="monospace" font-size="9" fill="#fbbf24">⚠ [WARN] Memory usage at 87%</text>
+                            <rect x="260" y="84" width="110" height="16" rx="4" fill="rgba(251,191,36,0.15)" stroke="#fbbf24" stroke-width="1"/>
+                            <text x="268" y="95" font-family="monospace" font-size="8" fill="#fbbf24">WARN · 94.1%</text>
+                            <text x="12" y="110" font-family="monospace" font-size="9" fill="#4ade80">✓ [INFO] Request processed in 42ms</text>
+                            <rect x="260" y="100" width="110" height="16" rx="4" fill="rgba(74,222,128,0.15)" stroke="#4ade80" stroke-width="1"/>
+                            <text x="268" y="111" font-family="monospace" font-size="8" fill="#4ade80">INFO · 99.1%</text>
+                            <text x="12" y="126" font-family="monospace" font-size="9" fill="#f87171">✗ [ERROR] DB connection timeout</text>
+                            <rect x="260" y="116" width="110" height="16" rx="4" fill="rgba(248,113,113,0.15)" stroke="#f87171" stroke-width="1"/>
+                            <text x="268" y="127" font-family="monospace" font-size="8" fill="#f87171">ERROR · 98.7%</text>
+                            <!-- Pipeline label -->
+                            <rect x="12" y="145" width="376" height="1" fill="#333355"/>
+                            <text x="12" y="160" font-family="monospace" font-size="8" fill="#888899">Pipeline: regex → transformer → LLM fallback</text>
+                            <text x="12" y="175" font-family="monospace" font-size="8" fill="#6366f1">FastAPI · 2.3ms avg · 99.8% accuracy</text>
+                            <rect x="12" y="182" width="80" height="8" rx="2" fill="#6366f1" opacity="0.8"/>
+                            <rect x="100" y="182" width="50" height="8" rx="2" fill="#8b5cf6" opacity="0.6"/>
+                            <rect x="158" y="182" width="30" height="8" rx="2" fill="#a78bfa" opacity="0.4"/>
+                            <text x="16" y="189" font-family="monospace" font-size="6" fill="white">ML Model</text>
+                            <text x="104" y="189" font-family="monospace" font-size="6" fill="white">Embed</text>
+                            <text x="162" y="189" font-family="monospace" font-size="6" fill="white">LLM</text>
+                        </svg>
                     </div>
-                    <h3>Log Classification System</h3>
-                    <p class="project-tech">Sentence Transformers | Logistic Regression | FastAPI | LLMs</p>
-                    <p>Hybrid log classification combining regex, sentence-transformer embeddings, and LLMs. FastAPI production API with ML-to-LLM fallback for low-data scenarios.</p>
-                    <div class="project-links">
-                        <a href="https://github.com/arshi9854" target="_blank" class="project-link">
-                            <i class="fab fa-github"></i> View Code
-                        </a>
+                    <div class="project-body">
+                        <div class="project-header">
+                            <h3>Log Classification System</h3>
+                            <a href="https://github.com/arshi9854" target="_blank" class="project-link"><i class="fab fa-github"></i></a>
+                        </div>
+                        <p class="project-tech">FastAPI · Sentence Transformers · LLMs · Python</p>
+                        <p>Hybrid ML pipeline classifying production logs in real-time. Combines regex, transformer embeddings, and LLM fallback — 99.8% accuracy at 2.3ms avg.</p>
                     </div>
                 </div>
 
+                <!-- AI Web Scraper -->
                 <div class="project-card">
-                    <div class="project-icon">
-                        <i class="fas fa-spider"></i>
+                    <div class="project-preview">
+                        <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="400" height="200" fill="#0f0f1a"/>
+                            <!-- Browser bar -->
+                            <rect x="10" y="10" width="380" height="28" rx="6" fill="#1a1a2e"/>
+                            <circle cx="26" cy="24" r="5" fill="#ff5f57"/>
+                            <circle cx="42" cy="24" r="5" fill="#febc2e"/>
+                            <circle cx="58" cy="24" r="5" fill="#28c840"/>
+                            <rect x="80" y="16" width="240" height="16" rx="8" fill="#0d0d1a"/>
+                            <text x="120" y="27" font-family="monospace" font-size="8" fill="#555577">https://target-website.com</text>
+                            <!-- Scraping animation -->
+                            <rect x="10" y="48" width="380" height="140" rx="4" fill="#0d0d1a"/>
+                            <!-- Data rows being extracted -->
+                            <rect x="20" y="58" width="360" height="18" rx="3" fill="#1a1a2e"/>
+                            <rect x="28" y="63" width="80" height="8" rx="2" fill="#6366f1" opacity="0.8"/>
+                            <rect x="118" y="63" width="120" height="8" rx="2" fill="#444466"/>
+                            <rect x="248" y="63" width="60" height="8" rx="2" fill="#444466"/>
+                            <rect x="318" y="63" width="50" height="8" rx="2" fill="#4ade80" opacity="0.7"/>
+                            <rect x="20" y="82" width="360" height="18" rx="3" fill="#1a1a2e"/>
+                            <rect x="28" y="87" width="95" height="8" rx="2" fill="#6366f1" opacity="0.8"/>
+                            <rect x="133" y="87" width="100" height="8" rx="2" fill="#444466"/>
+                            <rect x="243" y="87" width="70" height="8" rx="2" fill="#444466"/>
+                            <rect x="323" y="87" width="45" height="8" rx="2" fill="#4ade80" opacity="0.7"/>
+                            <rect x="20" y="106" width="360" height="18" rx="3" fill="#1a1a2e"/>
+                            <rect x="28" y="111" width="70" height="8" rx="2" fill="#6366f1" opacity="0.8"/>
+                            <rect x="108" y="111" width="130" height="8" rx="2" fill="#444466"/>
+                            <rect x="248" y="111" width="55" height="8" rx="2" fill="#444466"/>
+                            <rect x="313" y="111" width="55" height="8" rx="2" fill="#4ade80" opacity="0.7"/>
+                            <!-- Ollama parsing -->
+                            <rect x="20" y="136" width="360" height="42" rx="4" fill="#0a0a15" stroke="#6366f1" stroke-width="1" opacity="0.8"/>
+                            <text x="30" y="151" font-family="monospace" font-size="8" fill="#6366f1">🤖 Ollama parsing extracted data...</text>
+                            <text x="30" y="165" font-family="monospace" font-size="8" fill="#4ade80">✓ Structured JSON → Pandas pipeline</text>
+                            <text x="30" y="171" font-family="monospace" font-size="7" fill="#666699">Proxy: BrightData · Rotation: enabled</text>
+                        </svg>
                     </div>
-                    <h3>AI Web Scraper</h3>
-                    <p class="project-tech">Selenium | BrightData | Ollama | Pandas</p>
-                    <p>Robust AI-driven web scraping system with proxy rotation, semantic parsing using Ollama LLMs, and scalable data pipelines for reliable extraction.</p>
-                    <div class="project-links">
-                        <a href="https://github.com/arshi9854" target="_blank" class="project-link">
-                            <i class="fab fa-github"></i> View Code
-                        </a>
+                    <div class="project-body">
+                        <div class="project-header">
+                            <h3>AI Web Scraper</h3>
+                            <a href="https://github.com/arshi9854" target="_blank" class="project-link"><i class="fab fa-github"></i></a>
+                        </div>
+                        <p class="project-tech">Selenium · BrightData · Ollama · Pandas</p>
+                        <p>AI-driven scraping system with proxy rotation via BrightData, semantic parsing using Ollama LLMs, and scalable Pandas pipelines for structured data extraction.</p>
                     </div>
                 </div>
 
+                <!-- Data Analysis Agent -->
                 <div class="project-card">
-                    <div class="project-icon">
-                        <i class="fas fa-chart-line"></i>
+                    <div class="project-preview">
+                        <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="400" height="200" fill="#0f0f1a"/>
+                            <!-- Chart area -->
+                            <rect x="10" y="10" width="240" height="130" rx="6" fill="#1a1a2e"/>
+                            <!-- Bar chart -->
+                            <rect x="30" y="100" width="25" height="30" rx="3" fill="#6366f1" opacity="0.9"/>
+                            <rect x="65" y="75" width="25" height="55" rx="3" fill="#8b5cf6" opacity="0.9"/>
+                            <rect x="100" y="55" width="25" height="75" rx="3" fill="#6366f1" opacity="0.9"/>
+                            <rect x="135" y="85" width="25" height="45" rx="3" fill="#8b5cf6" opacity="0.9"/>
+                            <rect x="170" y="45" width="25" height="85" rx="3" fill="#6366f1" opacity="0.9"/>
+                            <rect x="205" y="65" width="25" height="65" rx="3" fill="#8b5cf6" opacity="0.9"/>
+                            <!-- Axis -->
+                            <line x1="22" y1="130" x2="240" y2="130" stroke="#333355" stroke-width="1"/>
+                            <line x1="22" y1="30" x2="22" y2="130" stroke="#333355" stroke-width="1"/>
+                            <!-- Line chart overlay -->
+                            <polyline points="42,100 77,80 112,58 147,88 182,48 217,68" fill="none" stroke="#4ade80" stroke-width="2" opacity="0.8"/>
+                            <circle cx="42" cy="100" r="3" fill="#4ade80"/>
+                            <circle cx="77" cy="80" r="3" fill="#4ade80"/>
+                            <circle cx="112" cy="58" r="3" fill="#4ade80"/>
+                            <circle cx="147" cy="88" r="3" fill="#4ade80"/>
+                            <circle cx="182" cy="48" r="3" fill="#4ade80"/>
+                            <circle cx="217" cy="68" r="3" fill="#4ade80"/>
+                            <!-- Title -->
+                            <text x="20" y="155" font-family="monospace" font-size="8" fill="#888899">Revenue Trend Analysis · Q1–Q4</text>
+                            <!-- AI insights panel -->
+                            <rect x="260" y="10" width="130" height="130" rx="6" fill="#1a1a2e"/>
+                            <text x="270" y="28" font-family="monospace" font-size="8" fill="#6366f1">🤖 AI Insights</text>
+                            <rect x="265" y="32" width="120" height="1" fill="#333355"/>
+                            <text x="270" y="47" font-family="monospace" font-size="7" fill="#a0a0c0">↑ 34% growth Q1→Q4</text>
+                            <text x="270" y="60" font-family="monospace" font-size="7" fill="#a0a0c0">Peak: Q4 (182 units)</text>
+                            <text x="270" y="73" font-family="monospace" font-size="7" fill="#a0a0c0">Dip detected: Q2</text>
+                            <text x="270" y="86" font-family="monospace" font-size="7" fill="#4ade80">Forecast: +12% next</text>
+                            <rect x="270" y="98" width="110" height="16" rx="3" fill="rgba(99,102,241,0.2)" stroke="#6366f1" stroke-width="1"/>
+                            <text x="278" y="109" font-family="monospace" font-size="7" fill="#6366f1">Generate report →</text>
+                            <rect x="270" y="118" width="110" height="16" rx="3" fill="rgba(74,222,128,0.1)" stroke="#4ade80" stroke-width="1"/>
+                            <text x="278" y="129" font-family="monospace" font-size="7" fill="#4ade80">Export visualizations →</text>
+                            <!-- Bottom bar -->
+                            <rect x="10" y="150" width="380" height="40" rx="6" fill="#1a1a2e"/>
+                            <text x="22" y="165" font-family="monospace" font-size="8" fill="#888899">Ask anything about your data:</text>
+                            <text x="22" y="180" font-family="monospace" font-size="8" fill="#6366f1">What drove Q4 growth? ▌</text>
+                        </svg>
                     </div>
-                    <h3>Data Analysis Agent</h3>
-                    <p class="project-tech">Python | LLMs | Pandas | Data Visualization</p>
-                    <p>Intelligent data analysis agent powered by LLMs that automates exploratory data analysis, generates insights, and creates visualizations from datasets.</p>
-                    <div class="project-links">
-                        <a href="https://github.com/arshi9854" target="_blank" class="project-link">
-                            <i class="fab fa-github"></i> View Code
-                        </a>
+                    <div class="project-body">
+                        <div class="project-header">
+                            <h3>Data Analysis Agent</h3>
+                            <a href="https://github.com/arshi9854" target="_blank" class="project-link"><i class="fab fa-github"></i></a>
+                        </div>
+                        <p class="project-tech">Python · LLMs · Pandas · Matplotlib</p>
+                        <p>LLM-powered agent that automates exploratory data analysis — upload any dataset, get instant insights, charts, and statistical summaries without writing code.</p>
                     </div>
                 </div>
 
+                <!-- Chat with PDFs -->
                 <div class="project-card">
-                    <div class="project-icon">
-                        <i class="fas fa-file-pdf"></i>
+                    <div class="project-preview">
+                        <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="400" height="200" fill="#0f0f1a"/>
+                            <!-- PDF files on left -->
+                            <rect x="12" y="15" width="55" height="70" rx="4" fill="#1e1e3a" stroke="#6366f1" stroke-width="1"/>
+                            <rect x="12" y="15" width="55" height="12" rx="4" fill="#6366f1"/>
+                            <text x="22" y="24" font-family="monospace" font-size="7" fill="white">PDF</text>
+                            <text x="16" y="42" font-family="monospace" font-size="6" fill="#888899">Research</text>
+                            <text x="16" y="52" font-family="monospace" font-size="6" fill="#888899">Paper.pdf</text>
+                            <rect x="20" y="92" width="55" height="70" rx="4" fill="#1e1e3a" stroke="#8b5cf6" stroke-width="1"/>
+                            <rect x="20" y="92" width="55" height="12" rx="4" fill="#8b5cf6"/>
+                            <text x="30" y="101" font-family="monospace" font-size="7" fill="white">PDF</text>
+                            <text x="24" y="119" font-family="monospace" font-size="6" fill="#888899">Medical</text>
+                            <text x="24" y="129" font-family="monospace" font-size="6" fill="#888899">Report.pdf</text>
+                            <!-- Arrow -->
+                            <text x="78" y="95" font-family="monospace" font-size="18" fill="#6366f1" opacity="0.7">→</text>
+                            <!-- Vector DB box -->
+                            <rect x="100" y="70" width="80" height="50" rx="6" fill="#1a1a2e" stroke="#a78bfa" stroke-width="1"/>
+                            <text x="113" y="90" font-family="monospace" font-size="7" fill="#a78bfa">Vector DB</text>
+                            <text x="108" y="102" font-family="monospace" font-size="6" fill="#666699">[0.23, 0.87...]</text>
+                            <text x="108" y="112" font-family="monospace" font-size="6" fill="#666699">[0.45, 0.12...]</text>
+                            <!-- Arrow -->
+                            <text x="186" y="95" font-family="monospace" font-size="18" fill="#6366f1" opacity="0.7">→</text>
+                            <!-- Chat window -->
+                            <rect x="210" y="15" width="178" height="170" rx="6" fill="#1a1a2e"/>
+                            <rect x="210" y="15" width="178" height="22" rx="6" fill="#6366f1"/>
+                            <text x="222" y="29" font-family="monospace" font-size="8" fill="white">Chat with PDFs</text>
+                            <!-- Messages -->
+                            <rect x="218" y="44" width="130" height="22" rx="6" fill="#2a2a4a"/>
+                            <text x="226" y="53" font-family="monospace" font-size="7" fill="#c0c0e0">Summarize key findings</text>
+                            <text x="226" y="63" font-family="monospace" font-size="7" fill="#c0c0e0">from the research paper</text>
+                            <rect x="218" y="73" width="160" height="44" rx="6" fill="#1e1e3a" stroke="#6366f1" stroke-width="0.5"/>
+                            <text x="226" y="85" font-family="monospace" font-size="6.5" fill="#4ade80">The paper identifies 3 key</text>
+                            <text x="226" y="95" font-family="monospace" font-size="6.5" fill="#a0a0c0">findings: (1) 34% reduction</text>
+                            <text x="226" y="105" font-family="monospace" font-size="6.5" fill="#a0a0c0">in error rates, (2) improved</text>
+                            <text x="226" y="115" font-family="monospace" font-size="6.5" fill="#a0a0c0">latency by 2.1x...</text>
+                            <rect x="218" y="165" width="160" height="14" rx="6" fill="#0d0d1a" stroke="#333355" stroke-width="1"/>
+                            <text x="226" y="174" font-family="monospace" font-size="7" fill="#444466">Ask a question...</text>
+                        </svg>
                     </div>
-                    <h3>Chat with Multiple PDFs</h3>
-                    <p class="project-tech">LangChain | Vector DB | RAG | Streamlit</p>
-                    <p>Interactive application enabling conversational queries across multiple PDF documents using RAG architecture and vector embeddings for accurate context retrieval.</p>
-                    <div class="project-links">
-                        <a href="https://github.com/arshi9854" target="_blank" class="project-link">
-                            <i class="fab fa-github"></i> View Code
-                        </a>
+                    <div class="project-body">
+                        <div class="project-header">
+                            <h3>Chat with Multiple PDFs</h3>
+                            <a href="https://github.com/arshi9854/Chat-with-multiple-PDFs" target="_blank" class="project-link"><i class="fab fa-github"></i></a>
+                        </div>
+                        <p class="project-tech">LangChain · Vector DB · RAG · Streamlit</p>
+                        <p>Upload multiple PDFs and have a conversation across all of them. RAG architecture with vector embeddings retrieves accurate context from any document instantly.</p>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
