@@ -391,8 +391,81 @@ footer {
 }
 
 /* ===== REVEAL ANIMATIONS ===== */
-.reveal { opacity: 0; transform: translateY(30px); transition: all 0.6s ease; }
-.reveal.visible { opacity: 1; transform: translateY(0); }
+/* ===== SCROLL REVEAL ANIMATIONS ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Section labels slide in from left */
+.section-label.reveal {
+  transform: translateX(-20px);
+}
+.section-label.reveal.visible {
+  transform: translateX(0);
+}
+
+/* Section titles pop up with slight scale */
+.section-title.reveal {
+  transform: translateY(20px) scale(0.97);
+  transition-delay: 0.08s;
+}
+.section-title.reveal.visible {
+  transform: translateY(0) scale(1);
+}
+
+/* About text slides from left */
+.about-text.reveal {
+  transform: translateX(-30px);
+  transition-delay: 0.1s;
+}
+.about-text.reveal.visible {
+  transform: translateX(0);
+}
+
+/* About card stack slides from right */
+.about-card-stack.reveal {
+  transform: translateX(30px);
+  transition-delay: 0.15s;
+}
+.about-card-stack.reveal.visible {
+  transform: translateX(0);
+}
+
+/* Individual about cards stagger */
+.about-card:nth-child(1).reveal { transition-delay: 0.1s; }
+.about-card:nth-child(2).reveal { transition-delay: 0.2s; }
+.about-card:nth-child(3).reveal { transition-delay: 0.3s; }
+
+/* Project cards stagger with slight scale */
+.project-card.reveal {
+  transform: translateY(40px) scale(0.97);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.project-card.reveal.visible {
+  transform: translateY(0) scale(1);
+}
+.project-card:nth-child(1).reveal { transition-delay: 0.05s; }
+.project-card:nth-child(2).reveal { transition-delay: 0.12s; }
+.project-card:nth-child(3).reveal { transition-delay: 0.19s; }
+.project-card:nth-child(4).reveal { transition-delay: 0.26s; }
+.project-card:nth-child(5).reveal { transition-delay: 0.33s; }
+.project-card:nth-child(6).reveal { transition-delay: 0.40s; }
+
+/* Skill groups stagger */
+.skill-group:nth-child(1).reveal { transition-delay: 0.05s; }
+.skill-group:nth-child(2).reveal { transition-delay: 0.12s; }
+.skill-group:nth-child(3).reveal { transition-delay: 0.19s; }
+.skill-group:nth-child(4).reveal { transition-delay: 0.26s; }
+.skill-group:nth-child(5).reveal { transition-delay: 0.33s; }
+.skill-group:nth-child(6).reveal { transition-delay: 0.40s; }
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 1024px) {

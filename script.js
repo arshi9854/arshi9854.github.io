@@ -11,14 +11,16 @@ const navLinks = document.querySelector('.nav-links');
 hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
 navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
 
-// Reveal on scroll
+// Scroll reveal — stagger visible entries so they cascade in nicely
 const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry, i) => {
-    if (entry.isIntersecting) {
-      setTimeout(() => entry.target.classList.add('visible'), i * 80);
+  let i = 0;
+  entries.forEach((entry) => {
+    if (entry.isIntersecting && !entry.target.classList.contains('visible')) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 90);
+      i++;
     }
   });
-}, { threshold: 0.1 });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
 // Smooth active nav link highlighting
