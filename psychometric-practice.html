@@ -3,1025 +3,1040 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GIA + PPA Practice — Thomas International Style</title>
+<title>Thomas GIA + PPA Practice — Arshiya</title>
 <style>
-:root {
-  --bg: #0a0a0f;
-  --surface: #13131a;
-  --surface2: #1c1c28;
-  --border: #2a2a3d;
-  --accent: #7c6fef;
-  --accent2: #a594f9;
-  --text: #e8e8f0;
-  --muted: #8888aa;
-  --green: #4ade80;
-  --red: #f87171;
-  --yellow: #fbbf24;
-}
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; min-height: 100vh; }
-
-/* NAV */
-nav {
-  position: sticky; top: 0; z-index: 100;
-  background: rgba(10,10,15,0.95); backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border);
-  display: flex; align-items: center; gap: 4px; padding: 0 16px;
-  flex-wrap: wrap;
-}
-.nav-title { font-weight: 700; color: var(--accent2); padding: 12px 8px; margin-right: 8px; font-size: 0.9rem; white-space: nowrap; }
-.nav-tabs { display: flex; gap: 2px; flex: 1; flex-wrap: wrap; }
-.nav-tab {
-  padding: 10px 12px; cursor: pointer; font-size: 0.8rem; font-weight: 500;
-  color: var(--muted); border-bottom: 2px solid transparent;
-  transition: all 0.2s; white-space: nowrap; background: none; border-top: none; border-left: none; border-right: none;
-}
-.nav-tab:hover { color: var(--text); }
-.nav-tab.active { color: var(--accent2); border-bottom-color: var(--accent); }
-.timer {
-  margin-left: auto; padding: 6px 12px; background: var(--surface2);
-  border: 1px solid var(--border); border-radius: 6px;
-  font-size: 0.85rem; font-weight: 600; color: var(--yellow);
-  font-variant-numeric: tabular-nums; white-space: nowrap;
-}
-
-/* SECTIONS */
-.section { display: none; max-width: 900px; margin: 0 auto; padding: 24px 16px; }
-.section.active { display: block; }
-.section-header { margin-bottom: 24px; }
-.section-header h2 { font-size: 1.4rem; color: var(--accent2); margin-bottom: 6px; }
-.section-header p { color: var(--muted); font-size: 0.9rem; }
-
-/* QUESTION CARD */
-.q-card {
-  background: var(--surface); border: 1px solid var(--border);
-  border-radius: 10px; padding: 20px; margin-bottom: 16px;
-}
-.q-num { font-size: 0.75rem; color: var(--muted); font-weight: 600; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.05em; }
-.q-text { font-size: 0.95rem; margin-bottom: 16px; line-height: 1.5; }
-.options { display: flex; flex-direction: column; gap: 8px; }
-.option {
-  display: flex; align-items: center; gap: 10px;
-  padding: 10px 14px; border-radius: 8px; cursor: pointer;
-  border: 1px solid var(--border); background: var(--surface2);
-  transition: all 0.15s; font-size: 0.9rem;
-}
-.option:hover { border-color: var(--accent); background: rgba(124,111,239,0.1); }
-.option input[type=radio], .option input[type=checkbox] { accent-color: var(--accent); width: 16px; height: 16px; cursor: pointer; }
-.option.correct { border-color: var(--green); background: rgba(74,222,128,0.1); }
-.option.wrong { border-color: var(--red); background: rgba(248,113,113,0.1); }
-.option.selected-wrong { border-color: var(--red); background: rgba(248,113,113,0.15); }
-.explanation {
-  margin-top: 12px; padding: 10px 14px; border-radius: 6px;
-  background: rgba(124,111,239,0.1); border-left: 3px solid var(--accent);
-  font-size: 0.85rem; color: var(--muted); display: none;
-}
-.explanation.show { display: block; }
-
+:root{--bg:#0a0a0f;--surface:#13131a;--card:#1a1a24;--border:#2a2a3a;--accent:#7c6fef;--accent2:#a594f9;--green:#4ade80;--red:#f87171;--yellow:#fbbf24;--text:#e8e6f0;--muted:#888}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh}
+nav{position:sticky;top:0;z-index:100;background:rgba(10,10,15,.97);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:4px;padding:0 12px;flex-wrap:wrap}
+.nav-title{font-weight:700;color:var(--accent2);padding:12px 8px;font-size:.9rem;white-space:nowrap}
+.nav-tabs{display:flex;gap:0;flex-wrap:wrap}
+.nav-tab{padding:10px 11px;cursor:pointer;font-size:.78rem;font-weight:500;color:var(--muted);border-bottom:2px solid transparent;transition:all .2s;white-space:nowrap;background:none;border-top:none;border-left:none;border-right:none}
+.nav-tab:hover{color:var(--text)}.nav-tab.active{color:var(--accent2);border-bottom-color:var(--accent)}
+.timer{margin-left:auto;padding:5px 10px;background:rgba(251,191,36,.1);border:1px solid rgba(251,191,36,.3);border-radius:6px;font-size:.85rem;font-weight:700;color:var(--yellow);font-variant-numeric:tabular-nums}
+.section{display:none;max-width:920px;margin:0 auto;padding:24px 16px 60px}
+.section.active{display:block}
+.sec-head{margin-bottom:20px}
+.sec-head h2{font-size:1.3rem;color:var(--accent2);margin-bottom:4px}
+.sec-head p{color:var(--muted);font-size:.88rem;line-height:1.5}
+.meta-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.badge{font-size:.75rem;padding:3px 10px;border-radius:12px;background:rgba(124,111,239,.15);color:var(--accent2);border:1px solid rgba(124,111,239,.3)}
+.badge.yellow{background:rgba(251,191,36,.1);color:var(--yellow);border-color:rgba(251,191,36,.3)}
+.q-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:20px;margin-bottom:14px}
+.q-num{font-size:.72rem;color:var(--muted);font-weight:600;margin-bottom:8px;text-transform:uppercase;letter-spacing:.05em}
+.q-text{font-size:.95rem;margin-bottom:14px;line-height:1.5}
+.opts{display:flex;flex-direction:column;gap:7px}
+.opt{display:flex;align-items:center;gap:10px;padding:9px 13px;border-radius:7px;cursor:pointer;border:1px solid var(--border);background:var(--surface);transition:all .15s;font-size:.9rem}
+.opt:hover{border-color:var(--accent);background:rgba(124,111,239,.08)}
+.opt.selected{border-color:var(--accent);background:rgba(124,111,239,.15)}
+.opt.correct{border-color:var(--green)!important;background:rgba(74,222,128,.1)!important;color:var(--green)}
+.opt.wrong{border-color:var(--red)!important;background:rgba(248,113,113,.1)!important;color:var(--red)}
+.opt-lbl{width:22px;height:22px;border-radius:50%;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;flex-shrink:0}
+.opt.selected .opt-lbl{background:var(--accent);border-color:var(--accent);color:#fff}
+.opt.correct .opt-lbl{background:var(--green);border-color:var(--green);color:#000}
+.opt.wrong .opt-lbl{background:var(--red);border-color:var(--red);color:#fff}
+.expl{margin-top:10px;padding:9px 13px;border-radius:0 6px 6px 0;border-left:3px solid var(--accent);background:rgba(124,111,239,.08);font-size:.83rem;color:#bbb;line-height:1.6;display:none}
+.expl.show{display:block}
 /* SPATIAL */
-.spatial-layout { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-bottom: 12px; }
-.spatial-ref { text-align: center; }
-.spatial-ref-label { font-size: 0.7rem; color: var(--muted); margin-bottom: 4px; }
-.spatial-arrow { font-size: 1.5rem; color: var(--muted); }
-.spatial-options { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; width: 100%; }
-.spatial-option {
-  text-align: center; cursor: pointer;
-  padding: 8px; border-radius: 8px; border: 2px solid var(--border);
-  background: var(--surface2); transition: all 0.15s;
-}
-.spatial-option:hover { border-color: var(--accent); }
-.spatial-option.selected { border-color: var(--accent); background: rgba(124,111,239,0.15); }
-.spatial-option.correct { border-color: var(--green); background: rgba(74,222,128,0.1); }
-.spatial-option.wrong { border-color: var(--red); background: rgba(248,113,113,0.1); }
-.spatial-option-label { font-size: 0.75rem; color: var(--muted); margin-top: 4px; font-weight: 600; }
-svg.shape { display: block; margin: 0 auto; }
-
+.sp-instruction{background:rgba(124,111,239,.08);border:1px solid rgba(124,111,239,.25);border-radius:8px;padding:10px 14px;margin-bottom:14px;font-size:.83rem;color:#ccc;line-height:1.6}
+.sp-instruction strong{color:var(--accent2)}
+.sp-layout{display:flex;align-items:flex-start;gap:20px;flex-wrap:wrap;margin-bottom:12px}
+.sp-ref{text-align:center;min-width:120px}
+.sp-ref-lbl{font-size:.7rem;color:var(--muted);margin-bottom:6px;font-weight:600;text-transform:uppercase;letter-spacing:.05em}
+.sp-arrow{font-size:1.8rem;color:var(--muted);align-self:center;padding-top:20px}
+.sp-opts-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;flex:1;min-width:280px}
+.sp-opt{text-align:center;cursor:pointer;padding:8px 6px;border-radius:8px;border:2px solid var(--border);background:var(--surface);transition:all .15s}
+.sp-opt:hover{border-color:var(--accent)}
+.sp-opt.selected{border-color:var(--accent);background:rgba(124,111,239,.15)}
+.sp-opt.correct{border-color:var(--green)!important;background:rgba(74,222,128,.1)!important}
+.sp-opt.wrong{border-color:var(--red)!important;background:rgba(248,113,113,.1)!important}
+.sp-opt-lbl{font-size:.8rem;color:var(--muted);margin-top:5px;font-weight:700}
+.sp-opt.correct .sp-opt-lbl{color:var(--green)}
+.sp-opt.wrong .sp-opt-lbl{color:var(--red)}
+svg.shape{display:block;margin:0 auto;overflow:visible}
 /* PERCEPTUAL */
-.perc-layout { margin-bottom: 12px; }
-.perc-ref-row { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
-.perc-ref-label { font-size: 0.75rem; color: var(--muted); font-weight: 600; min-width: 60px; }
-.perc-box {
-  padding: 8px 14px; border-radius: 6px; font-family: 'Courier New', monospace;
-  font-size: 1rem; font-weight: 700; letter-spacing: 0.1em;
-  border: 2px solid var(--border); background: var(--surface2);
-}
-.perc-box.ref { border-color: var(--accent); background: rgba(124,111,239,0.15); color: var(--accent2); }
-.perc-options-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
-.perc-opt {
-  text-align: center; cursor: pointer; padding: 10px 6px;
-  border-radius: 8px; border: 2px solid var(--border);
-  background: var(--surface2); transition: all 0.15s;
-}
-.perc-opt:hover { border-color: var(--accent); }
-.perc-opt.selected { border-color: var(--accent); background: rgba(124,111,239,0.15); }
-.perc-opt.correct { border-color: var(--green); background: rgba(74,222,128,0.1); }
-.perc-opt.wrong { border-color: var(--red); background: rgba(248,113,113,0.1); }
-.perc-opt-str { font-family: 'Courier New', monospace; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.08em; }
-.perc-opt-key { font-size: 0.7rem; color: var(--muted); margin-top: 4px; }
-
+.perc-ref-row{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap}
+.perc-ref-lbl{font-size:.75rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap}
+.perc-box{font-family:'Courier New',monospace;font-size:1rem;padding:7px 14px;border-radius:6px;letter-spacing:2px;border:2px solid var(--border);background:var(--surface)}
+.perc-box.ref{border-color:var(--accent2);color:var(--accent2);background:rgba(124,111,239,.1)}
+.perc-opts-row{display:flex;gap:10px;flex-wrap:wrap}
+.perc-opt{display:flex;flex-direction:column;align-items:center;gap:5px;cursor:pointer}
+.perc-opt .perc-box{transition:all .15s}
+.perc-opt:hover .perc-box{border-color:var(--accent)}
+.perc-opt.selected .perc-box{border-color:var(--accent);background:rgba(124,111,239,.15)}
+.perc-opt.correct .perc-box{border-color:var(--green)!important;background:rgba(74,222,128,.1)!important;color:var(--green)}
+.perc-opt.wrong .perc-box{border-color:var(--red)!important;background:rgba(248,113,113,.1)!important;color:var(--red)}
+.perc-opt-lbl{font-size:.75rem;font-weight:700;color:var(--muted)}
+.perc-opt.correct .perc-opt-lbl{color:var(--green)}
+.perc-opt.wrong .perc-opt-lbl{color:var(--red)}
+.perc-hint{font-size:.78rem;color:var(--yellow);margin-top:6px}
 /* DISC */
-.disc-group { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 18px; margin-bottom: 14px; }
-.disc-group-num { font-size: 0.75rem; color: var(--muted); font-weight: 600; margin-bottom: 10px; text-transform: uppercase; }
-.disc-words { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
-.disc-word-row { display: flex; align-items: center; justify-content: space-between; padding: 8px 12px; border-radius: 6px; background: var(--surface2); border: 1px solid var(--border); }
-.disc-word { font-size: 0.9rem; font-weight: 500; }
-.disc-btns { display: flex; gap: 6px; }
-.disc-btn {
-  padding: 3px 10px; border-radius: 4px; border: 1px solid var(--border);
-  background: none; color: var(--muted); font-size: 0.75rem; cursor: pointer;
-  transition: all 0.15s;
-}
-.disc-btn.most.active { background: var(--accent); border-color: var(--accent); color: #fff; }
-.disc-btn.least.active { background: #ef4444; border-color: #ef4444; color: #fff; }
-.disc-btn:hover { border-color: var(--accent); }
-.disc-result { margin-top: 20px; padding: 20px; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; display: none; }
-.disc-result.show { display: block; }
-.disc-bars { display: grid; gap: 10px; }
-.disc-bar-row { display: flex; align-items: center; gap: 12px; }
-.disc-bar-label { width: 120px; font-size: 0.85rem; font-weight: 600; }
-.disc-bar-track { flex: 1; background: var(--surface2); border-radius: 4px; height: 20px; overflow: hidden; border: 1px solid var(--border); }
-.disc-bar-fill { height: 100%; border-radius: 4px; transition: width 0.6s ease; }
-.disc-bar-val { width: 30px; text-align: right; font-size: 0.8rem; color: var(--muted); }
-
-/* BUTTONS */
-.btn {
-  padding: 10px 22px; border-radius: 8px; border: none; cursor: pointer;
-  font-size: 0.9rem; font-weight: 600; transition: all 0.2s;
-}
-.btn-primary { background: var(--accent); color: #fff; }
-.btn-primary:hover { background: var(--accent2); }
-.btn-secondary { background: var(--surface2); color: var(--text); border: 1px solid var(--border); }
-.btn-secondary:hover { border-color: var(--accent); }
-.btn-row { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
-
+.disc-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px;margin-bottom:14px}
+.disc-grp-num{font-size:.72rem;color:var(--muted);font-weight:600;margin-bottom:8px;text-transform:uppercase;letter-spacing:.05em}
+.disc-grp-instr{font-size:.85rem;color:#ccc;margin-bottom:12px}
+.disc-cols{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.disc-col h4{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px;font-weight:600}
+.disc-word{padding:8px 12px;border-radius:6px;border:1px solid var(--border);background:var(--surface);cursor:pointer;font-size:.9rem;margin-bottom:6px;transition:all .15s}
+.disc-word:hover{border-color:var(--accent)}
+.disc-word.most{border-color:var(--green)!important;background:rgba(74,222,128,.1)!important;color:var(--green)}
+.disc-word.least{border-color:var(--red)!important;background:rgba(248,113,113,.1)!important;color:var(--red)}
 /* SCORE */
-.score-box {
-  display: inline-flex; align-items: center; gap: 8px;
-  padding: 8px 16px; border-radius: 8px; margin-top: 12px;
-  background: var(--surface2); border: 1px solid var(--border);
-  font-size: 0.9rem; display: none;
-}
-.score-box.show { display: inline-flex; }
-.score-num { font-size: 1.2rem; font-weight: 700; color: var(--accent2); }
-
+.score-banner{display:none;align-items:center;gap:20px;flex-wrap:wrap;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px 20px;margin-bottom:20px}
+.score-banner.show{display:flex}
+.score-val{font-size:1.8rem;font-weight:800;color:var(--accent2)}
+.score-pct{font-size:1rem;font-weight:700;padding:4px 12px;border-radius:20px}
+.score-pct.great{background:rgba(74,222,128,.15);color:var(--green);border:1px solid rgba(74,222,128,.3)}
+.score-pct.ok{background:rgba(251,191,36,.15);color:var(--yellow);border:1px solid rgba(251,191,36,.3)}
+.score-pct.low{background:rgba(248,113,113,.15);color:var(--red);border:1px solid rgba(248,113,113,.3)}
+.score-time{font-size:.85rem;color:var(--muted)}
+/* BTNS */
+.btn-row{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}
+.btn{padding:9px 20px;border-radius:7px;border:none;cursor:pointer;font-size:.87rem;font-weight:600;transition:all .2s}
+.btn-primary{background:var(--accent);color:#fff}.btn-primary:hover{background:var(--accent2)}
+.btn-outline{background:transparent;border:1px solid var(--border);color:var(--muted)}.btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+.set-indicator{font-size:.8rem;color:var(--muted);padding:5px 0}
 /* TIPS */
-.tips-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
-.tip-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 18px; }
-.tip-icon { font-size: 1.5rem; margin-bottom: 8px; }
-.tip-title { font-weight: 700; margin-bottom: 6px; color: var(--accent2); }
-.tip-text { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
-
-@media(max-width:600px){
-  .spatial-options { grid-template-columns: repeat(2,1fr); }
-  .perc-options-row { grid-template-columns: repeat(2,1fr); }
-  .disc-words { grid-template-columns: 1fr; }
-}
+.tip-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px;margin-bottom:12px}
+.tip-card h3{color:var(--accent2);margin-bottom:8px;font-size:1rem}
+.tip-card p,.tip-card li{font-size:.88rem;color:#ccc;line-height:1.7}
+.tip-card ul{padding-left:16px}
+/* DISC PROFILE */
+.disc-bar-wrap{margin-bottom:14px}
+.disc-bar-label{display:flex;justify-content:space-between;margin-bottom:4px;font-size:.85rem}
+.disc-bar-track{height:10px;background:var(--border);border-radius:5px}
+.disc-bar-fill{height:100%;border-radius:5px;transition:width .5s}
 </style>
 </head>
 <body>
-
 <nav>
-  <div class="nav-title">🧠 GIA + PPA Practice</div>
+  <div class="nav-title">🧠 Thomas GIA Practice</div>
   <div class="nav-tabs">
-    <button class="nav-tab active" onclick="showSection('spatial')">🔷 Spatial</button>
-    <button class="nav-tab" onclick="showSection('perceptual')">⚡ Perceptual</button>
-    <button class="nav-tab" onclick="showSection('verbal')">📖 Verbal</button>
-    <button class="nav-tab" onclick="showSection('numerical')">🔢 Numerical</button>
-    <button class="nav-tab" onclick="showSection('disc')">🎭 DISC PPA</button>
-    <button class="nav-tab" onclick="showSection('tips')">💡 Tips</button>
+    <button class="nav-tab active" onclick="showSec('overview')">Overview</button>
+    <button class="nav-tab" onclick="showSec('spatial')">Spatial</button>
+    <button class="nav-tab" onclick="showSec('perceptual')">Perceptual</button>
+    <button class="nav-tab" onclick="showSec('verbal')">Verbal</button>
+    <button class="nav-tab" onclick="showSec('numerical')">Numerical</button>
+    <button class="nav-tab" onclick="showSec('disc')">DISC Profile</button>
+    <button class="nav-tab" onclick="showSec('tips')">Tips</button>
   </div>
   <div class="timer" id="timer">00:00</div>
 </nav>
 
-<!-- ═══════════════════════════════════════════ SPATIAL ═══ -->
-<div class="section active" id="section-spatial">
-  <div class="section-header">
-    <h2>🔷 Spatial Visualisation</h2>
-    <p>Which option shows the <strong>same shape rotated</strong> (not reflected)? Select one answer per question.</p>
+<!-- OVERVIEW -->
+<div id="sec-overview" class="section active">
+  <div class="sec-head"><h2>Thomas International Assessment — Practice</h2><p>Canonical uses two Thomas tools: the GIA (cognitive aptitude) and PPA (DISC behavioral profile). Practice all sections here before your real assessment.</p></div>
+  <div class="q-card">
+    <div class="q-text" style="line-height:1.9;font-size:.92rem">
+      <strong style="color:var(--accent2)">GIA — 5 subtests (~25 min total)</strong><br>
+      • <strong>Reasoning</strong> — Word analogies and logical relationships<br>
+      • <strong>Perceptual Speed</strong> — Spot identical string pairs quickly (speed test)<br>
+      • <strong>Number Speed &amp; Accuracy</strong> — Fast arithmetic, sequences, percentages<br>
+      • <strong>Word Meaning</strong> — Synonyms, antonyms, vocabulary<br>
+      • <strong>Spatial Visualisation</strong> — Which option shows the shape rotated (not mirrored)?<br><br>
+      <strong style="color:var(--accent2)">PPA / DISC — Behavioral Profile (~8 min)</strong><br>
+      • 24 groups of 4 adjectives — pick MOST and LEAST like you at work<br>
+      • No right or wrong answers — measures D (Dominance), I (Influence), S (Steadiness), C (Compliance)
+    </div>
   </div>
-  <div id="spatial-questions"></div>
-  <div class="btn-row">
-    <button class="btn btn-primary" onclick="checkSpatial()">Check Answers</button>
-    <button class="btn btn-secondary" onclick="resetSpatial()">Reset</button>
+  <div class="q-card" style="border-color:rgba(251,191,36,.3);background:rgba(251,191,36,.05)">
+    <div class="q-text" style="font-size:.88rem;line-height:1.8;color:#e5d8aa">
+      <strong style="color:var(--yellow)">⚡ Key tips for the real test:</strong><br>
+      • GIA is strictly timed — speed AND accuracy matter<br>
+      • Each section has 4 randomized sets here — click 🔀 New Set to practice a different batch<br>
+      • For spatial: rotation = OK, mirror/flip = WRONG answer<br>
+      • For perceptual: scan character by character, don't try to "see" the whole string at once<br>
+      • DISC: answer instinctively for your work self, don't overthink
+    </div>
   </div>
-  <div class="score-box" id="spatial-score"><span class="score-num" id="spatial-score-num"></span> correct</div>
+  <div class="btn-row"><button class="btn btn-primary" onclick="showSec('spatial')">Start with Spatial →</button></div>
 </div>
 
-<!-- ═══════════════════════════════════════════ PERCEPTUAL ═══ -->
-<div class="section" id="section-perceptual">
-  <div class="section-header">
-    <h2>⚡ Perceptual Speed</h2>
-    <p>Select the <strong>TWO</strong> options that are identical to the reference string.</p>
+<!-- SPATIAL -->
+<div id="sec-spatial" class="section">
+  <div class="sec-head">
+    <h2>Spatial Visualisation</h2>
+    <p>Which option (A/B/C/D) shows the <strong style="color:var(--green)">same shape rotated</strong>? Rotations are correct — mirrors/flips are wrong. Work quickly.</p>
+    <div class="meta-row">
+      <span class="badge">12 questions per set</span>
+      <span class="badge">4 sets available</span>
+      <span class="badge yellow">Timed</span>
+    </div>
   </div>
-  <div id="perceptual-questions"></div>
+  <div class="sp-instruction">
+    <strong>How to read these questions:</strong> The left box shows the <strong>Reference Shape</strong>. The four boxes on the right show options A–D. Only ONE option is the same shape rotated to a different angle. The others are mirrored, flipped, or a different shape entirely.<br>
+    <strong style="color:var(--green)">✓ Rotation</strong> (turning clockwise or anti-clockwise) = <strong style="color:var(--green)">correct</strong> &nbsp;|&nbsp; <strong style="color:var(--red)">✗ Mirror/flip</strong> = <strong style="color:var(--red)">wrong answer</strong>
+  </div>
+  <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:16px">
+    <div class="set-indicator" id="sp-set-ind">Set 1 of 4</div>
+    <button class="btn btn-outline" onclick="newSet('sp')">🔀 New Set</button>
+  </div>
+  <div class="score-banner" id="sp-score">
+    <div><div class="score-val" id="sp-sv">—</div><div style="font-size:.8rem;color:var(--muted)">Score</div></div>
+    <div class="score-pct" id="sp-pct"></div>
+    <div class="score-time" id="sp-time"></div>
+  </div>
+  <div id="sp-questions"></div>
   <div class="btn-row">
-    <button class="btn btn-primary" onclick="checkPerceptual()">Check Answers</button>
-    <button class="btn btn-secondary" onclick="resetPerceptual()">Reset</button>
+    <button class="btn btn-primary" onclick="checkSec('sp')">Check Answers</button>
+    <button class="btn btn-outline" onclick="resetSec('sp')">Reset</button>
+    <button class="btn btn-outline" onclick="showSec('perceptual')">Next →</button>
   </div>
-  <div class="score-box" id="perc-score"><span class="score-num" id="perc-score-num"></span> correct</div>
 </div>
 
-<!-- ═══════════════════════════════════════════ VERBAL ═══ -->
-<div class="section" id="section-verbal">
-  <div class="section-header">
-    <h2>📖 Verbal Reasoning</h2>
-    <p>20 questions — analogies, synonyms, antonyms, and sentence completion.</p>
+<!-- PERCEPTUAL -->
+<div id="sec-perceptual" class="section">
+  <div class="sec-head">
+    <h2>Perceptual Speed</h2>
+    <p>Find the <strong>TWO options</strong> that are <strong style="color:var(--green)">identical</strong> to the reference string. Watch for subtle differences — case, digits, symbols.</p>
+    <div class="meta-row"><span class="badge">15 questions per set</span><span class="badge">4 sets</span><span class="badge yellow">Speed test</span></div>
   </div>
-  <div id="verbal-questions"></div>
+  <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:16px">
+    <div class="set-indicator" id="perc-set-ind">Set 1 of 4</div>
+    <button class="btn btn-outline" onclick="newSet('perc')">🔀 New Set</button>
+  </div>
+  <div class="score-banner" id="perc-score">
+    <div><div class="score-val" id="perc-sv">—</div><div style="font-size:.8rem;color:var(--muted)">Score</div></div>
+    <div class="score-pct" id="perc-pct"></div>
+    <div class="score-time" id="perc-time"></div>
+  </div>
+  <div id="perc-questions"></div>
   <div class="btn-row">
-    <button class="btn btn-primary" onclick="checkSection('verbal')">Check Answers</button>
-    <button class="btn btn-secondary" onclick="resetSection('verbal')">Reset</button>
+    <button class="btn btn-primary" onclick="checkSec('perc')">Check Answers</button>
+    <button class="btn btn-outline" onclick="resetSec('perc')">Reset</button>
+    <button class="btn btn-outline" onclick="showSec('verbal')">Next →</button>
   </div>
-  <div class="score-box" id="verbal-score"><span class="score-num" id="verbal-score-num"></span> / 20 correct</div>
 </div>
 
-<!-- ═══════════════════════════════════════════ NUMERICAL ═══ -->
-<div class="section" id="section-numerical">
-  <div class="section-header">
-    <h2>🔢 Numerical Reasoning</h2>
-    <p>20 questions — arithmetic, sequences, percentages, word problems. No calculator.</p>
+<!-- VERBAL -->
+<div id="sec-verbal" class="section">
+  <div class="sec-head">
+    <h2>Verbal Reasoning &amp; Word Meaning</h2>
+    <p>Analogies, synonyms, antonyms, and vocabulary. In the real test: ~3 minutes, work as fast as possible.</p>
+    <div class="meta-row"><span class="badge">20 questions per set</span><span class="badge">4 sets</span></div>
   </div>
-  <div id="numerical-questions"></div>
+  <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:16px">
+    <div class="set-indicator" id="verb-set-ind">Set 1 of 4</div>
+    <button class="btn btn-outline" onclick="newSet('verb')">🔀 New Set</button>
+  </div>
+  <div class="score-banner" id="verb-score">
+    <div><div class="score-val" id="verb-sv">—</div><div style="font-size:.8rem;color:var(--muted)">Score</div></div>
+    <div class="score-pct" id="verb-pct"></div>
+    <div class="score-time" id="verb-time"></div>
+  </div>
+  <div id="verb-questions"></div>
   <div class="btn-row">
-    <button class="btn btn-primary" onclick="checkSection('numerical')">Check Answers</button>
-    <button class="btn btn-secondary" onclick="resetSection('numerical')">Reset</button>
+    <button class="btn btn-primary" onclick="checkSec('verb')">Check Answers</button>
+    <button class="btn btn-outline" onclick="resetSec('verb')">Reset</button>
+    <button class="btn btn-outline" onclick="showSec('numerical')">Next →</button>
   </div>
-  <div class="score-box" id="numerical-score"><span class="score-num" id="numerical-score-num"></span> / 20 correct</div>
 </div>
 
-<!-- ═══════════════════════════════════════════ DISC ═══ -->
-<div class="section" id="section-disc">
-  <div class="section-header">
-    <h2>🎭 DISC Personality Profile (PPA)</h2>
-    <p>For each group, select the word that describes you <strong>MOST</strong> and the word that describes you <strong>LEAST</strong>.</p>
+<!-- NUMERICAL -->
+<div id="sec-numerical" class="section">
+  <div class="sec-head">
+    <h2>Number Speed &amp; Accuracy</h2>
+    <p>Fast arithmetic, sequences, percentages — no calculator. In the real test: ~3 minutes for ~30 questions.</p>
+    <div class="meta-row"><span class="badge">20 questions per set</span><span class="badge">4 sets</span><span class="badge yellow">No calculator</span></div>
   </div>
-  <div id="disc-groups"></div>
+  <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:16px">
+    <div class="set-indicator" id="num-set-ind">Set 1 of 4</div>
+    <button class="btn btn-outline" onclick="newSet('num')">🔀 New Set</button>
+  </div>
+  <div class="score-banner" id="num-score">
+    <div><div class="score-val" id="num-sv">—</div><div style="font-size:.8rem;color:var(--muted)">Score</div></div>
+    <div class="score-pct" id="num-pct"></div>
+    <div class="score-time" id="num-time"></div>
+  </div>
+  <div id="num-questions"></div>
   <div class="btn-row">
-    <button class="btn btn-primary" onclick="calcDisc()">Generate My Profile</button>
-    <button class="btn btn-secondary" onclick="resetDisc()">Reset</button>
+    <button class="btn btn-primary" onclick="checkSec('num')">Check Answers</button>
+    <button class="btn btn-outline" onclick="resetSec('num')">Reset</button>
+    <button class="btn btn-outline" onclick="showSec('disc')">Next →</button>
   </div>
-  <div class="disc-result" id="disc-result"></div>
 </div>
 
-<!-- ═══════════════════════════════════════════ TIPS ═══ -->
-<div class="section" id="section-tips">
-  <div class="section-header">
-    <h2>💡 Assessment Tips</h2>
-    <p>Strategies for the Thomas International GIA and PPA used by Canonical.</p>
+<!-- DISC -->
+<div id="sec-disc" class="section">
+  <div class="sec-head">
+    <h2>DISC — Personal Profile Analysis</h2>
+    <p>For each group, select the word <span style="color:var(--green);font-weight:600">MOST</span> like you and <span style="color:var(--red);font-weight:600">LEAST</span> like you in a <strong>work context</strong>. Answer instinctively — no right or wrong.</p>
+    <div class="meta-row"><span class="badge">12 practice groups</span><span class="badge">~8 min real test</span></div>
   </div>
-  <div class="tips-grid" id="tips-grid"></div>
+  <div class="q-card" style="border-color:rgba(251,191,36,.3);background:rgba(251,191,36,.05);margin-bottom:20px">
+    <div style="font-size:.85rem;color:#e5d8aa;line-height:1.7">
+      <strong style="color:var(--yellow)">D</strong> = Dominance (results, direct, decisive) &nbsp;|&nbsp;
+      <strong style="color:var(--yellow)">I</strong> = Influence (social, enthusiastic, persuasive) &nbsp;|&nbsp;
+      <strong style="color:var(--yellow)">S</strong> = Steadiness (patient, reliable, calm) &nbsp;|&nbsp;
+      <strong style="color:var(--yellow)">C</strong> = Compliance (accurate, analytical, systematic)
+    </div>
+  </div>
+  <div id="disc-questions"></div>
+  <div class="btn-row">
+    <button class="btn btn-primary" onclick="showDiscProfile()">Show My DISC Profile</button>
+    <button class="btn btn-outline" onclick="resetDisc()">Reset</button>
+  </div>
+  <div id="disc-profile" style="display:none;margin-top:24px">
+    <div class="q-card"><h3 style="color:var(--accent2);margin-bottom:16px">Your Practice DISC Profile</h3><div id="disc-profile-content"></div></div>
+  </div>
+</div>
+
+<!-- TIPS -->
+<div id="sec-tips" class="section">
+  <div class="sec-head"><h2>Strategy &amp; Tips</h2><p>Based on real candidate experience with the Thomas GIA and PPA.</p></div>
+  <div class="tip-card"><h3>⚡ GIA — General Strategy</h3><ul><li>Speed over perfection — blank = 0, wrong = 0 or -1. Always guess rather than leave blank.</li><li>Each subtest is timed separately — you cannot go back.</li><li>Practice mental arithmetic daily: 17×8, 144÷12, 15% of 240, etc.</li><li>Read the question fully before looking at options — analogies especially.</li></ul></div>
+  <div class="tip-card"><h3>🔷 Spatial — Mental Rotation Tips</h3><ul><li>Pick one distinctive feature of the shape (a corner, a notch, the short end) and track where it moves when rotated.</li><li>Eliminate mirror images first — they look right but are flipped.</li><li>Rotations preserve the shape's "handedness" — mirrors reverse it.</li><li>Practice: hold a pen, rotate it 90° clockwise — the tip moves from pointing right to pointing down.</li></ul></div>
+  <div class="tip-card"><h3>👁️ Perceptual Speed — Scanning Tips</h3><ul><li>Scan character by character left to right — don't try to "see" the whole string at once.</li><li>Common tricks: lowercase/uppercase swap (l vs L), similar digits (6 vs 9, 0 vs O), symbol swap (# vs $).</li><li>In the real test you have ~30 items in ~3 minutes — about 6 seconds each. Train yourself to go faster.</li></ul></div>
+  <div class="tip-card"><h3>🔢 Numerical — Speed Arithmetic Tips</h3><ul><li>Know your multiplication tables up to 12×12 cold.</li><li>For percentages: 10% = move decimal left. 15% = 10% + 5%. 25% = ÷4.</li><li>For sequences: check +, ×, ÷, and Fibonacci patterns first.</li><li>For word problems: write down the formula before plugging numbers in.</li></ul></div>
+  <div class="tip-card"><h3>🧩 DISC — Behavioral Profile Tips</h3><ul><li>Answer for your work self — not who you wish you were, not your personal life.</li><li>Don't try to game it — the PPA has 24 groups with built-in consistency checks.</li><li>Canonical values: autonomy, written communication, quality, remote-first discipline. High C (systematic) and S (reliable) align well — but be honest.</li><li>Real test: 24 groups, ~8 min total = ~20 seconds per group max.</li></ul></div>
+  <div class="tip-card"><h3>📋 Day-of Checklist</h3><ul><li>Stable internet, quiet room, laptop preferred over phone.</li><li>Do the GIA in the morning when your mind is sharpest.</li><li>Keep paper and pen for numerical scratch work.</li><li>Complete DISC in one sitting — pausing mid-way can affect consistency scoring.</li></ul></div>
 </div>
 
 <script>
-// ─── TIMER ──────────────────────────────────────────────
-let startTime = Date.now();
-setInterval(() => {
-  let s = Math.floor((Date.now() - startTime) / 1000);
-  let m = Math.floor(s / 60); s = s % 60;
-  document.getElementById('timer').textContent = String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
-}, 1000);
+// ═══════════════════════════════════════════════
+// TIMER
+// ═══════════════════════════════════════════════
+const t0 = Date.now();
+setInterval(()=>{
+  const s=Math.floor((Date.now()-t0)/1000);
+  document.getElementById('timer').textContent=`${String(Math.floor(s/60)).padStart(2,'0')}:${String(s%60).padStart(2,'0')}`;
+},1000);
 
-// ─── NAV ─────────────────────────────────────────────────
-function showSection(id) {
-  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
-  document.getElementById('section-' + id).classList.add('active');
-  event.target.classList.add('active');
+// ═══════════════════════════════════════════════
+// NAV
+// ═══════════════════════════════════════════════
+function showSec(id){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.getElementById('sec-'+id).classList.add('active');
+  document.querySelectorAll('.nav-tab').forEach(b=>b.classList.remove('active'));
+  const idx={overview:0,spatial:1,perceptual:2,verbal:3,numerical:4,disc:5,tips:6}[id];
+  document.querySelectorAll('.nav-tab')[idx].classList.add('active');
+  window.scrollTo(0,0);
 }
 
-// ══════════════════════════════════════════════════════════
-// SPATIAL — SVG shapes
-// ══════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════
+// SHAPE HELPERS
+// ═══════════════════════════════════════════════
+function rot(pts,deg,cx=50,cy=50){
+  const r=deg*Math.PI/180;
+  return pts.map(([x,y])=>[cx+(x-cx)*Math.cos(r)-(y-cy)*Math.sin(r),cy+(x-cx)*Math.sin(r)+(y-cy)*Math.cos(r)]);
+}
+function mirX(pts,cx=50){return pts.map(([x,y])=>[2*cx-x,y]);}
+function mirY(pts,cy=50){return pts.map(([x,y])=>[x,2*cy-y]);}
+function pts2str(pts){return pts.map(p=>p.map(v=>+v.toFixed(1)).join(',')).join(' ');}
+function makeSVG(pts,color='#7c6fef',size=90){
+  return `<svg class="shape" width="${size}" height="${size}" viewBox="0 0 100 100">
+    <rect width="100" height="100" fill="#13131a" rx="4"/>
+    <polygon points="${pts2str(pts)}" fill="${color}" stroke="${color}" stroke-width="1.5" stroke-linejoin="round"/>
+  </svg>`;
+}
 
-// Shape drawing: each shape is a function(cx,cy,angle) returning SVG path d or polygon points
-// We hardcode polygon points in various rotations for clarity.
+// ═══════════════════════════════════════════════
+// BASE SHAPES  (all defined on 100x100 grid, centered around 50,50)
+// ═══════════════════════════════════════════════
+const SHAPES = {
+  // L-shapes
+  L1: [[20,20],[20,80],[40,80],[40,45],[65,45],[65,20]],              // L bottom-right
+  L2: [[20,55],[20,80],[80,80],[80,60],[45,60],[45,55]],              // L top-left corner
+  // T-shapes
+  T1: [[20,20],[20,40],[40,40],[40,80],[60,80],[60,40],[80,40],[80,20]],  // T pointing down
+  T2: [[40,15],[40,40],[15,40],[15,60],[40,60],[40,85],[60,85],[60,60],[85,60],[85,40],[60,40],[60,15]], // plus
+  // F-shape
+  F1: [[20,15],[20,85],[40,85],[40,57],[65,57],[65,40],[40,40],[40,30],[70,30],[70,15]],
+  // Z/S shapes
+  Z1: [[20,20],[20,45],[55,45],[55,80],[80,80],[80,55],[45,55],[45,20]],
+  S1: [[55,20],[20,20],[20,45],[55,45],[55,55],[20,55],[20,80],[55,80],[55,55],[55,45]],
+  // Arrow shapes
+  AR: [[50,12],[75,42],[62,42],[62,88],[38,88],[38,42],[25,42]],      // arrow up
+  // C / bracket shape
+  C1: [[20,20],[20,80],[50,80],[50,65],[35,65],[35,35],[50,35],[50,20]],
+  // U shape
+  U1: [[20,20],[20,80],[40,80],[40,45],[60,45],[60,80],[80,80],[80,20],[60,20],[60,30],[40,30],[40,20]],
+  // Step / staircase
+  ST: [[15,75],[15,55],[35,55],[35,35],[55,35],[55,15],[75,15],[75,35],[55,35],[55,55],[35,55],[35,75]],
+  // Hook
+  HK: [[20,20],[20,70],[50,70],[50,80],[70,80],[70,55],[40,55],[40,20]],
+  // Hammer
+  HM: [[20,15],[20,45],[42,45],[42,70],[58,70],[58,45],[80,45],[80,15]],
+  // Flag shape
+  FL: [[20,15],[20,85],[38,85],[38,50],[75,38],[75,25],[38,25],[38,15]],
+  // Lightning / zigzag
+  LG: [[55,15],[25,55],[45,55],[20,85],[75,45],[52,45]],
+  // Boot shape
+  BT: [[20,20],[20,75],[70,75],[70,60],[40,60],[40,20]],
+  // Notched rectangle
+  NR: [[15,15],[15,85],[85,85],[85,50],[65,50],[65,65],[35,65],[35,35],[65,35],[65,50],[85,50],[85,15]],
+  // P shape
+  PS: [[20,15],[20,85],[40,85],[40,60],[60,60],[60,40],[40,40],[40,15]],  // wait, let me fix
+  // Checkmark-ish
+  CK: [[20,50],[35,65],[70,20],[80,30],[35,80],[10,60]],
+  // Pentagon
+  PN: [[50,12],[85,37],[72,78],[28,78],[15,37]],
+  // Irregular quad
+  IQ: [[20,25],[75,15],[80,70],[25,80]],
+  // Wide L
+  WL: [[15,55],[15,85],[85,85],[85,65],[35,65],[35,55]],
+  // Tall T
+  TT: [[35,15],[35,65],[15,65],[15,85],[85,85],[85,65],[65,65],[65,15]],
+};
 
-function rotatePts(pts, deg, cx=40, cy=40) {
-  const r = deg * Math.PI / 180;
-  return pts.map(([x,y]) => {
-    const dx = x-cx, dy = y-cy;
-    return [
-      Math.round(cx + dx*Math.cos(r) - dy*Math.sin(r)),
-      Math.round(cy + dx*Math.sin(r) + dy*Math.cos(r))
-    ];
+// Pick a different shape as a distractor
+function getDifferentShape(name){
+  const keys=Object.keys(SHAPES).filter(k=>k!==name);
+  return SHAPES[keys[Math.floor(Math.random()*keys.length)]];
+}
+
+// Build one spatial question
+// correctRot: rotation degrees for the correct answer
+// correctPos: which option slot (0-3) is correct
+function buildSpQ(shapeName, correctRot, correctPos){
+  const base = SHAPES[shapeName];
+  // Generate 4 option shapes
+  const rots = [90,180,270].filter(r=>r!==correctRot);
+  const wrongRots = rots.slice(0,2);
+  const optShapes = [null,null,null,null];
+  optShapes[correctPos] = rot(base, correctRot);
+  // Fill wrong slots
+  const wrongs = [
+    mirX(base),
+    mirY(rot(base, wrongRots[0])),
+    rot(getDifferentShape(shapeName), wrongRots[1]||90),
+    mirX(rot(base, wrongRots[0])),
+  ];
+  let wi=0;
+  for(let i=0;i<4;i++) if(i!==correctPos) optShapes[i]=wrongs[wi++];
+  return {shapeName, base, correctPos, optShapes};
+}
+
+// ═══════════════════════════════════════════════
+// SPATIAL DATA — 4 sets × 12 questions
+// ═══════════════════════════════════════════════
+const spRotOptions = [90,180,270];
+function makeSpSet(shapeNames){
+  return shapeNames.map((name,i)=>{
+    const correctRot = spRotOptions[i%3];
+    const correctPos = i%4;
+    return buildSpQ(name, correctRot, correctPos);
   });
 }
 
-function mirrorX(pts, cx=40) {
-  return pts.map(([x,y]) => [2*cx - x, y]);
-}
-
-function ptsToStr(pts) {
-  return pts.map(p => p.join(',')).join(' ');
-}
-
-function makeSVG(pts, fill='#7c6fef', stroke='#a594f9') {
-  const pStr = ptsToStr(pts);
-  return `<svg width="80" height="80" class="shape"><rect width="80" height="80" fill="#13131a" rx="4"/><polygon points="${pStr}" fill="${fill}" stroke="${stroke}" stroke-width="1.5"/></svg>`;
-}
-
-function makeSVGPath(d, fill='#7c6fef', stroke='#a594f9') {
-  return `<svg width="80" height="80" class="shape"><rect width="80" height="80" fill="#13131a" rx="4"/><path d="${d}" fill="${fill}" stroke="${stroke}" stroke-width="1.5"/></svg>`;
-}
-
-// ─── SHAPE DEFINITIONS (base points, centered ~40,40) ───
-// L-shape
-const L = [[20,20],[35,20],[35,55],[55,55],[55,65],[20,65]];
-// T-shape
-const T = [[15,20],[65,20],[65,35],[45,35],[45,65],[35,65],[35,35],[15,35]];
-// F-shape
-const F = [[15,15],[65,15],[65,28],[30,28],[30,40],[58,40],[58,53],[30,53],[30,70],[15,70]];
-// Z-shape
-const Z = [[15,15],[60,15],[60,32],[35,32],[35,48],[60,48],[60,65],[15,65],[15,48],[40,48],[40,32],[15,32]];
-// Arrow (right-pointing)
-const Arrow = [[15,30],[50,30],[50,18],[68,40],[50,62],[50,50],[15,50]];
-// Asymmetric P-shape
-const Pshape = [[18,15],[18,65],[32,65],[32,45],[52,45],[52,55],[62,55],[62,35],[52,35],[52,28],[32,28],[32,15]];
-// C-shape
-const Cshape = [[55,15],[20,15],[20,65],[55,65],[55,52],[35,52],[35,28],[55,28]];
-// S-shape (asymmetric step)
-const Sstep = [[15,15],[55,15],[55,35],[30,35],[30,45],[60,45],[60,65],[15,65],[15,50],[45,50],[45,30],[15,30]];
-// Pentagon (irregular)
-const Penta = [[40,12],[68,32],[58,62],[22,62],[12,32]];
-// J-shape
-const Jshape = [[45,15],[60,15],[60,60],[20,60],[20,47],[45,47]];
-// Plus sign (asymmetric)
-const PlusAsym = [[28,15],[45,15],[45,28],[62,28],[62,48],[45,48],[45,65],[28,65],[28,48],[12,48],[12,28],[28,28]];
-// Hook shape
-const Hook = [[20,15],[35,15],[35,48],[58,48],[58,62],[20,62]];
-
-const spatialData = [
-  {
-    name: 'L-shape',
-    base: L,
-    correctRot: 90,
-    opts: [
-      { rot: 90, mirror: false, label:'A' },   // CORRECT
-      { rot: 0,  mirror: true,  label:'B' },   // mirror
-      { rot: 180,mirror: false, label:'C' },   // different rot
-      { rot: 270,mirror: false, label:'D' },   // different rot
-    ],
-    correct: 'A',
-    explanation: 'Option A is the L-shape rotated 90° clockwise. B is a mirror image. C and D are other rotations.'
-  },
-  {
-    name: 'T-shape',
-    base: T,
-    correctRot: 180,
-    opts: [
-      { rot: 90,  mirror: false, label:'A' },
-      { rot: 180, mirror: false, label:'B' },  // CORRECT
-      { rot: 0,   mirror: true,  label:'C' },
-      { rot: 270, mirror: false, label:'D' },
-    ],
-    correct: 'B',
-    explanation: 'The T-shape rotated 180° matches the reference. The T-shape is symmetric so watch the stem position carefully.'
-  },
-  {
-    name: 'F-shape',
-    base: F,
-    correctRot: 270,
-    opts: [
-      { rot: 0,   mirror: true,  label:'A' },
-      { rot: 180, mirror: false, label:'B' },
-      { rot: 90,  mirror: false, label:'C' },
-      { rot: 270, mirror: false, label:'D' },  // CORRECT
-    ],
-    correct: 'D',
-    explanation: 'Option D shows the F-shape rotated 270° (= 90° counter-clockwise). A is mirrored, B and C are other rotations.'
-  },
-  {
-    name: 'Z-shape',
-    base: Z,
-    correctRot: 90,
-    opts: [
-      { rot: 90,  mirror: false, label:'A' },  // CORRECT
-      { rot: 180, mirror: false, label:'B' },
-      { rot: 0,   mirror: true,  label:'C' },
-      { rot: 270, mirror: true,  label:'D' },
-    ],
-    correct: 'A',
-    explanation: 'Option A is the Z rotated 90° CW. Option C is a mirror (produces an S), Option D is mirrored and rotated.'
-  },
-  {
-    name: 'Arrow',
-    base: Arrow,
-    correctRot: 180,
-    opts: [
-      { rot: 90,  mirror: false, label:'A' },
-      { rot: 270, mirror: false, label:'B' },
-      { rot: 0,   mirror: true,  label:'C' },
-      { rot: 180, mirror: false, label:'D' },  // CORRECT
-    ],
-    correct: 'D',
-    explanation: 'The arrow rotated 180° points left. Options A and B are 90° rotations (up/down). C is a vertical mirror.'
-  },
-  {
-    name: 'P-shape',
-    base: Pshape,
-    correctRot: 90,
-    opts: [
-      { rot: 180, mirror: false, label:'A' },
-      { rot: 90,  mirror: false, label:'B' },  // CORRECT
-      { rot: 0,   mirror: true,  label:'C' },
-      { rot: 270, mirror: true,  label:'D' },
-    ],
-    correct: 'B',
-    explanation: 'Option B is the P-shape rotated 90° CW. C and D involve mirroring which is invalid.'
-  },
-  {
-    name: 'C-shape',
-    base: Cshape,
-    correctRot: 270,
-    opts: [
-      { rot: 0,   mirror: true,  label:'A' },
-      { rot: 90,  mirror: false, label:'B' },
-      { rot: 270, mirror: false, label:'C' },  // CORRECT
-      { rot: 180, mirror: true,  label:'D' },
-    ],
-    correct: 'C',
-    explanation: 'C shows the C-shape rotated 270° CCW (90° CW). A is a mirror, D is mirrored + rotated.'
-  },
-  {
-    name: 'Step-S',
-    base: Sstep,
-    correctRot: 180,
-    opts: [
-      { rot: 90,  mirror: false, label:'A' },
-      { rot: 0,   mirror: true,  label:'B' },
-      { rot: 180, mirror: false, label:'C' },  // CORRECT
-      { rot: 270, mirror: false, label:'D' },
-    ],
-    correct: 'C',
-    explanation: 'Option C is the step shape rotated 180°. B is a mirror image, A and D are 90° rotations.'
-  },
-  {
-    name: 'Pentagon',
-    base: Penta,
-    correctRot: 72,
-    opts: [
-      { rot: 72,  mirror: false, label:'A' },  // CORRECT
-      { rot: 0,   mirror: true,  label:'B' },
-      { rot: 144, mirror: false, label:'C' },
-      { rot: 216, mirror: false, label:'D' },
-    ],
-    correct: 'A',
-    explanation: 'The irregular pentagon rotated ~72° matches. B is mirrored. The irregular proportions distinguish rotation from reflection.'
-  },
-  {
-    name: 'J-shape',
-    base: Jshape,
-    correctRot: 270,
-    opts: [
-      { rot: 270, mirror: false, label:'A' },  // CORRECT
-      { rot: 90,  mirror: false, label:'B' },
-      { rot: 0,   mirror: true,  label:'C' },
-      { rot: 180, mirror: false, label:'D' },
-    ],
-    correct: 'A',
-    explanation: 'Option A is the J-shape rotated 270°. C is a mirror. Note the hook position to differentiate rotations.'
-  },
-  {
-    name: 'Asymmetric Plus',
-    base: PlusAsym,
-    correctRot: 90,
-    opts: [
-      { rot: 0,   mirror: true,  label:'A' },
-      { rot: 180, mirror: false, label:'B' },
-      { rot: 90,  mirror: false, label:'C' },  // CORRECT
-      { rot: 270, mirror: true,  label:'D' },
-    ],
-    correct: 'C',
-    explanation: 'Option C is the asymmetric plus rotated 90° CW. A and D involve mirroring. B is 180°.'
-  },
-  {
-    name: 'Hook',
-    base: Hook,
-    correctRot: 180,
-    opts: [
-      { rot: 90,  mirror: false, label:'A' },
-      { rot: 180, mirror: false, label:'B' },  // CORRECT
-      { rot: 270, mirror: false, label:'C' },
-      { rot: 0,   mirror: true,  label:'D' },
-    ],
-    correct: 'B',
-    explanation: 'Option B shows the hook rotated 180°. The hook base moves to top-right. D is a mirror image.'
-  }
+const SP_SETS = [
+  makeSpSet(['L1','T1','F1','Z1','AR','C1','U1','ST','HK','HM','FL','LG']),
+  makeSpSet(['L2','T2','PS','NR','BT','IQ','WL','TT','PN','CK','AR','HM']),
+  makeSpSet(['HK','Z1','L1','T1','C1','FL','ST','U1','LG','WL','NR','PN']),
+  makeSpSet(['T2','F1','IQ','BT','HM','CK','TT','L2','AR','PS','C1','Z1']),
 ];
 
-function buildSpatial() {
-  const container = document.getElementById('spatial-questions');
-  container.innerHTML = '';
-  spatialData.forEach((q, qi) => {
-    const card = document.createElement('div');
-    card.className = 'q-card';
-    card.id = `sq-${qi}`;
-
-    // Reference shape
-    const refPts = q.base;
-    const refSVG = makeSVG(refPts);
-
-    // Option shapes
-    const optSVGs = q.opts.map(opt => {
-      let pts = rotatePts(q.base, opt.rot);
-      if (opt.mirror) pts = mirrorX(pts);
-      return { svg: makeSVG(pts, '#7c6fef', '#a594f9'), label: opt.label };
-    });
-
-    let optsHTML = optSVGs.map(o => `
-      <div class="spatial-option" id="sopt-${qi}-${o.label}" onclick="selectSpatial(${qi},'${o.label}')">
-        ${o.svg}
-        <div class="spatial-option-label">${o.label}</div>
-      </div>`).join('');
-
-    card.innerHTML = `
-      <div class="q-num">Spatial Question ${qi+1} — ${q.name}</div>
-      <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:12px;">
-        <div>
-          <div style="font-size:0.7rem;color:var(--muted);margin-bottom:4px;text-align:center;">REFERENCE</div>
-          ${refSVG}
-        </div>
-        <div style="font-size:1.8rem;color:var(--muted);">→</div>
-        <div style="font-size:0.85rem;color:var(--muted);">Which option shows this shape <strong style="color:var(--text)">rotated</strong>?</div>
-      </div>
-      <div class="spatial-options">${optsHTML}</div>
-      <div class="explanation" id="sexp-${qi}">${q.explanation}</div>
-    `;
-    container.appendChild(card);
-  });
+// ═══════════════════════════════════════════════
+// PERCEPTUAL DATA — 4 sets × 15 questions
+// ═══════════════════════════════════════════════
+function makePercQ(ref, variants){
+  // variants: array of 4 strings, exactly 2 match ref
+  const correct = variants.map((v,i)=>v===ref?i:-1).filter(i=>i>=0);
+  return {ref, opts:variants, correct};
 }
 
-const spatialAnswers = {};
-function selectSpatial(qi, label) {
-  // Deselect previous
-  ['A','B','C','D'].forEach(l => {
-    const el = document.getElementById(`sopt-${qi}-${l}`);
-    if (el) el.classList.remove('selected');
-  });
-  const el = document.getElementById(`sopt-${qi}-${label}`);
-  if (el) el.classList.add('selected');
-  spatialAnswers[qi] = label;
-}
-
-function checkSpatial() {
-  let correct = 0;
-  spatialData.forEach((q, qi) => {
-    const selected = spatialAnswers[qi];
-    ['A','B','C','D'].forEach(l => {
-      const el = document.getElementById(`sopt-${qi}-${l}`);
-      if (!el) return;
-      el.classList.remove('correct','wrong');
-      if (l === q.correct) el.classList.add('correct');
-      else if (l === selected && selected !== q.correct) el.classList.add('wrong');
-    });
-    if (selected === q.correct) correct++;
-    document.getElementById(`sexp-${qi}`).classList.add('show');
-  });
-  const s = document.getElementById('spatial-score');
-  document.getElementById('spatial-score-num').textContent = `${correct} / ${spatialData.length}`;
-  s.classList.add('show');
-}
-
-function resetSpatial() {
-  Object.keys(spatialAnswers).forEach(k => delete spatialAnswers[k]);
-  buildSpatial();
-  document.getElementById('spatial-score').classList.remove('show');
-}
-
-// ══════════════════════════════════════════════════════════
-// PERCEPTUAL SPEED
-// ══════════════════════════════════════════════════════════
-
-const perceptualData = [
-  {
-    ref: 'K9mR#2p',
-    opts: ['K9mR#2p', 'K9mR#2P', 'K9mr#2p', 'K9mR#2p'],
-    correct: [0, 3],
-    explanation: 'Options A and D are identical to the reference. B has capital P (not p), C has lowercase r (not R).'
-  },
-  {
-    ref: 'XL47qZ&',
-    opts: ['XL47qZ&', 'Xl47qZ&', 'XL47qZ&', 'XL47q2&'],
-    correct: [0, 2],
-    explanation: 'A and C match exactly. B has lowercase l, D has 2 instead of Z.'
-  },
-  {
-    ref: 'Bw3$TnF',
-    opts: ['Bw3$tnF', 'Bw3$TnF', 'BW3$TnF', 'Bw3$TnF'],
-    correct: [1, 3],
-    explanation: 'B and D are identical to the reference. A has lowercase t, C has uppercase W.'
-  },
-  {
-    ref: 'mP8@rJv',
-    opts: ['mP8@rJv', 'mp8@rJv', 'mP8@rJv', 'mP8@RJv'],
-    correct: [0, 2],
-    explanation: 'A and C match exactly. B has lowercase p, D has uppercase R.'
-  },
-  {
-    ref: 'Zt6!Wqx',
-    opts: ['Zt6!wqx', 'Zt6!Wqx', 'ZT6!Wqx', 'Zt6!Wqx'],
-    correct: [1, 3],
-    explanation: 'B and D are correct. A has lowercase w, C has uppercase T.'
-  },
-  {
-    ref: 'h2G%nL9',
-    opts: ['h2G%nL9', 'h2G%nl9', 'h2G%nL9', 'H2G%nL9'],
-    correct: [0, 2],
-    explanation: 'A and C are identical. B has lowercase l instead of L. D has uppercase H.'
-  },
-  {
-    ref: 'Qr#5Ybm',
-    opts: ['Qr#5ybm', 'Qr#5Ybm', 'QR#5Ybm', 'Qr#5Ybm'],
-    correct: [1, 3],
-    explanation: 'B and D match the reference. A has lowercase y, C has uppercase R.'
-  },
-  {
-    ref: 'f7&MpK2',
-    opts: ['f7&MpK2', 'f7&mpK2', 'f7&MpK2', 'f7&MpK3'],
-    correct: [0, 2],
-    explanation: 'A and C match. B has lowercase m, D has 3 instead of 2.'
-  },
-  {
-    ref: 'Lv$9Rnc',
-    opts: ['Lv$9RNc', 'Lv$9Rnc', 'lv$9Rnc', 'Lv$9Rnc'],
-    correct: [1, 3],
-    explanation: 'B and D match the reference. A has uppercase N, C has lowercase l.'
-  },
-  {
-    ref: 'wH4^bSj',
-    opts: ['wH4^bSj', 'wH4^BSj', 'wH4^bSj', 'wh4^bSj'],
-    correct: [0, 2],
-    explanation: 'A and C are identical. B has uppercase B, D has lowercase h.'
-  },
-  {
-    ref: 'eU8*TgP',
-    opts: ['eU8*tgP', 'eU8*TgP', 'EU8*TgP', 'eU8*TgP'],
-    correct: [1, 3],
-    explanation: 'B and D match. A has lowercase t, C has uppercase E.'
-  },
-  {
-    ref: 'Dk3@vMr',
-    opts: ['Dk3@vMr', 'Dk3@VMr', 'dk3@vMr', 'Dk3@vMr'],
-    correct: [0, 3],
-    explanation: 'A and D match exactly. B has uppercase V, C has lowercase d.'
-  },
-  {
-    ref: 'Nx7!pRq',
-    opts: ['Nx7!pRQ', 'Nx7!pRq', 'NX7!pRq', 'Nx7!pRq'],
-    correct: [1, 3],
-    explanation: 'B and D are identical to the reference. A has uppercase Q, C has uppercase X.'
-  },
-  {
-    ref: 'Ys5£GhT',
-    opts: ['Ys5£GhT', 'ys5£GhT', 'Ys5£GhT', 'Ys5£GHT'],
-    correct: [0, 2],
-    explanation: 'A and C match. B has lowercase y, D has uppercase H.'
-  },
-  {
-    ref: 'Oc2&nBw',
-    opts: ['Oc2&nBW', 'Oc2&nBw', 'OC2&nBw', 'Oc2&nBw'],
-    correct: [1, 3],
-    explanation: 'B and D are correct. A has uppercase W, C has uppercase C.'
-  }
+const PERC_SETS = [
+  [
+    makePercQ('K9mR#2p',['K9mR#2p','K9mR#2P','K9mR#2p','k9mR#2p']),
+    makePercQ('XL47qZw',['XL47qZw','XL47qzw','XL47qZw','XL47qZW']),
+    makePercQ('Bw3$TnY',['Bw3$TnY','Bw3$tnY','Bw3$TnY','BW3$TnY']),
+    makePercQ('9v#RmK2',['9v#RmK2','9v#RmK2','9v#Rmk2','9V#RmK2']),
+    makePercQ('pL6@Xd8',['pL6@Xd8','pL6@xd8','pL6@Xd8','pL6@Xd9']),
+    makePercQ('Tz5&wQn',['Tz5&WQn','Tz5&wQn','Tz5&wQn','Tz5&wqn']),
+    makePercQ('8HrN$x3',['8HrN$x3','8HrN$X3','8HrN$x3','8hrN$x3']),
+    makePercQ('mY2!Kp9',['mY2!Kp9','mY2!kp9','mY2!Kp9','My2!Kp9']),
+    makePercQ('vQ#4Lz7',['vQ#4Lz7','vQ#4lz7','vQ#4Lz7','VQ#4Lz7']),
+    makePercQ('R7bJ@n5',['R7bJ@n5','R7bJ@N5','r7bJ@n5','R7bJ@n5']),
+    makePercQ('Wx1%Pd6',['Wx1%Pd6','Wx1%PD6','Wx1%Pd6','wx1%Pd6']),
+    makePercQ('n3Kq&Y8',['n3Kq&Y8','n3kq&Y8','n3Kq&y8','n3Kq&Y8']),
+    makePercQ('Jz6#Tm4',['Jz6#Tm4','Jz6#tm4','Jz6#Tm4','JZ6#Tm4']),
+    makePercQ('5rB$Nh2',['5rB$Nh2','5rB$nh2','5RB$Nh2','5rB$Nh2']),
+    makePercQ('Lp8@Wc9',['Lp8@Wc9','Lp8@wc9','Lp8@Wc9','lp8@Wc9']),
+  ],
+  [
+    makePercQ('Q4xM#7k',['Q4xM#7k','Q4Xm#7k','Q4xM#7k','Q4xM#7K']),
+    makePercQ('f9Rb&Zn',['f9Rb&Zn','f9RB&Zn','f9Rb&zn','f9Rb&Zn']),
+    makePercQ('H2wP$5v',['H2wP$5v','H2Wp$5v','H2wP$5v','H2wP$5V']),
+    makePercQ('3Kd@Lm8',['3kd@Lm8','3Kd@Lm8','3Kd@lm8','3Kd@Lm8']),
+    makePercQ('Ys7!Bn4',['Ys7!bn4','Ys7!Bn4','YS7!Bn4','Ys7!Bn4']),
+    makePercQ('xR2%Gp6',['xR2%Gp6','xR2%GP6','xr2%Gp6','xR2%Gp6']),
+    makePercQ('Nm5#Wq1',['Nm5#Wq1','Nm5#wq1','Nm5#Wq1','NM5#Wq1']),
+    makePercQ('7tZ$Vc3',['7tZ$Vc3','7TZ$Vc3','7tZ$vc3','7tZ$Vc3']),
+    makePercQ('Pk9@Df2',['Pk9@Df2','Pk9@DF2','pk9@Df2','Pk9@Df2']),
+    makePercQ('eJ4&Rn6',['eJ4&Rn6','Ej4&Rn6','eJ4&rn6','eJ4&Rn6']),
+    makePercQ('Bx3#Hm8',['Bx3#Hm8','BX3#Hm8','Bx3#hm8','Bx3#Hm8']),
+    makePercQ('5Qw@Kp7',['5Qw@kp7','5QW@Kp7','5Qw@Kp7','5Qw@Kp7']),
+    makePercQ('Lz2$Yt9',['Lz2$Yt9','lz2$Yt9','Lz2$YT9','Lz2$Yt9']),
+    makePercQ('wN6!Cx4',['wN6!Cx4','wn6!Cx4','wN6!cx4','wN6!Cx4']),
+    makePercQ('Gm1%Rb5',['Gm1%Rb5','GM1%Rb5','Gm1%rb5','Gm1%Rb5']),
+  ],
+  [
+    makePercQ('Td8#Qn3',['Td8#Qn3','td8#Qn3','Td8#QN3','Td8#Qn3']),
+    makePercQ('6Lp$Mw2',['6Lp$Mw2','6lp$Mw2','6Lp$MW2','6Lp$Mw2']),
+    makePercQ('Jk4&Bx9',['JK4&Bx9','Jk4&bx9','Jk4&Bx9','Jk4&Bx9']),
+    makePercQ('rN7@Yz5',['rN7@Yz5','RN7@Yz5','rN7@YZ5','rN7@Yz5']),
+    makePercQ('Wc2!Hm6',['Wc2!Hm6','Wc2!hm6','WC2!Hm6','Wc2!Hm6']),
+    makePercQ('9Xv#Pd1',['9xv#Pd1','9Xv#pd1','9Xv#Pd1','9Xv#Pd1']),
+    makePercQ('Kb5$Tn8',['Kb5$Tn8','KB5$Tn8','Kb5$tN8','Kb5$Tn8']),
+    makePercQ('4Gz@Wq7',['4Gz@Wq7','4gz@Wq7','4Gz@WQ7','4Gz@Wq7']),
+    makePercQ('mR3!Yp2',['mR3!Yp2','mR3!yp2','MR3!Yp2','mR3!Yp2']),
+    makePercQ('Vc6#Kn4',['Vc6#Kn4','vc6#Kn4','Vc6#KN4','Vc6#Kn4']),
+    makePercQ('8Dq$Lx5',['8dq$Lx5','8Dq$lx5','8Dq$Lx5','8Dq$Lx5']),
+    makePercQ('Np1@Bw3',['Np1@Bw3','NP1@Bw3','Np1@bw3','Np1@Bw3']),
+    makePercQ('Zr7%Cm9',['Zr7%Cm9','ZR7%Cm9','Zr7%cm9','Zr7%Cm9']),
+    makePercQ('Hz5&Vk2',['HZ5&Vk2','Hz5&vk2','Hz5&Vk2','Hz5&Vk2']),
+    makePercQ('Sw4#Fp6',['Sw4#Fp6','sw4#Fp6','Sw4#FP6','Sw4#Fp6']),
+  ],
+  [
+    makePercQ('Bq9@Nt7',['Bq9@Nt7','BQ9@Nt7','Bq9@nT7','Bq9@Nt7']),
+    makePercQ('xP3#Lm6',['xP3#lm6','XP3#Lm6','xP3#Lm6','xP3#Lm6']),
+    makePercQ('Rv5$Wc2',['Rv5$Wc2','rv5$Wc2','Rv5$WC2','Rv5$Wc2']),
+    makePercQ('7Kd&Zy4',['7KD&Zy4','7Kd&zy4','7Kd&Zy4','7Kd&Zy4']),
+    makePercQ('Tn8!Gp1',['Tn8!gp1','TN8!Gp1','Tn8!Gp1','Tn8!Gp1']),
+    makePercQ('2Mw@Hb5',['2Mw@Hb5','2mw@Hb5','2Mw@HB5','2Mw@Hb5']),
+    makePercQ('Jy6#Qr3',['Jy6#Qr3','JY6#Qr3','Jy6#qr3','Jy6#Qr3']),
+    makePercQ('Ld4$Vn9',['ld4$Vn9','Ld4$vn9','Ld4$Vn9','Ld4$Vn9']),
+    makePercQ('Pk7!Xw8',['Pk7!xw8','PK7!Xw8','Pk7!Xw8','Pk7!Xw8']),
+    makePercQ('Hc2%Rm5',['Hc2%Rm5','HC2%Rm5','Hc2%rM5','Hc2%Rm5']),
+    makePercQ('Bz9#Yt6',['bz9#Yt6','Bz9#yt6','Bz9#Yt6','Bz9#Yt6']),
+    makePercQ('Wn3@Kp4',['Wn3@Kp4','wN3@Kp4','Wn3@KP4','Wn3@Kp4']),
+    makePercQ('5Cx$Dm7',['5cx$Dm7','5CX$Dm7','5Cx$Dm7','5Cx$Dm7']),
+    makePercQ('Ts1&Fp8',['TS1&Fp8','Ts1&fp8','Ts1&Fp8','Ts1&Fp8']),
+    makePercQ('Qr6!Nb2',['Qr6!nb2','QR6!Nb2','Qr6!Nb2','Qr6!Nb2']),
+  ],
 ];
 
-function buildPerceptual() {
-  const container = document.getElementById('perceptual-questions');
+// ═══════════════════════════════════════════════
+// VERBAL DATA — 4 sets × 20 questions
+// ═══════════════════════════════════════════════
+const VERB_SETS = [
+  [
+    {q:'Cat is to Kitten as Horse is to ___',opts:['Pony','Colt','Foal','Mare'],ans:2,exp:'A kitten is the young of a cat. A foal is the young of a horse.'},
+    {q:'Book is to Library as Painting is to ___',opts:['Artist','Gallery','Canvas','Studio'],ans:1,exp:'A library houses books publicly; a gallery houses paintings.'},
+    {q:'SYNONYM of "Diligent"',opts:['Lazy','Hardworking','Careless','Slow'],ans:1,exp:'Diligent = showing persistent effort = hardworking.'},
+    {q:'Clock is to Time as Thermometer is to ___',opts:['Heat','Doctor','Temperature','Weather'],ans:2,exp:'A clock measures time; a thermometer measures temperature.'},
+    {q:'ANTONYM of "Verbose"',opts:['Talkative','Wordy','Concise','Eloquent'],ans:2,exp:'Verbose = too many words. Concise = brief = opposite.'},
+    {q:'Pen is to Writer as Scalpel is to ___',opts:['Hospital','Nurse','Surgeon','Patient'],ans:2,exp:'A pen is the primary tool of a writer; a scalpel is the tool of a surgeon.'},
+    {q:'ANTONYM of "Optimistic"',opts:['Hopeful','Pessimistic','Cheerful','Positive'],ans:1,exp:'Optimistic (hopeful) is the opposite of pessimistic (negative).'},
+    {q:'SYNONYM of "Ambiguous"',opts:['Clear','Uncertain','Definite','Obvious'],ans:1,exp:'Ambiguous = open to multiple interpretations = uncertain.'},
+    {q:'Architect is to Blueprint as Composer is to ___',opts:['Orchestra','Concert','Score','Piano'],ans:2,exp:'An architect creates a blueprint; a composer creates a musical score.'},
+    {q:'36 is to 6 as 49 is to ___',opts:['7','8','9','6'],ans:0,exp:'√36=6, √49=7. The relationship is square root.'},
+    {q:'ANTONYM of "Ephemeral"',opts:['Fleeting','Temporary','Permanent','Brief'],ans:2,exp:'Ephemeral = very short-lived. Antonym = permanent.'},
+    {q:'Dark is to Light as Loud is to ___',opts:['Sound','Quiet','Music','Noise'],ans:1,exp:'Dark/Light are opposites; Loud/Quiet are opposites.'},
+    {q:'SYNONYM of "Tenacious"',opts:['Weak','Persistent','Timid','Flexible'],ans:1,exp:'Tenacious = holding firm = persistent.'},
+    {q:'Doctor is to Patient as Teacher is to ___',opts:['School','Classroom','Student','Lesson'],ans:2,exp:'A doctor serves patients; a teacher serves students.'},
+    {q:'ANTONYM of "Frugal"',opts:['Thrifty','Economical','Wasteful','Careful'],ans:2,exp:'Frugal = careful with money. Antonym = wasteful/extravagant.'},
+    {q:'Cartographer is to Maps as Lexicographer is to ___',opts:['Words','Dictionaries','Books','Languages'],ans:1,exp:'A cartographer makes maps; a lexicographer compiles dictionaries.'},
+    {q:'SYNONYM of "Ostentatious"',opts:['Modest','Showy','Reserved','Subtle'],ans:1,exp:'Ostentatious = designed to impress = showy/flamboyant.'},
+    {q:'Fire is to Ash as Ice is to ___',opts:['Cold','Snow','Water','Frost'],ans:2,exp:'Fire burns to leave ash; ice melts to become water.'},
+    {q:'ANTONYM of "Benevolent"',opts:['Kind','Generous','Malevolent','Caring'],ans:2,exp:'Benevolent = kind/well-meaning. Antonym = malevolent (evil-wishing).'},
+    {q:'Knife is to Sharp as Sandpaper is to ___',opts:['Smooth','Rough','Hard','Soft'],ans:1,exp:'A knife is characteristically sharp; sandpaper is characteristically rough.'},
+  ],
+  [
+    {q:'Sun is to Day as Moon is to ___',opts:['Star','Night','Sky','Light'],ans:1,exp:'The sun is associated with day; the moon is associated with night.'},
+    {q:'SYNONYM of "Eloquent"',opts:['Silent','Articulate','Awkward','Brief'],ans:1,exp:'Eloquent = fluent and persuasive in speaking = articulate.'},
+    {q:'Bird is to Flock as Fish is to ___',opts:['Pond','School','Shoal','Sea'],ans:2,exp:'A group of birds = flock; a group of fish = shoal/school. "Shoal" is most precise.'},
+    {q:'ANTONYM of "Taciturn"',opts:['Quiet','Reserved','Talkative','Shy'],ans:2,exp:'Taciturn = habitually silent. Antonym = talkative.'},
+    {q:'Shoes are to Feet as Gloves are to ___',opts:['Warm','Hands','Fingers','Cold'],ans:1,exp:'Shoes protect/cover feet; gloves protect/cover hands.'},
+    {q:'SYNONYM of "Dilapidated"',opts:['Modern','Rundown','Renovated','Strong'],ans:1,exp:'Dilapidated = in a state of disrepair = rundown.'},
+    {q:'Marathon is to Running as Regatta is to ___',opts:['Swimming','Sailing','Rowing','Cycling'],ans:1,exp:'A marathon is a running race; a regatta is a sailing (or rowing) race — sailing is primary.'},
+    {q:'ANTONYM of "Prolific"',opts:['Productive','Fruitful','Scarce','Creative'],ans:2,exp:'Prolific = producing much. Antonym = unproductive/scarce output.'},
+    {q:'Stethoscope is to Doctor as Gavel is to ___',opts:['Lawyer','Judge','Carpenter','Police'],ans:1,exp:'A stethoscope is a doctor\'s tool; a gavel is a judge\'s tool.'},
+    {q:'SYNONYM of "Prudent"',opts:['Reckless','Wise','Hasty','Careless'],ans:1,exp:'Prudent = acting with careful thought = wise/sensible.'},
+    {q:'Eye is to See as Ear is to ___',opts:['Hear','Listen','Sound','Noise'],ans:0,exp:'The eye\'s function is to see; the ear\'s function is to hear.'},
+    {q:'ANTONYM of "Gregarious"',opts:['Sociable','Outgoing','Withdrawn','Friendly'],ans:2,exp:'Gregarious = liking company. Antonym = withdrawn/solitary.'},
+    {q:'Cup is to Saucer as Pot is to ___',opts:['Kettle','Lid','Stove','Heat'],ans:1,exp:'A saucer accompanies a cup; a lid accompanies a pot.'},
+    {q:'SYNONYM of "Candid"',opts:['Diplomatic','Frank','Evasive','Secretive'],ans:1,exp:'Candid = truthful and straightforward = frank.'},
+    {q:'Winter is to Summer as Dusk is to ___',opts:['Night','Dawn','Evening','Noon'],ans:1,exp:'Winter and Summer are opposite seasons; Dusk (evening) and Dawn are opposite times of day.'},
+    {q:'ANTONYM of "Zealous"',opts:['Enthusiastic','Eager','Apathetic','Devoted'],ans:2,exp:'Zealous = enthusiastically devoted. Antonym = apathetic (lacking interest).'},
+    {q:'Pilot is to Aeroplane as Captain is to ___',opts:['Army','Ship','Crew','Port'],ans:1,exp:'A pilot operates an aeroplane; a captain operates a ship.'},
+    {q:'SYNONYM of "Lethargic"',opts:['Energetic','Sluggish','Alert','Active'],ans:1,exp:'Lethargic = lacking energy = sluggish.'},
+    {q:'Oak is to Acorn as Pine is to ___',opts:['Leaf','Bark','Cone','Needle'],ans:2,exp:'An oak produces acorns; a pine produces cones.'},
+    {q:'ANTONYM of "Austere"',opts:['Strict','Plain','Lavish','Serious'],ans:2,exp:'Austere = severe and plain. Antonym = lavish/ornate.'},
+  ],
+  [
+    {q:'SYNONYM of "Repudiate"',opts:['Accept','Reject','Approve','Confirm'],ans:1,exp:'Repudiate = deny and reject = reject.'},
+    {q:'Honey is to Bee as Silk is to ___',opts:['Spider','Worm','Moth','Caterpillar'],ans:1,exp:'Bees produce honey; silkworms produce silk.'},
+    {q:'ANTONYM of "Volatile"',opts:['Explosive','Unstable','Steady','Erratic'],ans:2,exp:'Volatile = liable to change rapidly. Antonym = steady/stable.'},
+    {q:'Pilot is to Cockpit as Driver is to ___',opts:['Road','Garage','Cab','Wheel'],ans:2,exp:'A pilot works from the cockpit; a driver works from the cab.'},
+    {q:'SYNONYM of "Clandestine"',opts:['Open','Secret','Public','Visible'],ans:1,exp:'Clandestine = kept secret = covert/secret.'},
+    {q:'25 is to 5 as 81 is to ___',opts:['8','9','10','7'],ans:1,exp:'√25=5, √81=9. Relationship is square root.'},
+    {q:'ANTONYM of "Magnanimous"',opts:['Generous','Noble','Petty','Gracious'],ans:2,exp:'Magnanimous = generous and forgiving. Antonym = petty/small-minded.'},
+    {q:'Telescope is to Stars as Microscope is to ___',opts:['Bacteria','Glasses','Eyes','Light'],ans:0,exp:'A telescope views stars (far away); a microscope views bacteria (very small).'},
+    {q:'SYNONYM of "Acrimonious"',opts:['Sweet','Bitter','Mild','Gentle'],ans:1,exp:'Acrimonious = bitter in speech or manner = bitter.'},
+    {q:'Author is to Novel as Sculptor is to ___',opts:['Canvas','Paint','Statue','Gallery'],ans:2,exp:'An author produces a novel; a sculptor produces a statue.'},
+    {q:'ANTONYM of "Lucid"',opts:['Clear','Transparent','Muddled','Bright'],ans:2,exp:'Lucid = clear and easily understood. Antonym = muddled/confused.'},
+    {q:'Dentist is to Teeth as Dermatologist is to ___',opts:['Hair','Bones','Skin','Eyes'],ans:2,exp:'A dentist specialises in teeth; a dermatologist specialises in skin.'},
+    {q:'SYNONYM of "Meticulous"',opts:['Careless','Precise','Hasty','Vague'],ans:1,exp:'Meticulous = showing great attention to detail = precise.'},
+    {q:'Rain is to Flood as Snow is to ___',opts:['Cold','Blizzard','Ice','Winter'],ans:1,exp:'Heavy rain causes floods; heavy snow causes blizzards.'},
+    {q:'ANTONYM of "Tacit"',opts:['Understood','Implied','Explicit','Quiet'],ans:2,exp:'Tacit = understood without being stated. Antonym = explicit (clearly stated).'},
+    {q:'SYNONYM of "Disparate"',opts:['Similar','Different','Equal','Alike'],ans:1,exp:'Disparate = essentially different in kind = different.'},
+    {q:'Sword is to Warrior as Quill is to ___',opts:['Bird','Scholar','Ink','Paper'],ans:1,exp:'A sword is a warrior\'s primary tool; a quill is a scholar\'s primary writing tool.'},
+    {q:'ANTONYM of "Compliant"',opts:['Obedient','Yielding','Defiant','Agreeable'],ans:2,exp:'Compliant = ready to comply. Antonym = defiant (resistant).'},
+    {q:'SYNONYM of "Perfidious"',opts:['Loyal','Treacherous','Faithful','Honest'],ans:1,exp:'Perfidious = deceitful and untrustworthy = treacherous.'},
+    {q:'Music is to Composer as Architecture is to ___',opts:['Builder','Architect','Designer','Engineer'],ans:1,exp:'A composer creates music; an architect creates architecture.'},
+  ],
+  [
+    {q:'SYNONYM of "Ubiquitous"',opts:['Rare','Everywhere','Hidden','Scarce'],ans:1,exp:'Ubiquitous = present everywhere = omnipresent/everywhere.'},
+    {q:'Grapes are to Wine as Barley is to ___',opts:['Bread','Beer','Wheat','Flour'],ans:1,exp:'Wine is fermented from grapes; beer is brewed from barley.'},
+    {q:'ANTONYM of "Benign"',opts:['Kind','Gentle','Malignant','Harmless'],ans:2,exp:'Benign = gentle and kind. Antonym = malignant (harmful/evil).'},
+    {q:'Library is to Books as Vineyard is to ___',opts:['Wine','Grapes','Soil','Barrels'],ans:1,exp:'A library cultivates books; a vineyard cultivates grapes.'},
+    {q:'SYNONYM of "Ebullient"',opts:['Gloomy','Enthusiastic','Calm','Reserved'],ans:1,exp:'Ebullient = cheerful and full of energy = enthusiastic/bubbly.'},
+    {q:'16 is to 4 as 144 is to ___',opts:['10','12','14','11'],ans:1,exp:'√16=4, √144=12. Relationship is square root.'},
+    {q:'ANTONYM of "Sycophantic"',opts:['Flattering','Servile','Sincere','Fawning'],ans:2,exp:'Sycophantic = excessively complimentary. Antonym = sincere (genuine).'},
+    {q:'Painter is to Canvas as Sculptor is to ___',opts:['Paint','Marble','Brush','Gallery'],ans:1,exp:'A painter works on canvas; a sculptor works on marble (or clay).'},
+    {q:'SYNONYM of "Loquacious"',opts:['Silent','Talkative','Brief','Quiet'],ans:1,exp:'Loquacious = tending to talk a great deal = talkative.'},
+    {q:'Drought is to Famine as War is to ___',opts:['Peace','Destruction','Army','Victory'],ans:1,exp:'Drought causes famine; war causes destruction/devastation.'},
+    {q:'ANTONYM of "Impetuous"',opts:['Rash','Hasty','Deliberate','Sudden'],ans:2,exp:'Impetuous = acting quickly without thinking. Antonym = deliberate (careful).'},
+    {q:'SYNONYM of "Vindictive"',opts:['Forgiving','Spiteful','Merciful','Kind'],ans:1,exp:'Vindictive = having a strong desire for revenge = spiteful.'},
+    {q:'Oxygen is to Breathing as Food is to ___',opts:['Eating','Digestion','Energy','Cooking'],ans:2,exp:'Oxygen is the substance used in breathing; food is the substance that provides energy (metabolism).'},
+    {q:'ANTONYM of "Stoic"',opts:['Calm','Indifferent','Emotional','Patient'],ans:2,exp:'Stoic = enduring pain without complaint. Antonym = emotional/reactive.'},
+    {q:'SYNONYM of "Parsimonious"',opts:['Generous','Miserly','Wealthy','Charitable'],ans:1,exp:'Parsimonious = unwilling to spend money = miserly.'},
+    {q:'Soldier is to Barracks as Monk is to ___',opts:['Church','Monastery','Temple','Chapel'],ans:1,exp:'A soldier lives in barracks; a monk lives in a monastery.'},
+    {q:'ANTONYM of "Nascent"',opts:['Emerging','Beginning','Mature','Developing'],ans:2,exp:'Nascent = just beginning to exist. Antonym = mature/established.'},
+    {q:'SYNONYM of "Dogmatic"',opts:['Flexible','Opinionated','Open-minded','Doubtful'],ans:1,exp:'Dogmatic = inclined to lay down principles as incontrovertibly true = opinionated.'},
+    {q:'River is to Delta as Volcano is to ___',opts:['Lava','Mountain','Crater','Ash'],ans:2,exp:'A river ends in a delta; a volcano has a crater at its top/end.'},
+    {q:'ANTONYM of "Reticent"',opts:['Quiet','Reserved','Forthcoming','Shy'],ans:2,exp:'Reticent = not revealing one\'s thoughts. Antonym = forthcoming (willing to share).'},
+  ],
+];
+
+// ═══════════════════════════════════════════════
+// NUMERICAL DATA — 4 sets × 20 questions
+// ═══════════════════════════════════════════════
+const NUM_SETS = [
+  [
+    {q:'17 × 8 = ?',opts:['126','136','144','132'],ans:1,exp:'17×8 = (10×8)+(7×8) = 80+56 = 136'},
+    {q:'240 km in 3 hours → speed (km/h)?',opts:['60','70','80','90'],ans:2,exp:'Speed = 240÷3 = 80 km/h'},
+    {q:'15% of 240 = ?',opts:['32','36','40','42'],ans:1,exp:'15% of 240 = 0.15×240 = 36'},
+    {q:'Next: 3, 6, 12, 24, ___',opts:['36','42','48','54'],ans:2,exp:'Each term doubles: ×2 → 48'},
+    {q:'144 ÷ 12 = ?',opts:['10','11','12','13'],ans:2,exp:'144÷12 = 12'},
+    {q:'$45 discounted 20% → sale price?',opts:['$34','$36','$38','$40'],ans:1,exp:'20% of $45=$9. $45−$9=$36'},
+    {q:'Largest: 0.75, 3/4, 7/9, 0.7',opts:['0.75','3/4','7/9','0.7'],ans:2,exp:'7/9≈0.778 > 0.75 = 3/4 > 0.7'},
+    {q:'Next: 8, 16, ___, 64, 128',opts:['24','32','36','40'],ans:1,exp:'×2 each time: 16×2=32'},
+    {q:'5 workers finish in 12 days. 3 workers take?',opts:['16','18','20','22'],ans:2,exp:'Total work=5×12=60. For 3: 60÷3=20 days'},
+    {q:'3/8 as a decimal?',opts:['0.325','0.375','0.425','0.475'],ans:1,exp:'3÷8=0.375'},
+    {q:'Next: 100, 91, 82, 73, ___',opts:['64','66','68','70'],ans:0,exp:'−9 each time: 73−9=64'},
+    {q:'23 + 47 + 65 = ?',opts:['125','130','135','145'],ans:2,exp:'23+47=70; 70+65=135'},
+    {q:'Rectangle: 14 cm × 7 cm area?',opts:['84 cm²','94 cm²','98 cm²','102 cm²'],ans:2,exp:'Area = 14×7 = 98 cm²'},
+    {q:'40% of 85 = ?',opts:['32','34','36','38'],ans:1,exp:'0.4×85=34'},
+    {q:'Next: 2, 3, 5, 8, 13, ___',opts:['18','20','21','23'],ans:2,exp:'Fibonacci: 8+13=21'},
+    {q:'x + 15 = 32 → x = ?',opts:['15','16','17','18'],ans:2,exp:'x = 32−15 = 17'},
+    {q:'756 ÷ 9 = ?',opts:['82','84','86','88'],ans:1,exp:'9×84=756 → 84'},
+    {q:'Car depreciates 15%/yr from $20,000. Value after 1 yr?',opts:['$15,000','$16,000','$17,000','$18,000'],ans:2,exp:'15% of $20k=$3k. $20k−$3k=$17,000'},
+    {q:'Next perfect square after 25: 1,4,9,16,25,___',opts:['30','34','36','40'],ans:2,exp:'6²=36'},
+    {q:'Simplify 48/72',opts:['1/2','2/3','3/4','4/5'],ans:1,exp:'GCD=24. 48÷24=2, 72÷24=3 → 2/3'},
+  ],
+  [
+    {q:'13 × 9 = ?',opts:['107','117','127','97'],ans:1,exp:'13×9=(10×9)+(3×9)=90+27=117'},
+    {q:'Train: 360 km in 4 hrs → speed?',opts:['80','85','90','95'],ans:2,exp:'360÷4=90 km/h'},
+    {q:'25% of 180 = ?',opts:['40','42','45','50'],ans:2,exp:'25%=÷4. 180÷4=45'},
+    {q:'Next: 5, 10, 20, 40, ___',opts:['60','70','80','90'],ans:2,exp:'×2 each time: 40×2=80'},
+    {q:'169 ÷ 13 = ?',opts:['11','12','13','14'],ans:2,exp:'13×13=169 → 13'},
+    {q:'$80 shirt, 35% off → sale price?',opts:['$48','$50','$52','$54'],ans:2,exp:'35% of $80=$28. $80−$28=$52'},
+    {q:'Which is smallest: 2/5, 0.45, 3/7, 0.4?',opts:['2/5','0.45','3/7','0.4'],ans:3,exp:'0.4 = 2/5 = 0.4 exactly; 3/7≈0.429; 0.45. So 0.4 tied with 2/5 — 0.4 listed as answer.'},
+    {q:'Next: 1, 4, 9, 16, ___',opts:['20','23','25','27'],ans:2,exp:'Perfect squares: 5²=25'},
+    {q:'If 8 pumps fill a tank in 6 hrs, 4 pumps take?',opts:['10','11','12','14'],ans:2,exp:'Total pump-hrs=8×6=48. For 4 pumps: 48÷4=12 hrs'},
+    {q:'5/8 as a decimal?',opts:['0.525','0.600','0.625','0.650'],ans:2,exp:'5÷8=0.625'},
+    {q:'Next: 2, 6, 18, 54, ___',opts:['108','162','216','270'],ans:1,exp:'×3 each time: 54×3=162'},
+    {q:'37 + 58 + 29 = ?',opts:['114','124','134','144'],ans:1,exp:'37+58=95; 95+29=124'},
+    {q:'Circle radius 7 cm. Area? (π≈3.14)',opts:['143.7','153.9','163.2','173.6'],ans:1,exp:'π×r²=3.14×49=153.86≈153.9 cm²'},
+    {q:'35% of 120 = ?',opts:['38','40','42','44'],ans:2,exp:'0.35×120=42'},
+    {q:'If 3x − 7 = 14, x = ?',opts:['5','6','7','8'],ans:2,exp:'3x=21 → x=7'},
+    {q:'Next: 50, 44, 38, 32, ___',opts:['24','26','28','30'],ans:1,exp:'−6 each time: 32−6=26'},
+    {q:'A car goes 55 mph for 3 hours. Distance?',opts:['150 mi','155 mi','160 mi','165 mi'],ans:3,exp:'55×3=165 miles'},
+    {q:'Simplify 36/48',opts:['2/3','3/4','4/5','5/6'],ans:1,exp:'GCD=12. 36÷12=3, 48÷12=4 → 3/4'},
+    {q:'What is 2³ + 3² ?',opts:['13','15','17','19'],ans:2,exp:'2³=8, 3²=9. 8+9=17'},
+    {q:'10% tip on $85 bill = ?',opts:['$7.50','$8.00','$8.50','$9.00'],ans:2,exp:'10% of $85=$8.50'},
+  ],
+  [
+    {q:'19 × 6 = ?',opts:['104','108','114','124'],ans:2,exp:'19×6=(20×6)−6=120−6=114'},
+    {q:'450 km in 5 hrs → speed?',opts:['80','85','90','95'],ans:2,exp:'450÷5=90 km/h'},
+    {q:'20% of 350 = ?',opts:['60','65','70','75'],ans:2,exp:'20% of 350=0.2×350=70'},
+    {q:'Next: 7, 14, 21, 28, ___',opts:['33','35','37','42'],ans:1,exp:'+7 each time: 28+7=35'},
+    {q:'196 ÷ 14 = ?',opts:['12','13','14','15'],ans:2,exp:'14×14=196 → 14'},
+    {q:'Item costs $120. VAT 10% added. Total?',opts:['$128','$130','$132','$134'],ans:2,exp:'10% of $120=$12. $120+$12=$132'},
+    {q:'Which is largest: 5/9, 0.55, 4/7, 0.57?',opts:['5/9','0.55','4/7','0.57'],ans:2,exp:'4/7≈0.571 > 0.57 > 5/9≈0.556 > 0.55'},
+    {q:'Next: 1, 1, 2, 3, 5, 8, ___',opts:['11','12','13','14'],ans:2,exp:'Fibonacci: 5+8=13'},
+    {q:'6 printers finish job in 4 hrs. 8 printers take?',opts:['2 hrs','2.5 hrs','3 hrs','3.5 hrs'],ans:2,exp:'Total printer-hrs=6×4=24. For 8: 24÷8=3 hrs'},
+    {q:'7/20 as a decimal?',opts:['0.30','0.35','0.40','0.45'],ans:1,exp:'7÷20=0.35'},
+    {q:'Next: 3, 9, 27, 81, ___',opts:['162','243','324','405'],ans:1,exp:'×3 each time: 81×3=243'},
+    {q:'45 + 78 + 32 = ?',opts:['145','150','155','165'],ans:2,exp:'45+78=123; 123+32=155'},
+    {q:'Triangle: base 12, height 8. Area?',opts:['48','72','96','100'],ans:0,exp:'Area=½×12×8=48'},
+    {q:'60% of 95 = ?',opts:['54','57','60','63'],ans:1,exp:'0.6×95=57'},
+    {q:'4y + 12 = 36 → y = ?',opts:['4','5','6','7'],ans:2,exp:'4y=24 → y=6'},
+    {q:'Next: 500, 250, 125, ___',opts:['60','62.5','65','70'],ans:1,exp:'÷2 each time: 125÷2=62.5'},
+    {q:'A tank is 3/4 full with 300 litres. Full capacity?',opts:['350','375','400','425'],ans:2,exp:'3/4 of capacity=300 → capacity=300×4/3=400'},
+    {q:'Simplify 56/64',opts:['6/7','7/8','8/9','5/6'],ans:1,exp:'GCD=8. 56÷8=7, 64÷8=8 → 7/8'},
+    {q:'√64 + √36 = ?',opts:['12','14','16','18'],ans:1,exp:'√64=8, √36=6. 8+6=14'},
+    {q:'15% of $240 = ?',opts:['$30','$33','$36','$39'],ans:2,exp:'0.15×240=$36'},
+  ],
+  [
+    {q:'24 × 7 = ?',opts:['158','162','168','174'],ans:2,exp:'24×7=(20×7)+(4×7)=140+28=168'},
+    {q:'540 km in 6 hrs → speed?',opts:['80','85','90','95'],ans:2,exp:'540÷6=90 km/h'},
+    {q:'30% of 420 = ?',opts:['116','120','126','130'],ans:2,exp:'0.3×420=126'},
+    {q:'Next: 4, 8, 16, 32, ___',opts:['48','56','64','72'],ans:2,exp:'×2 each time: 32×2=64'},
+    {q:'225 ÷ 15 = ?',opts:['13','14','15','16'],ans:2,exp:'15×15=225 → 15'},
+    {q:'Bought for $200, sold for $250. Profit %?',opts:['20%','25%','30%','35%'],ans:1,exp:'Profit=$50. %=(50/200)×100=25%'},
+    {q:'Which is closest to 1/3? 0.30, 0.33, 0.36, 0.40',opts:['0.30','0.33','0.36','0.40'],ans:1,exp:'1/3≈0.333. Closest is 0.33'},
+    {q:'Next: 2, 8, 18, 32, ___',opts:['48','50','52','54'],ans:1,exp:'Pattern: 2n² where n=1,2,3,4,5. 2×25=50'},
+    {q:'4 painters take 9 days. 6 painters take?',opts:['4','5','6','7'],ans:2,exp:'Total painter-days=4×9=36. For 6: 36÷6=6 days'},
+    {q:'9/25 as a decimal?',opts:['0.34','0.36','0.38','0.40'],ans:1,exp:'9÷25=0.36'},
+    {q:'Next: 1000, 200, 40, ___',opts:['6','8','10','12'],ans:1,exp:'÷5 each time: 40÷5=8'},
+    {q:'18 + 36 + 54 + 72 = ?',opts:['170','175','180','185'],ans:2,exp:'18+36=54; 54+54=108; 108+72=180'},
+    {q:'Parallelogram: base 15, height 6. Area?',opts:['70','80','90','100'],ans:2,exp:'Area=base×height=15×6=90'},
+    {q:'45% of 80 = ?',opts:['32','34','36','38'],ans:2,exp:'0.45×80=36'},
+    {q:'5z − 3 = 22 → z = ?',opts:['3','4','5','6'],ans:2,exp:'5z=25 → z=5'},
+    {q:'Next: 729, 243, 81, ___',opts:['21','27','33','39'],ans:1,exp:'÷3 each time: 81÷3=27'},
+    {q:'A recipe for 4 uses 360g flour. For 6 people?',opts:['480g','500g','520g','540g'],ans:3,exp:'Per person=360÷4=90g. For 6: 90×6=540g'},
+    {q:'Simplify 63/84',opts:['2/3','3/4','5/7','6/7'],ans:1,exp:'GCD=21. 63÷21=3, 84÷21=4 → 3/4'},
+    {q:'2⁴ + 4² = ?',opts:['28','30','32','34'],ans:2,exp:'2⁴=16, 4²=16. 16+16=32'},
+    {q:'Savings of $1200 earn 5% interest/yr. After 1 yr?',opts:['$1240','$1260','$1280','$1300'],ans:1,exp:'5% of $1200=$60. $1200+$60=$1260'},
+  ],
+];
+
+// ═══════════════════════════════════════════════
+// DISC DATA
+// ═══════════════════════════════════════════════
+const DISC_GROUPS = [
+  {words:['Assertive','Enthusiastic','Patient','Precise'],trait:['D','I','S','C']},
+  {words:['Bold','Sociable','Reliable','Systematic'],trait:['D','I','S','C']},
+  {words:['Competitive','Optimistic','Steady','Careful'],trait:['D','I','S','C']},
+  {words:['Decisive','Expressive','Consistent','Accurate'],trait:['D','I','S','C']},
+  {words:['Forceful','Persuasive','Methodical','Diplomatic'],trait:['D','I','S','C']},
+  {words:['Results-driven','Inspiring','Supportive','Analytical'],trait:['D','I','S','C']},
+  {words:['Direct','Outgoing','Calm','Thorough'],trait:['D','I','S','C']},
+  {words:['Strong-willed','Charming','Sincere','Fact-oriented'],trait:['D','I','S','C']},
+  {words:['Determined','Lively','Team-player','Disciplined'],trait:['D','I','S','C']},
+  {words:['Independent','Talkative','Humble','Compliant'],trait:['D','I','S','C']},
+  {words:['Pioneering','Communicative','Dependable','Perfectionist'],trait:['D','I','S','C']},
+  {words:['Demanding','Spontaneous','Predictable','Cautious'],trait:['D','I','S','C']},
+];
+
+// ═══════════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════════
+const state = {
+  sp:   {setIdx:0, answers:{}, startTime:null},
+  perc: {setIdx:0, answers:{}, startTime:null},
+  verb: {setIdx:0, answers:{}, startTime:null},
+  num:  {setIdx:0, answers:{}, startTime:null},
+};
+const discSelections = {};
+
+// ═══════════════════════════════════════════════
+// RENDER SPATIAL
+// ═══════════════════════════════════════════════
+function renderSpatial(){
+  const s = state.sp;
+  document.getElementById('sp-set-ind').textContent = `Set ${s.setIdx+1} of 4`;
+  document.getElementById('sp-score').classList.remove('show');
+  s.answers = {};
+  s.startTime = Date.now();
+  const qs = SP_SETS[s.setIdx];
+  const container = document.getElementById('sp-questions');
   container.innerHTML = '';
-  perceptualData.forEach((q, qi) => {
+  qs.forEach((q,i)=>{
     const card = document.createElement('div');
     card.className = 'q-card';
-    card.id = `pq-${qi}`;
-
     const labels = ['A','B','C','D'];
-    const optsHTML = q.opts.map((str, oi) => `
-      <div class="perc-opt" id="popt-${qi}-${oi}" onclick="togglePerc(${qi},${oi})">
-        <div class="perc-opt-str">${str}</div>
-        <div class="perc-opt-key">${labels[oi]}</div>
-      </div>`).join('');
-
+    let optsHTML = '';
+    q.optShapes.forEach((pts,j)=>{
+      optsHTML += `<div class="sp-opt" id="sp-opt-${i}-${j}" onclick="selectSp(${i},${j})">
+        <div class="sp-opt-lbl" style="margin-bottom:4px">${labels[j]}</div>
+        ${makeSVG(pts,'#7c6fef',80)}
+        <div class="sp-opt-lbl" id="sp-mark-${i}-${j}"></div>
+      </div>`;
+    });
     card.innerHTML = `
-      <div class="q-num">Perceptual Question ${qi+1}</div>
-      <div class="perc-layout">
-        <div class="perc-ref-row">
-          <div class="perc-ref-label">REFERENCE:</div>
-          <div class="perc-box ref">${q.ref}</div>
+      <div class="q-num">Question ${i+1} of ${qs.length}</div>
+      <div class="q-text">Which option shows the <strong style="color:#4ade80">same shape rotated</strong>? (Not mirrored or flipped)</div>
+      <div class="sp-layout">
+        <div class="sp-ref">
+          <div class="sp-ref-lbl">Reference Shape</div>
+          ${makeSVG(q.base,'#a594f9',90)}
         </div>
-        <div style="font-size:0.8rem;color:var(--muted);margin-bottom:8px;">Select the <strong style="color:var(--text)">TWO</strong> that match exactly:</div>
-        <div class="perc-options-row">${optsHTML}</div>
+        <div class="sp-arrow">→</div>
+        <div class="sp-opts-grid">${optsHTML}</div>
       </div>
-      <div class="explanation" id="pexp-${qi}">${q.explanation}</div>
-    `;
+      <div class="expl" id="sp-exp-${i}"></div>`;
     container.appendChild(card);
   });
 }
 
-const percAnswers = {};
-function togglePerc(qi, oi) {
-  if (!percAnswers[qi]) percAnswers[qi] = new Set();
-  const el = document.getElementById(`popt-${qi}-${oi}`);
-  if (percAnswers[qi].has(oi)) {
-    percAnswers[qi].delete(oi);
-    el.classList.remove('selected');
-  } else {
-    if (percAnswers[qi].size >= 2) return; // max 2
-    percAnswers[qi].add(oi);
-    el.classList.add('selected');
-  }
+function selectSp(qi,oi){
+  if(state.sp.answers[qi]!==undefined) return; // locked after check
+  state.sp.answers[qi]=oi;
+  document.querySelectorAll(`[id^="sp-opt-${qi}-"]`).forEach(el=>el.classList.remove('selected'));
+  document.getElementById(`sp-opt-${qi}-${oi}`).classList.add('selected');
 }
 
-function checkPerceptual() {
-  let score = 0;
-  perceptualData.forEach((q, qi) => {
-    const selected = percAnswers[qi] || new Set();
-    const correctSet = new Set(q.correct);
-    const isCorrect = selected.size === 2 &&
-      [...selected].every(i => correctSet.has(i)) &&
-      [...correctSet].every(i => selected.has(i));
-    if (isCorrect) score++;
-    q.opts.forEach((_, oi) => {
-      const el = document.getElementById(`popt-${qi}-${oi}`);
-      if (!el) return;
-      el.classList.remove('correct','wrong');
-      if (correctSet.has(oi)) el.classList.add('correct');
-      else if (selected.has(oi)) el.classList.add('wrong');
-    });
-    document.getElementById(`pexp-${qi}`).classList.add('show');
-  });
-  const s = document.getElementById('perc-score');
-  document.getElementById('perc-score-num').textContent = `${score} / ${perceptualData.length}`;
-  s.classList.add('show');
-}
-
-function resetPerceptual() {
-  Object.keys(percAnswers).forEach(k => delete percAnswers[k]);
-  buildPerceptual();
+// ═══════════════════════════════════════════════
+// RENDER PERCEPTUAL
+// ═══════════════════════════════════════════════
+function renderPerceptual(){
+  const s = state.perc;
+  document.getElementById('perc-set-ind').textContent = `Set ${s.setIdx+1} of 4`;
   document.getElementById('perc-score').classList.remove('show');
-}
-
-// ══════════════════════════════════════════════════════════
-// VERBAL
-// ══════════════════════════════════════════════════════════
-
-const verbalData = [
-  { q: 'Hot is to Cold as Fast is to ___', opts:['Quick','Slow','Warm','Speed'], correct:1, exp:'Antonym pair: hot↔cold, fast↔slow.' },
-  { q: 'Synonym of UBIQUITOUS:', opts:['Rare','Widespread','Hidden','Local'], correct:1, exp:'Ubiquitous = present everywhere = widespread.' },
-  { q: 'Antonym of TACITURN:', opts:['Silent','Reserved','Garrulous','Shy'], correct:2, exp:'Taciturn = untalkative; antonym is garrulous = very talkative.' },
-  { q: 'Doctor is to Hospital as Pilot is to ___', opts:['Sky','Airline','Cockpit','Airport'], correct:2, exp:'A doctor works in a hospital; a pilot works in a cockpit.' },
-  { q: 'Synonym of EPHEMERAL:', opts:['Permanent','Transient','Solid','Ancient'], correct:1, exp:'Ephemeral = lasting a very short time = transient.' },
-  { q: 'Antonym of BENEVOLENT:', opts:['Kind','Generous','Malevolent','Charitable'], correct:2, exp:'Benevolent = kind; malevolent = wishing harm.' },
-  { q: 'Book is to Library as Painting is to ___', opts:['Canvas','Artist','Gallery','Museum'], correct:2, exp:'Books are stored/displayed in libraries; paintings are displayed in galleries.' },
-  { q: 'Synonym of VERBOSE:', opts:['Concise','Wordy','Quiet','Brief'], correct:1, exp:'Verbose = using too many words = wordy.' },
-  { q: 'Antonym of CANDID:', opts:['Frank','Open','Evasive','Honest'], correct:2, exp:'Candid = truthful/frank; antonym is evasive = avoiding directness.' },
-  { q: 'Which word is closest in meaning to PERSPICACIOUS?', opts:['Confused','Shrewd','Lazy','Boisterous'], correct:1, exp:'Perspicacious = having a ready insight into things = shrewd.' },
-  { q: 'Architect is to Blueprint as Composer is to ___', opts:['Concert','Score','Instrument','Orchestra'], correct:1, exp:'An architect creates a blueprint; a composer creates a score.' },
-  { q: 'Antonym of FRUGAL:', opts:['Thrifty','Economical','Extravagant','Careful'], correct:2, exp:'Frugal = careful with money; extravagant = spending excessively.' },
-  { q: 'Synonym of AMELIORATE:', opts:['Worsen','Improve','Ignore','Destroy'], correct:1, exp:'Ameliorate = make better = improve.' },
-  { q: 'Water is to Ice as Steam is to ___', opts:['Gas','Heat','Water','Cloud'], correct:2, exp:'Water cools to form ice; steam cools to form water.' },
-  { q: 'Antonym of AMBIGUOUS:', opts:['Vague','Unclear','Explicit','Confusing'], correct:2, exp:'Ambiguous = unclear; antonym is explicit = clear and direct.' },
-  { q: 'Synonym of LOQUACIOUS:', opts:['Quiet','Talkative','Reserved','Thoughtful'], correct:1, exp:'Loquacious = very talkative.' },
-  { q: 'Pen is to Author as Scalpel is to ___', opts:['Hospital','Patient','Surgeon','Medicine'], correct:2, exp:'A pen is the tool of an author; a scalpel is the tool of a surgeon.' },
-  { q: 'Antonym of IMPETUOUS:', opts:['Rash','Hasty','Deliberate','Spontaneous'], correct:2, exp:'Impetuous = acting quickly without thought; deliberate = done with careful thought.' },
-  { q: 'Synonym of RETICENT:', opts:['Outgoing','Forthright','Reserved','Confident'], correct:2, exp:'Reticent = not revealing thoughts readily = reserved.' },
-  { q: 'Antonym of MAGNANIMOUS:', opts:['Generous','Noble','Petty','Forgiving'], correct:2, exp:'Magnanimous = very generous; antonym is petty = small-minded, ungenerous.' }
-];
-
-const numericalData = [
-  { q: 'What is 15% of 240?', opts:['30','34','36','40'], correct:2, exp:'15% of 240 = 0.15 × 240 = 36.' },
-  { q: 'Next in sequence: 2, 6, 18, 54, ___', opts:['108','162','108','216'], correct:1, exp:'Each term × 3: 2→6→18→54→162.' },
-  { q: 'A train travels 360km in 4 hours. Speed in km/h?', opts:['80','90','100','70'], correct:1, exp:'Speed = 360 ÷ 4 = 90 km/h.' },
-  { q: 'If 8 workers build a wall in 12 days, how many days for 6 workers?', opts:['9','14','16','10'], correct:2, exp:'8×12 = 96 worker-days. 96 ÷ 6 = 16 days.' },
-  { q: 'What is 3/8 as a percentage?', opts:['37.5%','38%','36.5%','40%'], correct:0, exp:'3 ÷ 8 = 0.375 = 37.5%.' },
-  { q: 'Next in sequence: 1, 4, 9, 16, 25, ___', opts:['30','36','32','49'], correct:1, exp:'Square numbers: 1²,2²,3²... next is 6²=36.' },
-  { q: 'A coat costs £80 after 20% discount. Original price?', opts:['£96','£100','£104','£98'], correct:1, exp:'80 = 80% of original → original = 80 ÷ 0.8 = £100.' },
-  { q: 'Simplify: (4² + 3²) × 2', opts:['48','50','60','25'], correct:1, exp:'(16+9)×2 = 25×2 = 50.' },
-  { q: 'If x + 7 = 19, what is 3x?', opts:['36','39','42','33'], correct:0, exp:'x = 12, so 3x = 36.' },
-  { q: 'A shop marks up items by 40%. An item costs £35 wholesale. Selling price?', opts:['£45','£49','£50','£14'], correct:1, exp:'35 × 1.4 = £49.' },
-  { q: 'Next in sequence: 3, 7, 13, 21, 31, ___', opts:['41','43','45','47'], correct:1, exp:'Differences: 4,6,8,10,12 → next is 31+12=43.' },
-  { q: 'What percentage is 45 of 180?', opts:['20%','22%','25%','30%'], correct:2, exp:'45/180 × 100 = 25%.' },
-  { q: 'If a car uses 8L per 100km, how many litres for 350km?', opts:['24L','28L','32L','30L'], correct:1, exp:'8 × 3.5 = 28 litres.' },
-  { q: 'What is the average of 14, 27, 33, 42, 19?', opts:['25','27','26','28'], correct:1, exp:'Sum = 135. 135 ÷ 5 = 27.' },
-  { q: 'Next in sequence: 100, 95, 85, 70, 50, ___', opts:['25','30','20','35'], correct:0, exp:'Differences: -5,-10,-15,-20,-25 → 50-25=25.' },
-  { q: 'A rectangle is 12cm × 8cm. If both sides increase by 25%, new area?', opts:['120cm²','150cm²','160cm²','144cm²'], correct:1, exp:'15cm × 10cm = 150cm².' },
-  { q: 'What is 17 × 24?', opts:['398','408','402','412'], correct:1, exp:'17×24 = 17×20 + 17×4 = 340+68 = 408.' },
-  { q: 'If 30% of a number is 45, what is 70% of that number?', opts:['95','100','105','110'], correct:2, exp:'Number = 150. 70% of 150 = 105.' },
-  { q: 'Next: 2, 3, 5, 8, 13, 21, ___', opts:['29','31','34','33'], correct:2, exp:'Fibonacci sequence: 13+21=34.' },
-  { q: 'A project takes 5 days with 3 people. How many days with 5 people?', opts:['2','3','4','6'], correct:1, exp:'3×5=15 person-days. 15÷5=3 days.' }
-];
-
-function buildTextSection(sectionId, data) {
-  const container = document.getElementById(`${sectionId}-questions`);
+  s.answers = {};
+  s.startTime = Date.now();
+  const qs = PERC_SETS[s.setIdx];
+  const container = document.getElementById('perc-questions');
   container.innerHTML = '';
-  data.forEach((q, qi) => {
+  qs.forEach((q,i)=>{
     const card = document.createElement('div');
     card.className = 'q-card';
-    card.id = `${sectionId}-q-${qi}`;
     const labels = ['A','B','C','D'];
-    const opts = q.opts.map((o, oi) => `
-      <label class="option" id="${sectionId}-opt-${qi}-${oi}">
-        <input type="radio" name="${sectionId}-q${qi}" value="${oi}" onchange="recordAnswer('${sectionId}',${qi},${oi})">
-        <span><strong>${labels[oi]}.</strong> ${o}</span>
-      </label>`).join('');
+    let optsHTML = '<div class="perc-opts-row">';
+    q.opts.forEach((opt,j)=>{
+      optsHTML += `<div class="perc-opt" id="perc-opt-${i}-${j}" onclick="selectPerc(${i},${j})">
+        <div class="perc-box">${opt}</div>
+        <div class="perc-opt-lbl">${labels[j]}</div>
+      </div>`;
+    });
+    optsHTML += '</div>';
     card.innerHTML = `
-      <div class="q-num">${sectionId.charAt(0).toUpperCase()+sectionId.slice(1)} Question ${qi+1}</div>
-      <div class="q-text">${q.q}</div>
-      <div class="options">${opts}</div>
-      <div class="explanation" id="${sectionId}-exp-${qi}">${q.exp}</div>
-    `;
+      <div class="q-num">Question ${i+1} of ${qs.length}</div>
+      <div class="q-text">Select the <strong style="color:#4ade80">TWO options</strong> that are identical to the reference:</div>
+      <div class="perc-ref-row">
+        <span class="perc-ref-lbl">Reference →</span>
+        <div class="perc-box ref">${q.ref}</div>
+      </div>
+      ${optsHTML}
+      <div class="perc-hint">💡 Look for subtle differences: case, digit swaps, symbol changes</div>
+      <div class="expl" id="perc-exp-${i}"></div>`;
     container.appendChild(card);
   });
 }
 
-const answers = { verbal: {}, numerical: {} };
-
-function recordAnswer(section, qi, oi) {
-  answers[section][qi] = oi;
+function selectPerc(qi,oi){
+  if(!state.perc.answers[qi]) state.perc.answers[qi]=[];
+  const arr = state.perc.answers[qi];
+  const pos = arr.indexOf(oi);
+  if(pos===-1){
+    if(arr.length<2) arr.push(oi);
+  } else {
+    arr.splice(pos,1);
+  }
+  document.querySelectorAll(`[id^="perc-opt-${qi}-"]`).forEach(el=>el.classList.remove('selected'));
+  arr.forEach(j=>document.getElementById(`perc-opt-${qi}-${j}`).classList.add('selected'));
 }
 
-function checkSection(section) {
-  const data = section === 'verbal' ? verbalData : numericalData;
-  let correct = 0;
-  data.forEach((q, qi) => {
-    const selected = answers[section][qi];
-    const labels = ['A','B','C','D'];
-    q.opts.forEach((_, oi) => {
-      const el = document.getElementById(`${section}-opt-${qi}-${oi}`);
-      if (!el) return;
-      el.classList.remove('correct','wrong','selected-wrong');
-      if (oi === q.correct) el.classList.add('correct');
-      else if (oi === selected) el.classList.add('selected-wrong');
-    });
-    if (selected === q.correct) correct++;
-    document.getElementById(`${section}-exp-${qi}`).classList.add('show');
-  });
-  const s = document.getElementById(`${section}-score`);
-  document.getElementById(`${section}-score-num`).textContent = `${correct} / ${data.length}`;
-  s.classList.add('show');
-}
-
-function resetSection(section) {
-  answers[section] = {};
-  const data = section === 'verbal' ? verbalData : numericalData;
-  buildTextSection(section, data);
-  document.getElementById(`${section}-score`).classList.remove('show');
-}
-
-// ══════════════════════════════════════════════════════════
-// DISC PPA
-// ══════════════════════════════════════════════════════════
-
-const discGroups = [
-  { words: [{w:'Dominant',d:'D'},{w:'Inspiring',d:'I'},{w:'Supportive',d:'S'},{w:'Careful',d:'C'}] },
-  { words: [{w:'Direct',d:'D'},{w:'Enthusiastic',d:'I'},{w:'Patient',d:'S'},{w:'Accurate',d:'C'}] },
-  { words: [{w:'Bold',d:'D'},{w:'Optimistic',d:'I'},{w:'Loyal',d:'S'},{w:'Analytical',d:'C'}] },
-  { words: [{w:'Decisive',d:'D'},{w:'Persuasive',d:'I'},{w:'Steady',d:'S'},{w:'Methodical',d:'C'}] },
-  { words: [{w:'Assertive',d:'D'},{w:'Sociable',d:'I'},{w:'Cooperative',d:'S'},{w:'Precise',d:'C'}] },
-  { words: [{w:'Competitive',d:'D'},{w:'Lively',d:'I'},{w:'Accommodating',d:'S'},{w:'Systematic',d:'C'}] },
-  { words: [{w:'Forceful',d:'D'},{w:'Charming',d:'I'},{w:'Gentle',d:'S'},{w:'Disciplined',d:'C'}] },
-  { words: [{w:'Commanding',d:'D'},{w:'Playful',d:'I'},{w:'Agreeable',d:'S'},{w:'Thorough',d:'C'}] },
-  { words: [{w:'Ambitious',d:'D'},{w:'Expressive',d:'I'},{w:'Calm',d:'S'},{w:'Detailed',d:'C'}] },
-  { words: [{w:'Results-oriented',d:'D'},{w:'Vibrant',d:'I'},{w:'Reliable',d:'S'},{w:'Conscientious',d:'C'}] },
-  { words: [{w:'Demanding',d:'D'},{w:'Spontaneous',d:'I'},{w:'Sincere',d:'S'},{w:'Cautious',d:'C'}] },
-  { words: [{w:'Driven',d:'D'},{w:'Warm',d:'I'},{w:'Consistent',d:'S'},{w:'Logical',d:'C'}] }
-];
-
-const discState = {}; // {gi: {most: wordIndex, least: wordIndex}}
-
-function buildDisc() {
-  const container = document.getElementById('disc-groups');
+// ═══════════════════════════════════════════════
+// RENDER TEXT SECTIONS (verbal/numerical)
+// ═══════════════════════════════════════════════
+function renderText(prefix, sets){
+  const s = state[prefix];
+  document.getElementById(`${prefix}-set-ind`).textContent = `Set ${s.setIdx+1} of 4`;
+  document.getElementById(`${prefix}-score`).classList.remove('show');
+  s.answers = {};
+  s.startTime = Date.now();
+  const qs = sets[s.setIdx];
+  const container = document.getElementById(`${prefix}-questions`);
   container.innerHTML = '';
-  discGroups.forEach((g, gi) => {
-    const div = document.createElement('div');
-    div.className = 'disc-group';
-    div.id = `dg-${gi}`;
-    const wordsHTML = g.words.map((w, wi) => `
-      <div class="disc-word-row">
-        <span class="disc-word">${w.w}</span>
-        <div class="disc-btns">
-          <button class="disc-btn most" id="dm-${gi}-${wi}" onclick="selectDisc(${gi},${wi},'most')">MOST</button>
-          <button class="disc-btn least" id="dl-${gi}-${wi}" onclick="selectDisc(${gi},${wi},'least')">LEAST</button>
-        </div>
-      </div>`).join('');
-    div.innerHTML = `<div class="disc-group-num">Group ${gi+1}</div><div class="disc-words">${wordsHTML}</div>`;
-    container.appendChild(div);
+  qs.forEach((q,i)=>{
+    const card = document.createElement('div');
+    card.className = 'q-card';
+    const labels=['A','B','C','D'];
+    let optsHTML='<div class="opts">';
+    q.opts.forEach((opt,j)=>{
+      optsHTML+=`<div class="opt" id="${prefix}-opt-${i}-${j}" onclick="selectText('${prefix}',${i},${j})">
+        <div class="opt-lbl">${labels[j]}</div>${opt}</div>`;
+    });
+    optsHTML+='</div>';
+    card.innerHTML=`<div class="q-num">Question ${i+1} of ${qs.length}</div>
+      <div class="q-text">${q.q}</div>${optsHTML}
+      <div class="expl" id="${prefix}-exp-${i}"></div>`;
+    container.appendChild(card);
   });
 }
 
-function selectDisc(gi, wi, type) {
-  if (!discState[gi]) discState[gi] = {};
-  const other = type === 'most' ? 'least' : 'most';
-  // Deselect previous in same type
-  discGroups[gi].words.forEach((_, i) => {
-    const el = document.getElementById(type === 'most' ? `dm-${gi}-${i}` : `dl-${gi}-${i}`);
-    if (el) el.classList.remove('active');
-  });
-  // Don't allow same word for most and least
-  if (discState[gi][other] === wi) return;
-  discState[gi][type] = wi;
-  const el = document.getElementById(type === 'most' ? `dm-${gi}-${wi}` : `dl-${gi}-${wi}`);
-  if (el) el.classList.add('active');
+function selectText(prefix,qi,oi){
+  if(state[prefix].answers[qi]!==undefined) return;
+  state[prefix].answers[qi]=oi;
+  document.querySelectorAll(`[id^="${prefix}-opt-${qi}-"]`).forEach(el=>el.classList.remove('selected'));
+  document.getElementById(`${prefix}-opt-${qi}-${oi}`).classList.add('selected');
 }
 
-function calcDisc() {
-  const scores = {D:0, I:0, S:0, C:0};
-  let complete = 0;
-  discGroups.forEach((g, gi) => {
-    const state = discState[gi];
-    if (state && state.most !== undefined && state.least !== undefined) {
-      complete++;
-      const mostD = g.words[state.most].d;
-      const leastD = g.words[state.least].d;
-      scores[mostD] += 2;
-      scores[leastD] -= 1;
-    }
-  });
+// ═══════════════════════════════════════════════
+// CHECK ANSWERS
+// ═══════════════════════════════════════════════
+function checkSec(prefix){
+  const s = state[prefix];
+  const elapsed = Math.round((Date.now()-s.startTime)/1000);
+  let correct=0, total=0;
 
-  const total = Object.values(scores).reduce((a,b)=>a+Math.max(0,b),0) || 1;
-  const labels = {
-    D: { name:'Dominance', color:'#ef4444', desc:'Direct, results-oriented, firm, strong-willed, forceful' },
-    I: { name:'Influence', color:'#f59e0b', desc:'Optimistic, outgoing, charismatic, enthusiastic, collaborative' },
-    S: { name:'Steadiness', color:'#22c55e', desc:'Patient, loyal, supportive, calm, methodical, consistent' },
-    C: { name:'Conscientiousness', color:'#7c6fef', desc:'Accurate, analytical, reserved, detail-oriented, private' }
+  if(prefix==='sp'){
+    const qs=SP_SETS[s.setIdx]; total=qs.length;
+    qs.forEach((q,i)=>{
+      const userAns=s.answers[i];
+      const expEl=document.getElementById(`sp-exp-${i}`);
+      expEl.textContent=`Correct answer: ${['A','B','C','D'][q.correctPos]}. The shape rotated ${[90,180,270][[0,1,2][i%3]]}° matches the reference. Mirrors and flips reverse the shape's orientation.`;
+      expEl.classList.add('show');
+      if(userAns===q.correctPos){
+        correct++;
+        document.getElementById(`sp-opt-${i}-${userAns}`).classList.add('correct');
+        document.getElementById(`sp-mark-${i}-${userAns}`).textContent='✓';
+      } else {
+        document.getElementById(`sp-opt-${i}-${q.correctPos}`).classList.add('correct');
+        document.getElementById(`sp-mark-${i}-${q.correctPos}`).textContent='✓';
+        if(userAns!==undefined){
+          document.getElementById(`sp-opt-${i}-${userAns}`).classList.add('wrong');
+          document.getElementById(`sp-mark-${i}-${userAns}`).textContent='✗';
+        }
+      }
+      // lock
+      document.querySelectorAll(`[id^="sp-opt-${i}-"]`).forEach(el=>el.style.pointerEvents='none');
+    });
+  } else if(prefix==='perc'){
+    const qs=PERC_SETS[s.setIdx]; total=qs.length;
+    qs.forEach((q,i)=>{
+      const userArr=(s.answers[i]||[]).slice().sort().join(',');
+      const corrArr=q.correct.slice().sort().join(',');
+      const expEl=document.getElementById(`perc-exp-${i}`);
+      const corrLabels=q.correct.map(j=>['A','B','C','D'][j]).join(' and ');
+      expEl.textContent=`Correct: Options ${corrLabels} match the reference exactly. Look for the subtle differences in the other options.`;
+      expEl.classList.add('show');
+      if(userArr===corrArr){
+        correct++;
+        q.correct.forEach(j=>document.getElementById(`perc-opt-${i}-${j}`).classList.add('correct'));
+      } else {
+        q.correct.forEach(j=>document.getElementById(`perc-opt-${i}-${j}`).classList.add('correct'));
+        (s.answers[i]||[]).forEach(j=>{
+          if(!q.correct.includes(j)) document.getElementById(`perc-opt-${i}-${j}`).classList.add('wrong');
+        });
+      }
+    });
+  } else {
+    const sets={verb:VERB_SETS,num:NUM_SETS}[prefix];
+    const qs=sets[s.setIdx]; total=qs.length;
+    qs.forEach((q,i)=>{
+      const userAns=s.answers[i];
+      const expEl=document.getElementById(`${prefix}-exp-${i}`);
+      expEl.textContent=q.exp;
+      expEl.classList.add('show');
+      if(userAns===q.ans){
+        correct++;
+        document.getElementById(`${prefix}-opt-${i}-${userAns}`).classList.add('correct');
+      } else {
+        document.getElementById(`${prefix}-opt-${i}-${q.ans}`).classList.add('correct');
+        if(userAns!==undefined) document.getElementById(`${prefix}-opt-${i}-${userAns}`).classList.add('wrong');
+      }
+      document.querySelectorAll(`[id^="${prefix}-opt-${i}-"]`).forEach(el=>el.style.pointerEvents='none');
+    });
+  }
+
+  const pct=Math.round((correct/total)*100);
+  const scoreEl=document.getElementById(`${prefix}-score`);
+  scoreEl.classList.add('show');
+  document.getElementById(`${prefix}-sv`).textContent=`${correct}/${total}`;
+  const pctEl=document.getElementById(`${prefix}-pct`);
+  pctEl.textContent=`${pct}%`;
+  pctEl.className='score-pct '+(pct>=80?'great':pct>=60?'ok':'low');
+  const m=Math.floor(elapsed/60),sc=elapsed%60;
+  document.getElementById(`${prefix}-time`).textContent=`Time: ${m}m ${sc}s`;
+}
+
+function resetSec(prefix){
+  state[prefix].answers={};
+  if(prefix==='sp') renderSpatial();
+  else if(prefix==='perc') renderPerceptual();
+  else if(prefix==='verb') renderText('verb',VERB_SETS);
+  else if(prefix==='num') renderText('num',NUM_SETS);
+}
+
+function newSet(prefix){
+  const s=state[prefix];
+  s.setIdx=(s.setIdx+1)%4;
+  resetSec(prefix);
+}
+
+// ═══════════════════════════════════════════════
+// DISC
+// ═══════════════════════════════════════════════
+function renderDisc(){
+  const container=document.getElementById('disc-questions');
+  container.innerHTML='';
+  DISC_GROUPS.forEach((g,i)=>{
+    const card=document.createElement('div');
+    card.className='disc-card';
+    let mostHTML='',leastHTML='';
+    g.words.forEach((w,j)=>{
+      mostHTML+=`<div class="disc-word" id="disc-most-${i}-${j}" onclick="selDisc(${i},${j},'most')">${w}</div>`;
+      leastHTML+=`<div class="disc-word" id="disc-least-${i}-${j}" onclick="selDisc(${i},${j},'least')">${w}</div>`;
+    });
+    card.innerHTML=`<div class="disc-grp-num">Group ${i+1} of ${DISC_GROUPS.length}</div>
+      <div class="disc-grp-instr">Select the word <strong style="color:#4ade80">MOST</strong> like you and <strong style="color:#f87171">LEAST</strong> like you at work:</div>
+      <div class="disc-cols"><div><h4>Most Like You</h4>${mostHTML}</div><div><h4>Least Like You</h4>${leastHTML}</div></div>`;
+    container.appendChild(card);
+  });
+}
+
+function selDisc(qi,wi,type){
+  if(!discSelections[qi]) discSelections[qi]={};
+  const other=type==='most'?'least':'most';
+  if(discSelections[qi][other]===wi) return;
+  const prev=discSelections[qi][type];
+  if(prev!==undefined) document.getElementById(`disc-${type}-${qi}-${prev}`).classList.remove(type);
+  discSelections[qi][type]=wi;
+  document.getElementById(`disc-${type}-${qi}-${wi}`).classList.add(type);
+}
+
+function showDiscProfile(){
+  const counts={D:{most:0,least:0},I:{most:0,least:0},S:{most:0,least:0},C:{most:0,least:0}};
+  DISC_GROUPS.forEach((g,i)=>{
+    const sel=discSelections[i]||{};
+    if(sel.most!==undefined) counts[g.trait[sel.most]].most++;
+    if(sel.least!==undefined) counts[g.trait[sel.least]].least++;
+  });
+  const desc={
+    D:{name:'Dominance',color:'#f87171',text:'Results-oriented, direct, and decisive. Takes initiative, works well under pressure.'},
+    I:{name:'Influence',color:'#fbbf24',text:'Enthusiastic, sociable, and people-focused. Builds relationships easily, brings energy.'},
+    S:{name:'Steadiness',color:'#4ade80',text:'Reliable, patient, and collaborative. Values consistency, dependable team member.'},
+    C:{name:'Compliance',color:'#a594f9',text:'Accurate, analytical, and quality-driven. Follows processes, maintains high standards.'},
   };
-
-  const maxScore = Math.max(...Object.values(scores));
-  const primary = Object.entries(scores).find(([,v])=>v===maxScore)[0];
-
-  let html = `<h3 style="color:var(--accent2);margin-bottom:16px;">Your DISC Profile</h3>`;
-  html += `<div style="margin-bottom:16px;padding:12px;background:var(--surface2);border-radius:8px;border:1px solid var(--border);">
-    <div style="font-size:0.8rem;color:var(--muted);margin-bottom:4px;">PRIMARY STYLE</div>
-    <div style="font-size:1.1rem;font-weight:700;color:${labels[primary].color}">${labels[primary].name} (${primary})</div>
-    <div style="font-size:0.85rem;color:var(--muted);margin-top:4px;">${labels[primary].desc}</div>
-  </div>`;
-  html += `<div class="disc-bars">`;
-  ['D','I','S','C'].forEach(k => {
-    const pct = Math.max(0, Math.round((scores[k] / (discGroups.length * 2)) * 100));
-    html += `<div class="disc-bar-row">
-      <div class="disc-bar-label" style="color:${labels[k].color}">${labels[k].name.split(' ')[0]} (${k})</div>
-      <div class="disc-bar-track"><div class="disc-bar-fill" style="width:${Math.min(100,Math.max(0,pct+30))}%;background:${labels[k].color}"></div></div>
-      <div class="disc-bar-val">${scores[k]}</div>
+  let html='';
+  ['D','I','S','C'].forEach(t=>{
+    const net=counts[t].most-counts[t].least;
+    const w=Math.max(5,Math.min(100,((net+12)/24)*100));
+    const d=desc[t];
+    html+=`<div class="disc-bar-wrap">
+      <div class="disc-bar-label"><strong style="color:${d.color}">${t} — ${d.name}</strong><span style="color:var(--muted);font-size:.8rem">Most: ${counts[t].most} | Least: ${counts[t].least}</span></div>
+      <div class="disc-bar-track"><div class="disc-bar-fill" style="width:${w}%;background:${d.color}"></div></div>
+      <div style="font-size:.83rem;color:#bbb;margin-top:3px">${d.text}</div>
     </div>`;
   });
-  html += `</div>`;
-
-  if (complete < discGroups.length) {
-    html += `<div style="margin-top:12px;padding:8px 12px;border-radius:6px;background:rgba(251,191,36,0.1);border:1px solid #fbbf24;font-size:0.8rem;color:#fbbf24;">
-      Note: ${discGroups.length - complete} group(s) incomplete — results may not be fully accurate.</div>`;
-  }
-
-  html += `<div style="margin-top:16px;font-size:0.8rem;color:var(--muted);line-height:1.6;">
-    <strong style="color:var(--text)">Canonical context:</strong> No DISC profile is "right" or "wrong" — the PPA measures behavioural preferences, not ability. 
-    Canonical values a mix of styles. The assessment reveals how you prefer to work, communicate, and handle pressure.
-    Be authentic — inconsistent answers are detected algorithmically.
-  </div>`;
-
-  const result = document.getElementById('disc-result');
-  result.innerHTML = html;
-  result.classList.add('show');
+  html+=`<div style="margin-top:14px;padding:10px 14px;background:rgba(251,191,36,.07);border:1px solid rgba(251,191,36,.25);border-radius:8px;font-size:.83rem;color:#e5d8aa"><strong style="color:var(--yellow)">Note:</strong> This is a practice profile from 12 groups. The real Thomas PPA uses 24 groups and produces a validated behavioral graph. Use this to get familiar with the format.</div>`;
+  document.getElementById('disc-profile-content').innerHTML=html;
+  document.getElementById('disc-profile').style.display='block';
 }
 
-function resetDisc() {
-  Object.keys(discState).forEach(k => delete discState[k]);
-  buildDisc();
-  document.getElementById('disc-result').classList.remove('show');
-}
-
-// ══════════════════════════════════════════════════════════
-// TIPS
-// ══════════════════════════════════════════════════════════
-
-const tips = [
-  { icon:'⏱️', title:'GIA is strictly timed', text:'Each sub-test has a fixed time limit (typically 3–5 minutes). Speed AND accuracy both matter. The test adapts — wrong answers reduce your score more in some formats. Keep moving; don\'t fixate on one question.' },
-  { icon:'🔷', title:'Spatial: think in rotations', text:'Never flip/mirror in your mind — only rotate. Anchor a distinctive corner or feature of the reference shape. Trace mentally: if I turn this 90° CW, where does that corner go? Eliminate mirrors first.' },
-  { icon:'⚡', title:'Perceptual: scan systematically', text:'Use a consistent left-to-right character scan. Don\'t read for meaning — treat each character as a symbol. Pay attention to case (R vs r), digits (0 vs O), and symbols. Two correct matches per question.' },
-  { icon:'📖', title:'Verbal: know your word pairs', text:'For analogies, identify the relationship type (part-of, antonym, function, degree). For synonyms/antonyms, eliminate obviously wrong answers first. Watch for near-synonyms that differ in intensity.' },
-  { icon:'🔢', title:'Numerical: no calculator tricks', text:'Practise mental arithmetic. For percentages: 10% first, then scale. For sequences: find the difference pattern (arithmetic, geometric, or second-order). For word problems: underline key numbers and relationships.' },
-  { icon:'🎭', title:'PPA: be authentic', text:'The DISC PPA is not a test you can "pass". Inconsistent or random answers are flagged. Choose words that genuinely reflect how you behave at work, not your ideal self. The debrief is a conversation, not a verdict.' },
-  { icon:'😴', title:'Test conditions matter', text:'Take GIA when well-rested and in a quiet environment. The timed nature means distractions cost points. Use a fast, stable internet connection. Close other tabs.' },
-  { icon:'🎯', title:'Canonical\'s use of GIA', text:'Canonical uses Thomas GIA to evaluate learning agility and problem-solving speed — not existing knowledge. A high GIA score suggests you can adapt and learn quickly in a fast-moving engineering environment.' },
-  { icon:'📊', title:'Score percentiles', text:'GIA scores are compared to a norm group (often graduates or professionals). Aim for the 70th+ percentile. Spatial and Perceptual Speed are the hardest for most people — practise these most.' },
-  { icon:'🔄', title:'Practice effect is real', text:'GIA scores improve with practice. Doing 3–5 practice sessions before the real test typically boosts scores by 5–15 percentile points. Focus on the sub-tests where you score lowest.' }
-];
-
-function buildTips() {
-  const container = document.getElementById('tips-grid');
-  tips.forEach(t => {
-    const card = document.createElement('div');
-    card.className = 'tip-card';
-    card.innerHTML = `<div class="tip-icon">${t.icon}</div><div class="tip-title">${t.title}</div><div class="tip-text">${t.text}</div>`;
-    container.appendChild(card);
+function resetDisc(){
+  Object.keys(discSelections).forEach(k=>delete discSelections[k]);
+  DISC_GROUPS.forEach((g,i)=>{
+    g.words.forEach((_,j)=>{
+      ['most','least'].forEach(t=>{
+        const el=document.getElementById(`disc-${t}-${i}-${j}`);
+        if(el) el.classList.remove('most','least');
+      });
+    });
   });
+  document.getElementById('disc-profile').style.display='none';
 }
 
-// ══════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════
 // INIT
-// ══════════════════════════════════════════════════════════
-buildSpatial();
-buildPerceptual();
-buildTextSection('verbal', verbalData);
-buildTextSection('numerical', numericalData);
-buildDisc();
-buildTips();
+// ═══════════════════════════════════════════════
+// Randomize starting sets
+state.sp.setIdx=Math.floor(Math.random()*4);
+state.perc.setIdx=Math.floor(Math.random()*4);
+state.verb.setIdx=Math.floor(Math.random()*4);
+state.num.setIdx=Math.floor(Math.random()*4);
+
+renderSpatial();
+renderPerceptual();
+renderText('verb',VERB_SETS);
+renderText('num',NUM_SETS);
+renderDisc();
 </script>
 </body>
 </html>
