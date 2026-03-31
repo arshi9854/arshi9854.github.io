@@ -3,709 +3,1025 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Thomas Assessment Practice — Arshiya</title>
+<title>GIA + PPA Practice — Thomas International Style</title>
 <style>
-  :root {
-    --bg: #0a0a0f;
-    --surface: #13131a;
-    --card: #1a1a24;
-    --border: #2a2a3a;
-    --accent: #7c6fef;
-    --accent2: #a594f9;
-    --green: #4ade80;
-    --red: #f87171;
-    --yellow: #fbbf24;
-    --text: #e8e6f0;
-    --muted: #888;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; min-height: 100vh; }
+:root {
+  --bg: #0a0a0f;
+  --surface: #13131a;
+  --surface2: #1c1c28;
+  --border: #2a2a3d;
+  --accent: #7c6fef;
+  --accent2: #a594f9;
+  --text: #e8e8f0;
+  --muted: #8888aa;
+  --green: #4ade80;
+  --red: #f87171;
+  --yellow: #fbbf24;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; min-height: 100vh; }
 
-  /* NAV */
-  nav { background: var(--surface); border-bottom: 1px solid var(--border); padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
-  .nav-title { font-weight: 700; font-size: 1rem; color: var(--accent2); }
-  .nav-sub { font-size: 0.75rem; color: var(--muted); }
-  #timer-display { font-family: monospace; font-size: 1.1rem; font-weight: 700; color: var(--yellow); background: rgba(251,191,36,0.1); padding: 4px 12px; border-radius: 20px; border: 1px solid rgba(251,191,36,0.3); }
+/* NAV */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(10,10,15,0.95); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 4px; padding: 0 16px;
+  flex-wrap: wrap;
+}
+.nav-title { font-weight: 700; color: var(--accent2); padding: 12px 8px; margin-right: 8px; font-size: 0.9rem; white-space: nowrap; }
+.nav-tabs { display: flex; gap: 2px; flex: 1; flex-wrap: wrap; }
+.nav-tab {
+  padding: 10px 12px; cursor: pointer; font-size: 0.8rem; font-weight: 500;
+  color: var(--muted); border-bottom: 2px solid transparent;
+  transition: all 0.2s; white-space: nowrap; background: none; border-top: none; border-left: none; border-right: none;
+}
+.nav-tab:hover { color: var(--text); }
+.nav-tab.active { color: var(--accent2); border-bottom-color: var(--accent); }
+.timer {
+  margin-left: auto; padding: 6px 12px; background: var(--surface2);
+  border: 1px solid var(--border); border-radius: 6px;
+  font-size: 0.85rem; font-weight: 600; color: var(--yellow);
+  font-variant-numeric: tabular-nums; white-space: nowrap;
+}
 
-  /* HERO */
-  .hero { text-align: center; padding: 48px 24px 32px; }
-  .hero h1 { font-size: 2rem; font-weight: 800; background: linear-gradient(135deg, var(--accent2), #c4b5fd); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 8px; }
-  .hero p { color: var(--muted); font-size: 0.95rem; max-width: 600px; margin: 0 auto 24px; }
+/* SECTIONS */
+.section { display: none; max-width: 900px; margin: 0 auto; padding: 24px 16px; }
+.section.active { display: block; }
+.section-header { margin-bottom: 24px; }
+.section-header h2 { font-size: 1.4rem; color: var(--accent2); margin-bottom: 6px; }
+.section-header p { color: var(--muted); font-size: 0.9rem; }
 
-  /* SECTION TABS */
-  .tabs { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; padding: 0 16px 32px; }
-  .tab-btn { padding: 8px 18px; border-radius: 20px; border: 1px solid var(--border); background: var(--card); color: var(--muted); cursor: pointer; font-size: 0.85rem; transition: all 0.2s; }
-  .tab-btn:hover, .tab-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
-  .tab-btn.done { border-color: var(--green); color: var(--green); }
+/* QUESTION CARD */
+.q-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 10px; padding: 20px; margin-bottom: 16px;
+}
+.q-num { font-size: 0.75rem; color: var(--muted); font-weight: 600; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.05em; }
+.q-text { font-size: 0.95rem; margin-bottom: 16px; line-height: 1.5; }
+.options { display: flex; flex-direction: column; gap: 8px; }
+.option {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 14px; border-radius: 8px; cursor: pointer;
+  border: 1px solid var(--border); background: var(--surface2);
+  transition: all 0.15s; font-size: 0.9rem;
+}
+.option:hover { border-color: var(--accent); background: rgba(124,111,239,0.1); }
+.option input[type=radio], .option input[type=checkbox] { accent-color: var(--accent); width: 16px; height: 16px; cursor: pointer; }
+.option.correct { border-color: var(--green); background: rgba(74,222,128,0.1); }
+.option.wrong { border-color: var(--red); background: rgba(248,113,113,0.1); }
+.option.selected-wrong { border-color: var(--red); background: rgba(248,113,113,0.15); }
+.explanation {
+  margin-top: 12px; padding: 10px 14px; border-radius: 6px;
+  background: rgba(124,111,239,0.1); border-left: 3px solid var(--accent);
+  font-size: 0.85rem; color: var(--muted); display: none;
+}
+.explanation.show { display: block; }
 
-  /* SECTIONS */
-  .section { display: none; max-width: 820px; margin: 0 auto; padding: 0 16px 60px; }
-  .section.active { display: block; }
+/* SPATIAL */
+.spatial-layout { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-bottom: 12px; }
+.spatial-ref { text-align: center; }
+.spatial-ref-label { font-size: 0.7rem; color: var(--muted); margin-bottom: 4px; }
+.spatial-arrow { font-size: 1.5rem; color: var(--muted); }
+.spatial-options { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; width: 100%; }
+.spatial-option {
+  text-align: center; cursor: pointer;
+  padding: 8px; border-radius: 8px; border: 2px solid var(--border);
+  background: var(--surface2); transition: all 0.15s;
+}
+.spatial-option:hover { border-color: var(--accent); }
+.spatial-option.selected { border-color: var(--accent); background: rgba(124,111,239,0.15); }
+.spatial-option.correct { border-color: var(--green); background: rgba(74,222,128,0.1); }
+.spatial-option.wrong { border-color: var(--red); background: rgba(248,113,113,0.1); }
+.spatial-option-label { font-size: 0.75rem; color: var(--muted); margin-top: 4px; font-weight: 600; }
+svg.shape { display: block; margin: 0 auto; }
 
-  /* INTRO CARD */
-  .intro-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-bottom: 28px; }
-  .intro-card h2 { font-size: 1.1rem; color: var(--accent2); margin-bottom: 8px; }
-  .intro-card p { color: #ccc; font-size: 0.9rem; line-height: 1.6; }
-  .intro-card .meta { display: flex; gap: 16px; margin-top: 12px; flex-wrap: wrap; }
-  .meta-badge { font-size: 0.78rem; background: rgba(124,111,239,0.15); color: var(--accent2); padding: 3px 10px; border-radius: 10px; border: 1px solid rgba(124,111,239,0.3); }
+/* PERCEPTUAL */
+.perc-layout { margin-bottom: 12px; }
+.perc-ref-row { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+.perc-ref-label { font-size: 0.75rem; color: var(--muted); font-weight: 600; min-width: 60px; }
+.perc-box {
+  padding: 8px 14px; border-radius: 6px; font-family: 'Courier New', monospace;
+  font-size: 1rem; font-weight: 700; letter-spacing: 0.1em;
+  border: 2px solid var(--border); background: var(--surface2);
+}
+.perc-box.ref { border-color: var(--accent); background: rgba(124,111,239,0.15); color: var(--accent2); }
+.perc-options-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.perc-opt {
+  text-align: center; cursor: pointer; padding: 10px 6px;
+  border-radius: 8px; border: 2px solid var(--border);
+  background: var(--surface2); transition: all 0.15s;
+}
+.perc-opt:hover { border-color: var(--accent); }
+.perc-opt.selected { border-color: var(--accent); background: rgba(124,111,239,0.15); }
+.perc-opt.correct { border-color: var(--green); background: rgba(74,222,128,0.1); }
+.perc-opt.wrong { border-color: var(--red); background: rgba(248,113,113,0.1); }
+.perc-opt-str { font-family: 'Courier New', monospace; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.08em; }
+.perc-opt-key { font-size: 0.7rem; color: var(--muted); margin-top: 4px; }
 
-  /* QUESTION CARD */
-  .q-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-bottom: 16px; }
-  .q-number { font-size: 0.75rem; color: var(--muted); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; }
-  .q-text { font-size: 1rem; color: var(--text); margin-bottom: 18px; line-height: 1.6; }
-  .q-text code { background: rgba(124,111,239,0.15); padding: 1px 6px; border-radius: 4px; font-family: monospace; color: var(--accent2); }
+/* DISC */
+.disc-group { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 18px; margin-bottom: 14px; }
+.disc-group-num { font-size: 0.75rem; color: var(--muted); font-weight: 600; margin-bottom: 10px; text-transform: uppercase; }
+.disc-words { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+.disc-word-row { display: flex; align-items: center; justify-content: space-between; padding: 8px 12px; border-radius: 6px; background: var(--surface2); border: 1px solid var(--border); }
+.disc-word { font-size: 0.9rem; font-weight: 500; }
+.disc-btns { display: flex; gap: 6px; }
+.disc-btn {
+  padding: 3px 10px; border-radius: 4px; border: 1px solid var(--border);
+  background: none; color: var(--muted); font-size: 0.75rem; cursor: pointer;
+  transition: all 0.15s;
+}
+.disc-btn.most.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+.disc-btn.least.active { background: #ef4444; border-color: #ef4444; color: #fff; }
+.disc-btn:hover { border-color: var(--accent); }
+.disc-result { margin-top: 20px; padding: 20px; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; display: none; }
+.disc-result.show { display: block; }
+.disc-bars { display: grid; gap: 10px; }
+.disc-bar-row { display: flex; align-items: center; gap: 12px; }
+.disc-bar-label { width: 120px; font-size: 0.85rem; font-weight: 600; }
+.disc-bar-track { flex: 1; background: var(--surface2); border-radius: 4px; height: 20px; overflow: hidden; border: 1px solid var(--border); }
+.disc-bar-fill { height: 100%; border-radius: 4px; transition: width 0.6s ease; }
+.disc-bar-val { width: 30px; text-align: right; font-size: 0.8rem; color: var(--muted); }
 
-  /* OPTIONS */
-  .options { display: flex; flex-direction: column; gap: 8px; }
-  .option { display: flex; align-items: center; gap: 12px; padding: 10px 14px; border-radius: 8px; border: 1px solid var(--border); cursor: pointer; transition: all 0.15s; background: var(--surface); }
-  .option:hover { border-color: var(--accent); background: rgba(124,111,239,0.08); }
-  .option.selected { border-color: var(--accent); background: rgba(124,111,239,0.15); }
-  .option.correct { border-color: var(--green); background: rgba(74,222,128,0.1); color: var(--green); }
-  .option.wrong { border-color: var(--red); background: rgba(248,113,113,0.1); color: var(--red); }
-  .opt-label { width: 24px; height: 24px; border-radius: 50%; border: 2px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; flex-shrink: 0; }
-  .option.selected .opt-label { background: var(--accent); border-color: var(--accent); color: white; }
-  .option.correct .opt-label { background: var(--green); border-color: var(--green); color: white; }
-  .option.wrong .opt-label { background: var(--red); border-color: var(--red); color: white; }
-  .opt-text { font-size: 0.92rem; }
+/* BUTTONS */
+.btn {
+  padding: 10px 22px; border-radius: 8px; border: none; cursor: pointer;
+  font-size: 0.9rem; font-weight: 600; transition: all 0.2s;
+}
+.btn-primary { background: var(--accent); color: #fff; }
+.btn-primary:hover { background: var(--accent2); }
+.btn-secondary { background: var(--surface2); color: var(--text); border: 1px solid var(--border); }
+.btn-secondary:hover { border-color: var(--accent); }
+.btn-row { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
 
-  /* DISC GRID */
-  .disc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
-  .disc-col h4 { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
-  .disc-word { padding: 8px 12px; border-radius: 6px; border: 1px solid var(--border); background: var(--surface); cursor: pointer; font-size: 0.9rem; margin-bottom: 6px; transition: all 0.15s; }
-  .disc-word:hover { border-color: var(--accent); }
-  .disc-word.most { border-color: var(--green); background: rgba(74,222,128,0.1); color: var(--green); }
-  .disc-word.least { border-color: var(--red); background: rgba(248,113,113,0.1); color: var(--red); }
+/* SCORE */
+.score-box {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 8px 16px; border-radius: 8px; margin-top: 12px;
+  background: var(--surface2); border: 1px solid var(--border);
+  font-size: 0.9rem; display: none;
+}
+.score-box.show { display: inline-flex; }
+.score-num { font-size: 1.2rem; font-weight: 700; color: var(--accent2); }
 
-  /* EXPLANATION */
-  .explanation { margin-top: 12px; padding: 12px 14px; background: rgba(124,111,239,0.08); border-left: 3px solid var(--accent); border-radius: 0 6px 6px 0; font-size: 0.88rem; color: #ccc; line-height: 1.6; display: none; }
-  .explanation.show { display: block; }
+/* TIPS */
+.tips-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+.tip-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 18px; }
+.tip-icon { font-size: 1.5rem; margin-bottom: 8px; }
+.tip-title { font-weight: 700; margin-bottom: 6px; color: var(--accent2); }
+.tip-text { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
 
-  /* BUTTONS */
-  .btn { padding: 10px 22px; border-radius: 8px; border: none; cursor: pointer; font-size: 0.9rem; font-weight: 600; transition: all 0.2s; }
-  .btn-primary { background: var(--accent); color: white; }
-  .btn-primary:hover { background: var(--accent2); }
-  .btn-outline { background: transparent; border: 1px solid var(--border); color: var(--muted); }
-  .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
-  .btn-row { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
-
-  /* SCORE */
-  .score-bar { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px 24px; margin-bottom: 24px; display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
-  .score-val { font-size: 2rem; font-weight: 800; color: var(--accent2); }
-  .score-label { font-size: 0.85rem; color: var(--muted); }
-
-  /* PROGRESS */
-  .progress-wrap { height: 4px; background: var(--border); border-radius: 2px; margin-bottom: 24px; }
-  .progress-fill { height: 100%; background: var(--accent); border-radius: 2px; transition: width 0.3s; }
-
-  /* TIPS */
-  .tip-box { background: rgba(251,191,36,0.07); border: 1px solid rgba(251,191,36,0.25); border-radius: 10px; padding: 14px 16px; margin-bottom: 16px; font-size: 0.87rem; color: #e5d8aa; line-height: 1.6; }
-  .tip-box strong { color: var(--yellow); }
-
-  /* PERCEPTUAL */
-  .perc-row { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; margin-bottom: 16px; }
-  .perc-item { background: var(--surface); border: 2px solid var(--border); border-radius: 8px; padding: 10px 16px; font-family: monospace; font-size: 0.95rem; letter-spacing: 2px; }
-  .perc-item.ref { border-color: var(--accent2); color: var(--accent2); }
+@media(max-width:600px){
+  .spatial-options { grid-template-columns: repeat(2,1fr); }
+  .perc-options-row { grid-template-columns: repeat(2,1fr); }
+  .disc-words { grid-template-columns: 1fr; }
+}
 </style>
 </head>
 <body>
 
 <nav>
-  <div>
-    <div class="nav-title">Thomas Assessment Practice</div>
-    <div class="nav-sub">Canonical Group Limited — Arshiya Shaik</div>
+  <div class="nav-title">🧠 GIA + PPA Practice</div>
+  <div class="nav-tabs">
+    <button class="nav-tab active" onclick="showSection('spatial')">🔷 Spatial</button>
+    <button class="nav-tab" onclick="showSection('perceptual')">⚡ Perceptual</button>
+    <button class="nav-tab" onclick="showSection('verbal')">📖 Verbal</button>
+    <button class="nav-tab" onclick="showSection('numerical')">🔢 Numerical</button>
+    <button class="nav-tab" onclick="showSection('disc')">🎭 DISC PPA</button>
+    <button class="nav-tab" onclick="showSection('tips')">💡 Tips</button>
   </div>
-  <div id="timer-display">00:00</div>
+  <div class="timer" id="timer">00:00</div>
 </nav>
 
-<div class="hero">
-  <h1>Psychometric Test Practice</h1>
-  <p>Simulates the Thomas International assessment used by Canonical. Covers all four components: GIA aptitude, DISC behavioral profile, verbal reasoning, and numerical reasoning.</p>
-</div>
-
-<div class="tabs">
-  <button class="tab-btn active" onclick="showSection('overview')">Overview</button>
-  <button class="tab-btn" onclick="showSection('gia-verbal')" id="tab-gia-verbal">GIA — Verbal</button>
-  <button class="tab-btn" onclick="showSection('gia-numerical')" id="tab-gia-numerical">GIA — Numerical</button>
-  <button class="tab-btn" onclick="showSection('gia-perceptual')" id="tab-gia-perceptual">GIA — Perceptual</button>
-  <button class="tab-btn" onclick="showSection('gia-spatial')" id="tab-gia-spatial">GIA — Spatial</button>
-  <button class="tab-btn" onclick="showSection('disc')" id="tab-disc">DISC Profile</button>
-  <button class="tab-btn" onclick="showSection('tips')" id="tab-tips">Tips &amp; Strategy</button>
-</div>
-
-<!-- OVERVIEW -->
-<div id="overview" class="section active">
-  <div class="intro-card">
-    <h2>What is the Thomas Assessment?</h2>
-    <p>Canonical uses two Thomas tools: the <strong>GIA (General Intelligence Assessment)</strong> and the <strong>PPA (Personal Profile Analysis / DISC)</strong>. There are no right or wrong answers in the DISC — it measures your behavioral style. The GIA is timed and does have correct answers.</p>
-    <div class="meta">
-      <span class="meta-badge">GIA: ~25 minutes</span>
-      <span class="meta-badge">DISC: ~8 minutes</span>
-      <span class="meta-badge">5 GIA subtests</span>
-      <span class="meta-badge">No right/wrong in DISC</span>
-    </div>
+<!-- ═══════════════════════════════════════════ SPATIAL ═══ -->
+<div class="section active" id="section-spatial">
+  <div class="section-header">
+    <h2>🔷 Spatial Visualisation</h2>
+    <p>Which option shows the <strong>same shape rotated</strong> (not reflected)? Select one answer per question.</p>
   </div>
-
-  <div class="q-card">
-    <div class="q-text" style="font-size:0.95rem;">
-      <strong style="color:var(--accent2);">GIA — General Intelligence Assessment</strong><br><br>
-      The GIA measures <em>cognitive speed and accuracy</em> across 5 subtests. You must work as fast and accurately as possible. Each subtest is strictly timed (2–4 minutes each).
-      <br><br>
-      <strong>1. Reasoning</strong> — Word/logical analogies (e.g., "Cat is to Kitten as Dog is to ___")<br>
-      <strong>2. Perceptual Speed</strong> — Spot identical pairs in a grid of letters/symbols quickly<br>
-      <strong>3. Number Speed &amp; Accuracy</strong> — Fast arithmetic and number comparisons<br>
-      <strong>4. Word Meaning</strong> — Vocabulary: synonyms, antonyms<br>
-      <strong>5. Spatial Visualisation</strong> — Mental rotation, shape matching<br><br>
-      <strong style="color:var(--accent2);">DISC — Personal Profile Analysis (PPA)</strong><br><br>
-      Shows 24 groups of 4 adjectives. For each group, select the word <em>most</em> like you and the word <em>least</em> like you in a work context. Be honest and fast — don't overthink.
-    </div>
-  </div>
-
-  <div class="tip-box">
-    <strong>Key advice from Canonical candidates:</strong> The GIA score matters more than DISC for technical roles. Speed is crucial — don't spend too long on any single question. Mark it and move on. For DISC, answer as you are at work, not as you wish you were.
-  </div>
-
+  <div id="spatial-questions"></div>
   <div class="btn-row">
-    <button class="btn btn-primary" onclick="showSection('gia-verbal')">Start Practice →</button>
+    <button class="btn btn-primary" onclick="checkSpatial()">Check Answers</button>
+    <button class="btn btn-secondary" onclick="resetSpatial()">Reset</button>
   </div>
+  <div class="score-box" id="spatial-score"><span class="score-num" id="spatial-score-num"></span> correct</div>
 </div>
 
-<!-- GIA VERBAL -->
-<div id="gia-verbal" class="section">
-  <div class="intro-card">
-    <h2>GIA — Verbal Reasoning &amp; Word Meaning</h2>
-    <p>Two subtests combined: <strong>Reasoning</strong> (analogies, logical word relationships) and <strong>Word Meaning</strong> (synonyms, antonyms, definitions). Work quickly. In the real test you have roughly 3 minutes for each subtest.</p>
-    <div class="meta">
-      <span class="meta-badge">20 practice questions</span>
-      <span class="meta-badge">Timed</span>
-      <span class="meta-badge">Click to reveal explanation</span>
-    </div>
+<!-- ═══════════════════════════════════════════ PERCEPTUAL ═══ -->
+<div class="section" id="section-perceptual">
+  <div class="section-header">
+    <h2>⚡ Perceptual Speed</h2>
+    <p>Select the <strong>TWO</strong> options that are identical to the reference string.</p>
   </div>
-
-  <div id="gia-verbal-score" class="score-bar" style="display:none">
-    <div><div class="score-val" id="gv-score-val">0/20</div><div class="score-label">Score</div></div>
-    <div><div class="score-val" id="gv-time-val">—</div><div class="score-label">Time taken</div></div>
-  </div>
-
-  <div class="progress-wrap"><div class="progress-fill" id="gv-progress" style="width:0%"></div></div>
-
-  <div id="gv-questions"></div>
-
+  <div id="perceptual-questions"></div>
   <div class="btn-row">
-    <button class="btn btn-primary" onclick="checkSection('gv')">Check Answers</button>
-    <button class="btn btn-outline" onclick="resetSection('gv')">Reset</button>
-    <button class="btn btn-outline" onclick="showSection('gia-numerical')">Next: Numerical →</button>
+    <button class="btn btn-primary" onclick="checkPerceptual()">Check Answers</button>
+    <button class="btn btn-secondary" onclick="resetPerceptual()">Reset</button>
   </div>
+  <div class="score-box" id="perc-score"><span class="score-num" id="perc-score-num"></span> correct</div>
 </div>
 
-<!-- GIA NUMERICAL -->
-<div id="gia-numerical" class="section">
-  <div class="intro-card">
-    <h2>GIA — Number Speed &amp; Accuracy</h2>
-    <p>Fast mental arithmetic, number comparisons, and sequences. In the real test: ~3 minutes for ~30 questions. Practice for speed — the goal is to be comfortable with quick mental math.</p>
-    <div class="meta">
-      <span class="meta-badge">20 practice questions</span>
-      <span class="meta-badge">No calculator</span>
-    </div>
+<!-- ═══════════════════════════════════════════ VERBAL ═══ -->
+<div class="section" id="section-verbal">
+  <div class="section-header">
+    <h2>📖 Verbal Reasoning</h2>
+    <p>20 questions — analogies, synonyms, antonyms, and sentence completion.</p>
   </div>
-
-  <div id="gn-questions"></div>
-
+  <div id="verbal-questions"></div>
   <div class="btn-row">
-    <button class="btn btn-primary" onclick="checkSection('gn')">Check Answers</button>
-    <button class="btn btn-outline" onclick="resetSection('gn')">Reset</button>
-    <button class="btn btn-outline" onclick="showSection('gia-perceptual')">Next: Perceptual →</button>
+    <button class="btn btn-primary" onclick="checkSection('verbal')">Check Answers</button>
+    <button class="btn btn-secondary" onclick="resetSection('verbal')">Reset</button>
   </div>
+  <div class="score-box" id="verbal-score"><span class="score-num" id="verbal-score-num"></span> / 20 correct</div>
 </div>
 
-<!-- GIA PERCEPTUAL -->
-<div id="gia-perceptual" class="section">
-  <div class="intro-card">
-    <h2>GIA — Perceptual Speed</h2>
-    <p>Find the pair of boxes that are <strong>identical</strong> to each other. The real test uses rows of letter/number strings — you must spot duplicates very quickly. Speed is everything here.</p>
-    <div class="meta">
-      <span class="meta-badge">15 practice questions</span>
-      <span class="meta-badge">Speed focused</span>
-    </div>
+<!-- ═══════════════════════════════════════════ NUMERICAL ═══ -->
+<div class="section" id="section-numerical">
+  <div class="section-header">
+    <h2>🔢 Numerical Reasoning</h2>
+    <p>20 questions — arithmetic, sequences, percentages, word problems. No calculator.</p>
   </div>
-
-  <div id="gp-questions"></div>
-
+  <div id="numerical-questions"></div>
   <div class="btn-row">
-    <button class="btn btn-primary" onclick="checkSection('gp')">Check Answers</button>
-    <button class="btn btn-outline" onclick="resetSection('gp')">Reset</button>
-    <button class="btn btn-outline" onclick="showSection('gia-spatial')">Next: Spatial →</button>
+    <button class="btn btn-primary" onclick="checkSection('numerical')">Check Answers</button>
+    <button class="btn btn-secondary" onclick="resetSection('numerical')">Reset</button>
   </div>
+  <div class="score-box" id="numerical-score"><span class="score-num" id="numerical-score-num"></span> / 20 correct</div>
 </div>
 
-<!-- GIA SPATIAL -->
-<div id="gia-spatial" class="section">
-  <div class="intro-card">
-    <h2>GIA — Spatial Visualisation</h2>
-    <p>Mental rotation and shape matching. A shape is shown — which option is the same shape rotated (not flipped/mirrored)? Practice visualising objects rotating in your mind.</p>
-    <div class="meta">
-      <span class="meta-badge">12 practice questions</span>
-      <span class="meta-badge">Text-based rotation problems</span>
-    </div>
+<!-- ═══════════════════════════════════════════ DISC ═══ -->
+<div class="section" id="section-disc">
+  <div class="section-header">
+    <h2>🎭 DISC Personality Profile (PPA)</h2>
+    <p>For each group, select the word that describes you <strong>MOST</strong> and the word that describes you <strong>LEAST</strong>.</p>
   </div>
-
-  <div id="gs-questions"></div>
-
+  <div id="disc-groups"></div>
   <div class="btn-row">
-    <button class="btn btn-primary" onclick="checkSection('gs')">Check Answers</button>
-    <button class="btn btn-outline" onclick="resetSection('gs')">Reset</button>
-    <button class="btn btn-outline" onclick="showSection('disc')">Next: DISC →</button>
+    <button class="btn btn-primary" onclick="calcDisc()">Generate My Profile</button>
+    <button class="btn btn-secondary" onclick="resetDisc()">Reset</button>
   </div>
+  <div class="disc-result" id="disc-result"></div>
 </div>
 
-<!-- DISC -->
-<div id="disc" class="section">
-  <div class="intro-card">
-    <h2>DISC — Personal Profile Analysis (PPA)</h2>
-    <p>For each group of 4 words, select <span style="color:var(--green)">MOST</span> like you and <span style="color:var(--red)">LEAST</span> like you in a <strong>work context</strong>. Answer instinctively. There are no right or wrong answers — this maps your behavioral style. Canonical uses this to understand how you work, not to filter you out.</p>
-    <div class="meta">
-      <span class="meta-badge">D = Dominance (results-driven)</span>
-      <span class="meta-badge">I = Influence (people-oriented)</span>
-      <span class="meta-badge">S = Steadiness (reliable, calm)</span>
-      <span class="meta-badge">C = Compliance (accurate, systematic)</span>
-    </div>
+<!-- ═══════════════════════════════════════════ TIPS ═══ -->
+<div class="section" id="section-tips">
+  <div class="section-header">
+    <h2>💡 Assessment Tips</h2>
+    <p>Strategies for the Thomas International GIA and PPA used by Canonical.</p>
   </div>
-
-  <div class="tip-box">
-    <strong>For a software engineering role at Canonical:</strong> Canonical values autonomy, remote-first discipline, written communication, and quality. High C (compliance/accuracy) and S (steadiness/reliability) typically align well with their culture. Being high D (decisive, results-focused) is also valued. There's no "right" profile — just be authentic.
-  </div>
-
-  <div id="disc-questions"></div>
-
-  <div class="btn-row">
-    <button class="btn btn-primary" onclick="showDiscProfile()">Show My Profile</button>
-    <button class="btn btn-outline" onclick="resetDisc()">Reset</button>
-  </div>
-
-  <div id="disc-profile" style="display:none; margin-top:24px;">
-    <div class="intro-card">
-      <h2>Your DISC Profile (Practice)</h2>
-      <div id="disc-profile-content"></div>
-    </div>
-  </div>
-</div>
-
-<!-- TIPS -->
-<div id="tips" class="section">
-  <div class="intro-card">
-    <h2>Strategy Guide — How to Ace the Thomas Assessment</h2>
-    <p>Based on real candidate feedback from Canonical applicants and Thomas assessment documentation.</p>
-  </div>
-
-  <div class="q-card">
-    <div class="q-number">GIA — General Strategy</div>
-    <div class="q-text" style="font-size:0.9rem; line-height:1.8;">
-      ✅ <strong>Speed over perfection</strong> — The GIA measures speed AND accuracy. A blank answer scores 0; a wrong answer scores -1 (in some versions). Move on quickly if stuck.<br>
-      ✅ <strong>Practice mental arithmetic daily</strong> — 12×7, 144÷12, 17+38, etc. The numerical section trips people up on simple math under time pressure.<br>
-      ✅ <strong>Analogies pattern:</strong> Always identify the relationship first. "Kitten is to Cat as Lamb is to ___" → young to adult → Sheep.<br>
-      ✅ <strong>Perceptual speed:</strong> Scan character by character left to right. Don't try to "see" the whole string at once.<br>
-      ✅ <strong>Spatial:</strong> Pick a distinctive feature (a corner, a notch) and track where it goes when rotated. Eliminate mirror images first.
-    </div>
-  </div>
-
-  <div class="q-card">
-    <div class="q-number">DISC — Behavioral Profile Strategy</div>
-    <div class="q-text" style="font-size:0.9rem; line-height:1.8;">
-      ✅ <strong>Answer for work, not life</strong> — Think about how you behave at your job, not at home.<br>
-      ✅ <strong>Don't try to game it</strong> — The PPA has built-in consistency checks. Inconsistent answers are flagged. Just be honest.<br>
-      ✅ <strong>Most = your natural strength, Least = what drains you</strong><br>
-      ✅ <strong>For Canonical specifically:</strong> They work remote-first, value written communication, trust people to self-manage. If that's genuinely you, it'll show.<br>
-      ✅ <strong>Time yourself:</strong> Real DISC takes ~8 minutes for 24 groups. That's 20 seconds per group max.
-    </div>
-  </div>
-
-  <div class="q-card">
-    <div class="q-number">Day-of Checklist</div>
-    <div class="q-text" style="font-size:0.9rem; line-height:1.8;">
-      ☐ Stable internet, quiet room, no distractions<br>
-      ☐ Laptop preferred over phone (larger screen = faster reading)<br>
-      ☐ Do GIA in the morning when your mind is sharpest<br>
-      ☐ Keep a pencil/paper for numerical scratch work<br>
-      ☐ Read each question fully before looking at options<br>
-      ☐ Don't leave any GIA answer blank — guess if needed<br>
-      ☐ Complete the DISC in one sitting without pausing mid-way
-    </div>
-  </div>
-
-  <div class="q-card">
-    <div class="q-number">DISC Dimensions Explained</div>
-    <div class="q-text" style="font-size:0.9rem; line-height:1.8;">
-      <strong style="color:#f87171;">D — Dominance:</strong> Direct, decisive, results-oriented, competitive. Words: assertive, bold, demanding, forceful, strong-willed.<br><br>
-      <strong style="color:#fbbf24;">I — Influence:</strong> Enthusiastic, optimistic, social, persuasive. Words: sociable, inspiring, charming, expressive, lively.<br><br>
-      <strong style="color:#4ade80;">S — Steadiness:</strong> Patient, reliable, calm, supportive, consistent. Words: calm, patient, methodical, sincere, team-player.<br><br>
-      <strong style="color:#a594f9;">C — Compliance/Conscientiousness:</strong> Accurate, analytical, systematic, quality-focused. Words: precise, careful, diplomatic, systematic, fact-oriented.
-    </div>
-  </div>
+  <div class="tips-grid" id="tips-grid"></div>
 </div>
 
 <script>
-// ===================== TIMER =====================
+// ─── TIMER ──────────────────────────────────────────────
 let startTime = Date.now();
-function updateTimer() {
-  const elapsed = Math.floor((Date.now() - startTime) / 1000);
-  const m = String(Math.floor(elapsed / 60)).padStart(2, '0');
-  const s = String(elapsed % 60).padStart(2, '0');
-  document.getElementById('timer-display').textContent = m + ':' + s;
-}
-setInterval(updateTimer, 1000);
+setInterval(() => {
+  let s = Math.floor((Date.now() - startTime) / 1000);
+  let m = Math.floor(s / 60); s = s % 60;
+  document.getElementById('timer').textContent = String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
+}, 1000);
 
-// ===================== NAVIGATION =====================
+// ─── NAV ─────────────────────────────────────────────────
 function showSection(id) {
   document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  const map = {'overview': 0, 'gia-verbal': 1, 'gia-numerical': 2, 'gia-perceptual': 3, 'gia-spatial': 4, 'disc': 5, 'tips': 6};
-  document.querySelectorAll('.tab-btn')[map[id]].classList.add('active');
-  window.scrollTo(0, 0);
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('section-' + id).classList.add('active');
+  event.target.classList.add('active');
 }
 
-// ===================== GIA VERBAL QUESTIONS =====================
-const gvQuestions = [
-  { q: "Cat is to Kitten as Horse is to ___", opts: ["Pony","Colt","Foal","Filly"], ans: 2, exp: "A kitten is the young of a cat. A foal is the young of a horse (gender-neutral term for newborn)." },
-  { q: "Book is to Library as Painting is to ___", opts: ["Artist","Gallery","Museum","Canvas"], ans: 1, exp: "A library is where books are displayed/stored publicly. A gallery is where paintings are displayed." },
-  { q: "Which word is the SYNONYM of 'Diligent'?", opts: ["Lazy","Hardworking","Careless","Slow"], ans: 1, exp: "Diligent means showing careful and persistent effort — synonymous with hardworking." },
-  { q: "Clock is to Time as Thermometer is to ___", opts: ["Heat","Doctor","Temperature","Weather"], ans: 2, exp: "A clock measures time; a thermometer measures temperature." },
-  { q: "Which word is the ANTONYM of 'Verbose'?", opts: ["Talkative","Wordy","Concise","Eloquent"], ans: 2, exp: "Verbose means using more words than needed. Concise means brief and to the point — the opposite." },
-  { q: "Pen is to Writer as Scalpel is to ___", opts: ["Hospital","Nurse","Surgeon","Patient"], ans: 2, exp: "A pen is the primary tool of a writer; a scalpel is the primary tool of a surgeon." },
-  { q: "Which word DOES NOT belong? Apple, Orange, Carrot, Banana", opts: ["Apple","Orange","Carrot","Banana"], ans: 2, exp: "Carrot is a vegetable; Apple, Orange, and Banana are fruits." },
-  { q: "Optimistic is to Pessimistic as Generous is to ___", opts: ["Kind","Miserly","Wealthy","Charitable"], ans: 1, exp: "Optimistic and Pessimistic are antonyms. The antonym of Generous is Miserly (unwilling to give)." },
-  { q: "Which word is the SYNONYM of 'Ambiguous'?", opts: ["Clear","Uncertain","Definite","Obvious"], ans: 1, exp: "Ambiguous means open to more than one interpretation — synonymous with uncertain or unclear." },
-  { q: "Architect is to Blueprint as Composer is to ___", opts: ["Orchestra","Concert","Score","Piano"], ans: 2, exp: "An architect creates a blueprint; a composer creates a musical score." },
-  { q: "Complete the analogy: 36 is to 6 as 49 is to ___", opts: ["7","8","9","6"], ans: 0, exp: "36 = 6². 49 = 7². The relationship is square root: √36 = 6, √49 = 7." },
-  { q: "Which word is the ANTONYM of 'Ephemeral'?", opts: ["Fleeting","Temporary","Permanent","Brief"], ans: 2, exp: "Ephemeral means lasting for a very short time. Its antonym is Permanent." },
-  { q: "Dark is to Light as Loud is to ___", opts: ["Sound","Quiet","Music","Noise"], ans: 1, exp: "Dark and Light are opposites. The opposite of Loud is Quiet." },
-  { q: "FAST : SLOW :: SHARP : ___", opts: ["Knife","Dull","Point","Quick"], ans: 1, exp: "Fast and Slow are antonyms. The antonym of Sharp is Dull." },
-  { q: "Which word is the SYNONYM of 'Tenacious'?", opts: ["Weak","Persistent","Timid","Flexible"], ans: 1, exp: "Tenacious means holding firm to something — synonymous with persistent or determined." },
-  { q: "Doctor is to Patient as Teacher is to ___", opts: ["School","Classroom","Student","Lesson"], ans: 2, exp: "A doctor works with patients; a teacher works with students." },
-  { q: "Which word DOES NOT belong? Piano, Guitar, Violin, Trumpet, Drum", opts: ["Piano","Guitar","Trumpet","Drum"], ans: 2, exp: "Piano, Guitar, Violin, and Drum can all be played without blowing air. Trumpet is a wind instrument. (Violin is string — all are instruments, but Trumpet is wind/brass while others are string/percussion/keys.)" },
-  { q: "Deliberate is to Accidental as Intentional is to ___", opts: ["Planned","Careless","Unintentional","Willful"], ans: 2, exp: "Deliberate (intentional) is the opposite of Accidental. Intentional is the opposite of Unintentional." },
-  { q: "Which word is the ANTONYM of 'Frugal'?", opts: ["Thrifty","Economical","Wasteful","Careful"], ans: 2, exp: "Frugal means careful with money/resources. Its antonym is Wasteful or Extravagant." },
-  { q: "Cartographer is to Maps as Lexicographer is to ___", opts: ["Words","Dictionaries","Books","Languages"], ans: 1, exp: "A cartographer makes maps. A lexicographer compiles dictionaries." },
-];
+// ══════════════════════════════════════════════════════════
+// SPATIAL — SVG shapes
+// ══════════════════════════════════════════════════════════
 
-// ===================== GIA NUMERICAL QUESTIONS =====================
-const gnQuestions = [
-  { q: "What is 17 × 8?", opts: ["126","136","144","132"], ans: 1, exp: "17 × 8 = (10×8) + (7×8) = 80 + 56 = 136" },
-  { q: "If a train travels 240 km in 3 hours, what is its speed in km/h?", opts: ["60","70","80","90"], ans: 2, exp: "Speed = Distance / Time = 240 / 3 = 80 km/h" },
-  { q: "What is 15% of 240?", opts: ["32","36","40","42"], ans: 1, exp: "15% of 240 = 0.15 × 240 = 36" },
-  { q: "Which number comes next? 3, 6, 12, 24, ___", opts: ["36","42","48","54"], ans: 2, exp: "Each number doubles: 3→6→12→24→48 (×2 each time)" },
-  { q: "144 ÷ 12 = ___", opts: ["10","11","12","13"], ans: 2, exp: "144 ÷ 12 = 12" },
-  { q: "A shirt costs $45. It is discounted by 20%. What is the sale price?", opts: ["$34","$36","$38","$40"], ans: 1, exp: "20% of $45 = $9. Sale price = $45 - $9 = $36" },
-  { q: "Which number is largest? 0.75, 3/4, 7/9, 0.7", opts: ["0.75","3/4","7/9","0.7"], ans: 2, exp: "7/9 ≈ 0.778, which is greater than 0.75 = 3/4 > 0.7" },
-  { q: "What is the missing number? 8, 16, ___, 64, 128", opts: ["24","32","36","40"], ans: 1, exp: "The sequence doubles each time: 8, 16, 32, 64, 128" },
-  { q: "If 5 workers complete a job in 12 days, how many days would 3 workers take?", opts: ["16","18","20","22"], ans: 2, exp: "Total work = 5×12 = 60 worker-days. For 3 workers: 60/3 = 20 days." },
-  { q: "What is 3/8 expressed as a decimal?", opts: ["0.325","0.375","0.425","0.475"], ans: 1, exp: "3/8 = 3 ÷ 8 = 0.375" },
-  { q: "Which number comes next? 100, 91, 82, 73, ___", opts: ["64","66","68","70"], ans: 0, exp: "Subtracting 9 each time: 100, 91, 82, 73, 64" },
-  { q: "What is 23 + 47 + 65?", opts: ["125","130","135","145"], ans: 2, exp: "23 + 47 = 70. 70 + 65 = 135" },
-  { q: "A rectangle has length 14 cm and width 7 cm. What is its area?", opts: ["84 cm²","94 cm²","98 cm²","102 cm²"], ans: 2, exp: "Area = length × width = 14 × 7 = 98 cm²" },
-  { q: "What is 40% of 85?", opts: ["32","34","36","38"], ans: 1, exp: "40% of 85 = 0.4 × 85 = 34" },
-  { q: "Which number comes next? 2, 3, 5, 8, 13, ___", opts: ["18","20","21","23"], ans: 2, exp: "Fibonacci sequence: each number = sum of previous two. 8+13 = 21." },
-  { q: "If x + 15 = 32, what is x?", opts: ["15","16","17","18"], ans: 2, exp: "x = 32 - 15 = 17" },
-  { q: "What is 756 ÷ 9?", opts: ["82","84","86","88"], ans: 1, exp: "756 ÷ 9 = 84. (9 × 80 = 720; 756 - 720 = 36; 36/9 = 4; so 84)" },
-  { q: "A car depreciates by 15% per year. If it's worth $20,000 now, what is its value after 1 year?", opts: ["$15,000","$16,000","$17,000","$18,000"], ans: 2, exp: "15% of $20,000 = $3,000. New value = $20,000 - $3,000 = $17,000" },
-  { q: "What is the next number? 1, 4, 9, 16, 25, ___", opts: ["30","34","36","40"], ans: 2, exp: "Perfect squares: 1²=1, 2²=4, 3²=9, 4²=16, 5²=25, 6²=36" },
-  { q: "Simplify: 48/72", opts: ["1/2","2/3","3/4","4/5"], ans: 1, exp: "GCD of 48 and 72 is 24. 48/24 = 2, 72/24 = 3. So 48/72 = 2/3" },
-];
+// Shape drawing: each shape is a function(cx,cy,angle) returning SVG path d or polygon points
+// We hardcode polygon points in various rotations for clarity.
 
-// ===================== GIA PERCEPTUAL QUESTIONS =====================
-const gpQuestions = [
-  { ref: "XK7M2P", opts: ["XK7M2P", "XK7M2Q", "XK7M2P", "XK7M3P"], ans: [0, 2], exp: "Options A and C are identical to the reference: XK7M2P" },
-  { ref: "B4nR9Lw", opts: ["B4nR9Lw", "B4nR9lw", "B4nR9Lw", "B4NR9Lw"], ans: [0, 2], exp: "Options A and C match exactly. B has lowercase 'l', D has uppercase 'N'." },
-  { ref: "9182736", opts: ["9182736", "9182376", "9182736", "9182766"], ans: [0, 2], exp: "A and C match. B has 3 and 7 swapped. D has 66 at the end." },
-  { ref: "qZpT5vY", opts: ["qZpT5vy", "qZpT5vY", "qZpT5vY", "qZPT5vY"], ans: [1, 2], exp: "B and C match. A has lowercase 'y'. D has uppercase 'P'." },
-  { ref: "LM3$xK", opts: ["LM3$xK", "LM3$Xk", "LM3$xk", "LM3$xK"], ans: [0, 3], exp: "A and D match. B has uppercase X and lowercase k. C has lowercase x and k." },
-  { ref: "2847193", opts: ["2847193", "2847139", "2874193", "2847193"], ans: [0, 3], exp: "A and D match. B has 3 and 9 transposed near the end. C has 7 and 4 swapped." },
-  { ref: "Tf8#mNq", opts: ["Tf8#mNQ", "Tf8#mNq", "TF8#mNq", "Tf8#mNq"], ans: [1, 3], exp: "B and D match. A has uppercase Q. C has uppercase F." },
-  { ref: "DELTA44", opts: ["DELTA44", "DELT44A", "DELTA44", "DELTA4A"], ans: [0, 2], exp: "A and C match. B has letters and numbers rearranged. D has 4A instead of 44." },
-  { ref: "p7Wr2Lz", opts: ["p7Wr2Lz", "p7wr2Lz", "p7Wr2lz", "p7Wr2Lz"], ans: [0, 3], exp: "A and D match. B has lowercase w. C has lowercase l." },
-  { ref: "501XY98", opts: ["501XY98", "501XY89", "501Xy98", "501XY98"], ans: [0, 3], exp: "A and D match. B has 8 and 9 swapped. C has lowercase y." },
-  { ref: "nK$5Rp", opts: ["nK$5rp", "nK$5Rp", "NK$5Rp", "nK$5Rp"], ans: [1, 3], exp: "B and D match. A has lowercase r and p. C has uppercase N." },
-  { ref: "38291047", opts: ["38291047", "38291074", "38291047", "38291470"], ans: [0, 2], exp: "A and C match. B has last two digits swapped (74 vs 47). D is scrambled." },
-  { ref: "VxB@9mZ", opts: ["VxB@9mz", "VxB@9mZ", "VXB@9mZ", "VxB@9mZ"], ans: [1, 3], exp: "B and D match. A has lowercase z. C has uppercase X." },
-  { ref: "671x839", opts: ["671x839", "671X839", "671x839", "671x938"], ans: [0, 2], exp: "A and C match. B has uppercase X. D has last digits as 938 instead of 839." },
-  { ref: "Qr2#TkW", opts: ["Qr2#TkW", "Qr2#tkW", "Qr2#TkW", "QR2#TkW"], ans: [0, 2], exp: "A and C match. B has lowercase t. D has uppercase R." },
-];
-
-// ===================== GIA SPATIAL QUESTIONS =====================
-const gsQuestions = [
-  { q: "A shape like 'L' (bottom-left corner). Which option shows this shape rotated 90° clockwise?", opts: ["⌐ (top-right corner)", "Γ (top-left corner)", "J (bottom-right, flipped)", "L rotated = corner pointing down-right"], ans: 3, exp: "Rotating an L 90° clockwise: the vertical part becomes horizontal on top, horizontal part hangs down on the right — like an upside-down L pointing bottom-right." },
-  { q: "Shape: F. Which shows F rotated 180°?", opts: ["Ⅎ (upside-down F)","F mirrored","F unchanged","ᖴ rotated"], ans: 0, exp: "F rotated 180° becomes an upside-down F (Ⅎ) — both the horizontal bars now point left from the bottom." },
-  { q: "A right-pointing arrow (→). Rotated 90° anti-clockwise becomes:", opts: ["↓ (down arrow)","↑ (up arrow)","← (left arrow)","→ unchanged"], ans: 1, exp: "Rotating → by 90° anti-clockwise gives ↑ (the arrow now points up)." },
-  { q: "A triangle with the point at the top (△). Rotated 180° becomes:", opts: ["▷ (right)","▽ (point down)","◁ (left)","△ unchanged"], ans: 1, exp: "Rotating △ by 180° flips it to ▽ — now the flat edge is on top and the point faces down." },
-  { q: "The letter 'b'. Which rotation produces 'p'?", opts: ["90° clockwise","180° rotation","90° anti-clockwise","Mirror flip"], ans: 1, exp: "'b' rotated 180° gives 'p' (upside-down b). Note: mirroring gives 'd', not 'p'." },
-  { q: "A clock showing 3:00. Rotated 90° clockwise, the hands now show:", opts: ["6:00","9:00","12:00","3:00"], ans: 0, exp: "At 3:00, the hour hand points right (3 o'clock position). Rotating 90° clockwise makes it point down = 6:00." },
-  { q: "Shape with a notch at the top-left. Rotated 90° clockwise, the notch is now at:", opts: ["Top-right","Bottom-left","Bottom-right","Top-left"], ans: 0, exp: "A 90° clockwise rotation moves: top-left → top-right → bottom-right → bottom-left. So top-left notch moves to top-right." },
-  { q: "An asymmetric shape: wider on the right side. After 180° rotation, it is wider on the:", opts: ["Right side","Left side","Top","Bottom"], ans: 1, exp: "180° rotation flips both horizontally and vertically. Wider on right → wider on left after 180°." },
-  { q: "Letter 'N'. What does 'N' look like rotated 90° clockwise?", opts: ["Z shape","S shape","N sideways (like ⊢)","Mirror N"], ans: 0, exp: "N rotated 90° clockwise resembles a Z — the diagonal stroke that went top-right to bottom-left now goes in the other direction." },
-  { q: "A shape that looks like a plus (+). Rotated 45°, it looks like:", opts: ["+ unchanged","× (X shape)","| (vertical line)","○ (circle)"], ans: 1, exp: "A + rotated 45° becomes an X (×). The four arms now point diagonally." },
-  { q: "The letter 'd'. Rotated 180° gives:", opts: ["b","p","q","d unchanged"], ans: 2, exp: "'d' rotated 180° gives 'q'. (Mirror gives 'b'; rotate 90° gives other forms.)" },
-  { q: "A shape has a bump on its LEFT side. After rotating 90° anti-clockwise, the bump is on the:", opts: ["Left","Right","Top","Bottom"], ans: 3, exp: "Anti-clockwise 90° rotation: left → bottom. So the bump moves to the bottom." },
-];
-
-// ===================== DISC QUESTIONS =====================
-const discQuestions = [
-  { words: ["Assertive", "Enthusiastic", "Patient", "Precise"], trait: ["D","I","S","C"] },
-  { words: ["Bold", "Sociable", "Reliable", "Systematic"], trait: ["D","I","S","C"] },
-  { words: ["Competitive", "Optimistic", "Steady", "Careful"], trait: ["D","I","S","C"] },
-  { words: ["Decisive", "Expressive", "Consistent", "Accurate"], trait: ["D","I","S","C"] },
-  { words: ["Forceful", "Persuasive", "Methodical", "Diplomatic"], trait: ["D","I","S","C"] },
-  { words: ["Results-driven", "Inspiring", "Supportive", "Analytical"], trait: ["D","I","S","C"] },
-  { words: ["Direct", "Outgoing", "Calm", "Thorough"], trait: ["D","I","S","C"] },
-  { words: ["Strong-willed", "Charming", "Sincere", "Fact-oriented"], trait: ["D","I","S","C"] },
-  { words: ["Determined", "Lively", "Team-player", "Disciplined"], trait: ["D","I","S","C"] },
-  { words: ["Independent", "Talkative", "Humble", "Compliant"], trait: ["D","I","S","C"] },
-  { words: ["Pioneering", "Communicative", "Dependable", "Perfectionist"], trait: ["D","I","S","C"] },
-  { words: ["Demanding", "Spontaneous", "Predictable", "Cautious"], trait: ["D","I","S","C"] },
-];
-
-let discSelections = {}; // {qIdx: {most: wordIdx, least: wordIdx}}
-
-// ===================== RENDER FUNCTIONS =====================
-function renderMCQ(questions, prefix, container) {
-  let html = '';
-  questions.forEach((q, i) => {
-    html += `<div class="q-card" id="${prefix}-q${i}">
-      <div class="q-number">Question ${i+1} of ${questions.length}</div>
-      <div class="q-text">${q.q}</div>`;
-
-    // Perceptual question
-    if (q.ref !== undefined) {
-      html += `<div class="perc-row"><div class="perc-item ref">${q.ref}</div><span style="color:var(--muted);font-size:0.85rem;">← Reference</span></div>`;
-      html += `<div class="options">`;
-      q.opts.forEach((opt, j) => {
-        html += `<div class="option" id="${prefix}-q${i}-o${j}" onclick="selectOption('${prefix}',${i},${j})">
-          <div class="opt-label">${String.fromCharCode(65+j)}</div>
-          <div class="opt-text perc-item" style="border:none;background:none;padding:4px 0;">${opt}</div>
-        </div>`;
-      });
-      html += `</div>`;
-      html += `<div class="tip-box" style="margin-top:10px;font-size:0.82rem;">💡 Select the TWO options that are identical to the reference</div>`;
-    } else {
-      html += `<div class="options">`;
-      q.opts.forEach((opt, j) => {
-        html += `<div class="option" id="${prefix}-q${i}-o${j}" onclick="selectOption('${prefix}',${i},${j})">
-          <div class="opt-label">${String.fromCharCode(65+j)}</div>
-          <div class="opt-text">${opt}</div>
-        </div>`;
-      });
-      html += `</div>`;
-    }
-    html += `<div class="explanation" id="${prefix}-exp${i}">${q.exp}</div>`;
-    html += `</div>`;
+function rotatePts(pts, deg, cx=40, cy=40) {
+  const r = deg * Math.PI / 180;
+  return pts.map(([x,y]) => {
+    const dx = x-cx, dy = y-cy;
+    return [
+      Math.round(cx + dx*Math.cos(r) - dy*Math.sin(r)),
+      Math.round(cy + dx*Math.sin(r) + dy*Math.cos(r))
+    ];
   });
-  document.getElementById(container).innerHTML = html;
 }
 
-let sectionAnswers = {};
+function mirrorX(pts, cx=40) {
+  return pts.map(([x,y]) => [2*cx - x, y]);
+}
 
-function selectOption(prefix, qIdx, optIdx) {
-  const q = getQuestions(prefix)[qIdx];
-  if (!sectionAnswers[prefix]) sectionAnswers[prefix] = {};
+function ptsToStr(pts) {
+  return pts.map(p => p.join(',')).join(' ');
+}
 
-  // Perceptual — multi-select (2 answers)
-  if (q.ref !== undefined) {
-    if (!sectionAnswers[prefix][qIdx]) sectionAnswers[prefix][qIdx] = [];
-    const arr = sectionAnswers[prefix][qIdx];
-    const pos = arr.indexOf(optIdx);
-    if (pos === -1) {
-      if (arr.length < 2) arr.push(optIdx);
-    } else {
-      arr.splice(pos, 1);
-    }
-    q.opts.forEach((_, j) => {
-      const el = document.getElementById(`${prefix}-q${qIdx}-o${j}`);
-      if (arr.includes(j)) el.classList.add('selected');
-      else el.classList.remove('selected');
-    });
-  } else {
-    sectionAnswers[prefix][qIdx] = optIdx;
-    q.opts.forEach((_, j) => {
-      const el = document.getElementById(`${prefix}-q${qIdx}-o${j}`);
-      if (j === optIdx) el.classList.add('selected');
-      else el.classList.remove('selected');
-    });
+function makeSVG(pts, fill='#7c6fef', stroke='#a594f9') {
+  const pStr = ptsToStr(pts);
+  return `<svg width="80" height="80" class="shape"><rect width="80" height="80" fill="#13131a" rx="4"/><polygon points="${pStr}" fill="${fill}" stroke="${stroke}" stroke-width="1.5"/></svg>`;
+}
+
+function makeSVGPath(d, fill='#7c6fef', stroke='#a594f9') {
+  return `<svg width="80" height="80" class="shape"><rect width="80" height="80" fill="#13131a" rx="4"/><path d="${d}" fill="${fill}" stroke="${stroke}" stroke-width="1.5"/></svg>`;
+}
+
+// ─── SHAPE DEFINITIONS (base points, centered ~40,40) ───
+// L-shape
+const L = [[20,20],[35,20],[35,55],[55,55],[55,65],[20,65]];
+// T-shape
+const T = [[15,20],[65,20],[65,35],[45,35],[45,65],[35,65],[35,35],[15,35]];
+// F-shape
+const F = [[15,15],[65,15],[65,28],[30,28],[30,40],[58,40],[58,53],[30,53],[30,70],[15,70]];
+// Z-shape
+const Z = [[15,15],[60,15],[60,32],[35,32],[35,48],[60,48],[60,65],[15,65],[15,48],[40,48],[40,32],[15,32]];
+// Arrow (right-pointing)
+const Arrow = [[15,30],[50,30],[50,18],[68,40],[50,62],[50,50],[15,50]];
+// Asymmetric P-shape
+const Pshape = [[18,15],[18,65],[32,65],[32,45],[52,45],[52,55],[62,55],[62,35],[52,35],[52,28],[32,28],[32,15]];
+// C-shape
+const Cshape = [[55,15],[20,15],[20,65],[55,65],[55,52],[35,52],[35,28],[55,28]];
+// S-shape (asymmetric step)
+const Sstep = [[15,15],[55,15],[55,35],[30,35],[30,45],[60,45],[60,65],[15,65],[15,50],[45,50],[45,30],[15,30]];
+// Pentagon (irregular)
+const Penta = [[40,12],[68,32],[58,62],[22,62],[12,32]];
+// J-shape
+const Jshape = [[45,15],[60,15],[60,60],[20,60],[20,47],[45,47]];
+// Plus sign (asymmetric)
+const PlusAsym = [[28,15],[45,15],[45,28],[62,28],[62,48],[45,48],[45,65],[28,65],[28,48],[12,48],[12,28],[28,28]];
+// Hook shape
+const Hook = [[20,15],[35,15],[35,48],[58,48],[58,62],[20,62]];
+
+const spatialData = [
+  {
+    name: 'L-shape',
+    base: L,
+    correctRot: 90,
+    opts: [
+      { rot: 90, mirror: false, label:'A' },   // CORRECT
+      { rot: 0,  mirror: true,  label:'B' },   // mirror
+      { rot: 180,mirror: false, label:'C' },   // different rot
+      { rot: 270,mirror: false, label:'D' },   // different rot
+    ],
+    correct: 'A',
+    explanation: 'Option A is the L-shape rotated 90° clockwise. B is a mirror image. C and D are other rotations.'
+  },
+  {
+    name: 'T-shape',
+    base: T,
+    correctRot: 180,
+    opts: [
+      { rot: 90,  mirror: false, label:'A' },
+      { rot: 180, mirror: false, label:'B' },  // CORRECT
+      { rot: 0,   mirror: true,  label:'C' },
+      { rot: 270, mirror: false, label:'D' },
+    ],
+    correct: 'B',
+    explanation: 'The T-shape rotated 180° matches the reference. The T-shape is symmetric so watch the stem position carefully.'
+  },
+  {
+    name: 'F-shape',
+    base: F,
+    correctRot: 270,
+    opts: [
+      { rot: 0,   mirror: true,  label:'A' },
+      { rot: 180, mirror: false, label:'B' },
+      { rot: 90,  mirror: false, label:'C' },
+      { rot: 270, mirror: false, label:'D' },  // CORRECT
+    ],
+    correct: 'D',
+    explanation: 'Option D shows the F-shape rotated 270° (= 90° counter-clockwise). A is mirrored, B and C are other rotations.'
+  },
+  {
+    name: 'Z-shape',
+    base: Z,
+    correctRot: 90,
+    opts: [
+      { rot: 90,  mirror: false, label:'A' },  // CORRECT
+      { rot: 180, mirror: false, label:'B' },
+      { rot: 0,   mirror: true,  label:'C' },
+      { rot: 270, mirror: true,  label:'D' },
+    ],
+    correct: 'A',
+    explanation: 'Option A is the Z rotated 90° CW. Option C is a mirror (produces an S), Option D is mirrored and rotated.'
+  },
+  {
+    name: 'Arrow',
+    base: Arrow,
+    correctRot: 180,
+    opts: [
+      { rot: 90,  mirror: false, label:'A' },
+      { rot: 270, mirror: false, label:'B' },
+      { rot: 0,   mirror: true,  label:'C' },
+      { rot: 180, mirror: false, label:'D' },  // CORRECT
+    ],
+    correct: 'D',
+    explanation: 'The arrow rotated 180° points left. Options A and B are 90° rotations (up/down). C is a vertical mirror.'
+  },
+  {
+    name: 'P-shape',
+    base: Pshape,
+    correctRot: 90,
+    opts: [
+      { rot: 180, mirror: false, label:'A' },
+      { rot: 90,  mirror: false, label:'B' },  // CORRECT
+      { rot: 0,   mirror: true,  label:'C' },
+      { rot: 270, mirror: true,  label:'D' },
+    ],
+    correct: 'B',
+    explanation: 'Option B is the P-shape rotated 90° CW. C and D involve mirroring which is invalid.'
+  },
+  {
+    name: 'C-shape',
+    base: Cshape,
+    correctRot: 270,
+    opts: [
+      { rot: 0,   mirror: true,  label:'A' },
+      { rot: 90,  mirror: false, label:'B' },
+      { rot: 270, mirror: false, label:'C' },  // CORRECT
+      { rot: 180, mirror: true,  label:'D' },
+    ],
+    correct: 'C',
+    explanation: 'C shows the C-shape rotated 270° CCW (90° CW). A is a mirror, D is mirrored + rotated.'
+  },
+  {
+    name: 'Step-S',
+    base: Sstep,
+    correctRot: 180,
+    opts: [
+      { rot: 90,  mirror: false, label:'A' },
+      { rot: 0,   mirror: true,  label:'B' },
+      { rot: 180, mirror: false, label:'C' },  // CORRECT
+      { rot: 270, mirror: false, label:'D' },
+    ],
+    correct: 'C',
+    explanation: 'Option C is the step shape rotated 180°. B is a mirror image, A and D are 90° rotations.'
+  },
+  {
+    name: 'Pentagon',
+    base: Penta,
+    correctRot: 72,
+    opts: [
+      { rot: 72,  mirror: false, label:'A' },  // CORRECT
+      { rot: 0,   mirror: true,  label:'B' },
+      { rot: 144, mirror: false, label:'C' },
+      { rot: 216, mirror: false, label:'D' },
+    ],
+    correct: 'A',
+    explanation: 'The irregular pentagon rotated ~72° matches. B is mirrored. The irregular proportions distinguish rotation from reflection.'
+  },
+  {
+    name: 'J-shape',
+    base: Jshape,
+    correctRot: 270,
+    opts: [
+      { rot: 270, mirror: false, label:'A' },  // CORRECT
+      { rot: 90,  mirror: false, label:'B' },
+      { rot: 0,   mirror: true,  label:'C' },
+      { rot: 180, mirror: false, label:'D' },
+    ],
+    correct: 'A',
+    explanation: 'Option A is the J-shape rotated 270°. C is a mirror. Note the hook position to differentiate rotations.'
+  },
+  {
+    name: 'Asymmetric Plus',
+    base: PlusAsym,
+    correctRot: 90,
+    opts: [
+      { rot: 0,   mirror: true,  label:'A' },
+      { rot: 180, mirror: false, label:'B' },
+      { rot: 90,  mirror: false, label:'C' },  // CORRECT
+      { rot: 270, mirror: true,  label:'D' },
+    ],
+    correct: 'C',
+    explanation: 'Option C is the asymmetric plus rotated 90° CW. A and D involve mirroring. B is 180°.'
+  },
+  {
+    name: 'Hook',
+    base: Hook,
+    correctRot: 180,
+    opts: [
+      { rot: 90,  mirror: false, label:'A' },
+      { rot: 180, mirror: false, label:'B' },  // CORRECT
+      { rot: 270, mirror: false, label:'C' },
+      { rot: 0,   mirror: true,  label:'D' },
+    ],
+    correct: 'B',
+    explanation: 'Option B shows the hook rotated 180°. The hook base moves to top-right. D is a mirror image.'
   }
-  updateProgress(prefix);
-}
+];
 
-function getQuestions(prefix) {
-  return { gv: gvQuestions, gn: gnQuestions, gp: gpQuestions, gs: gsQuestions }[prefix];
-}
+function buildSpatial() {
+  const container = document.getElementById('spatial-questions');
+  container.innerHTML = '';
+  spatialData.forEach((q, qi) => {
+    const card = document.createElement('div');
+    card.className = 'q-card';
+    card.id = `sq-${qi}`;
 
-function updateProgress(prefix) {
-  const qs = getQuestions(prefix);
-  const answered = Object.keys(sectionAnswers[prefix] || {}).length;
-  const pct = (answered / qs.length) * 100;
-  const el = document.getElementById(`${prefix}-progress`);
-  if (el) el.style.width = pct + '%';
-}
+    // Reference shape
+    const refPts = q.base;
+    const refSVG = makeSVG(refPts);
 
-function checkSection(prefix) {
-  const qs = getQuestions(prefix);
-  let correct = 0;
-  const answers = sectionAnswers[prefix] || {};
-  qs.forEach((q, i) => {
-    const userAns = answers[i];
-    const expEl = document.getElementById(`${prefix}-exp${i}`);
-    if (expEl) expEl.classList.add('show');
-
-    if (q.ref !== undefined) {
-      // Perceptual multi-select
-      const userArr = Array.isArray(userAns) ? [...userAns].sort().join(',') : '';
-      const correctArr = [...q.ans].sort().join(',');
-      if (userArr === correctArr) {
-        correct++;
-        q.ans.forEach(j => document.getElementById(`${prefix}-q${i}-o${j}`).classList.add('correct'));
-      } else {
-        q.ans.forEach(j => {
-          const el = document.getElementById(`${prefix}-q${i}-o${j}`);
-          el.classList.add('correct');
-        });
-        if (Array.isArray(userAns)) {
-          userAns.forEach(j => {
-            if (!q.ans.includes(j)) document.getElementById(`${prefix}-q${i}-o${j}`).classList.add('wrong');
-          });
-        }
-      }
-    } else {
-      if (userAns === q.ans) {
-        correct++;
-        document.getElementById(`${prefix}-q${i}-o${q.ans}`).classList.add('correct');
-      } else {
-        document.getElementById(`${prefix}-q${i}-o${q.ans}`).classList.add('correct');
-        if (userAns !== undefined) document.getElementById(`${prefix}-q${i}-o${userAns}`).classList.add('wrong');
-      }
-    }
-  });
-
-  const scoreEl = document.getElementById(`${prefix}-score`);
-  if (scoreEl) {
-    scoreEl.style.display = 'flex';
-    const elapsed = Math.floor((Date.now() - startTime) / 1000);
-    const m = Math.floor(elapsed / 60), s = elapsed % 60;
-    document.getElementById(`${prefix}-score-val`).textContent = `${correct}/${qs.length}`;
-    if (document.getElementById(`${prefix}-time-val`))
-      document.getElementById(`${prefix}-time-val`).textContent = `${m}m ${s}s`;
-  }
-}
-
-function resetSection(prefix) {
-  sectionAnswers[prefix] = {};
-  const qs = getQuestions(prefix);
-  qs.forEach((q, i) => {
-    q.opts.forEach((_, j) => {
-      const el = document.getElementById(`${prefix}-q${i}-o${j}`);
-      if (el) { el.classList.remove('selected','correct','wrong'); }
+    // Option shapes
+    const optSVGs = q.opts.map(opt => {
+      let pts = rotatePts(q.base, opt.rot);
+      if (opt.mirror) pts = mirrorX(pts);
+      return { svg: makeSVG(pts, '#7c6fef', '#a594f9'), label: opt.label };
     });
-    const expEl = document.getElementById(`${prefix}-exp${i}`);
-    if (expEl) expEl.classList.remove('show');
-  });
-  const scoreEl = document.getElementById(`${prefix}-score`);
-  if (scoreEl) scoreEl.style.display = 'none';
-  updateProgress(prefix);
-}
 
-// ===================== DISC RENDER =====================
-function renderDisc() {
-  let html = '';
-  discQuestions.forEach((q, i) => {
-    html += `<div class="q-card" id="disc-q${i}">
-      <div class="q-number">Group ${i+1} of ${discQuestions.length}</div>
-      <div class="q-text">Select the word <strong style="color:var(--green)">MOST</strong> like you and <strong style="color:var(--red)">LEAST</strong> like you at work:</div>
-      <div class="disc-grid">
+    let optsHTML = optSVGs.map(o => `
+      <div class="spatial-option" id="sopt-${qi}-${o.label}" onclick="selectSpatial(${qi},'${o.label}')">
+        ${o.svg}
+        <div class="spatial-option-label">${o.label}</div>
+      </div>`).join('');
+
+    card.innerHTML = `
+      <div class="q-num">Spatial Question ${qi+1} — ${q.name}</div>
+      <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:12px;">
         <div>
-          <h4>Select Most Like You</h4>
-          ${q.words.map((w, j) => `<div class="disc-word" id="disc-most-${i}-${j}" onclick="selectDisc(${i}, ${j}, 'most')">${w}</div>`).join('')}
+          <div style="font-size:0.7rem;color:var(--muted);margin-bottom:4px;text-align:center;">REFERENCE</div>
+          ${refSVG}
         </div>
-        <div>
-          <h4>Select Least Like You</h4>
-          ${q.words.map((w, j) => `<div class="disc-word" id="disc-least-${i}-${j}" onclick="selectDisc(${i}, ${j}, 'least')">${w}</div>`).join('')}
-        </div>
+        <div style="font-size:1.8rem;color:var(--muted);">→</div>
+        <div style="font-size:0.85rem;color:var(--muted);">Which option shows this shape <strong style="color:var(--text)">rotated</strong>?</div>
       </div>
-    </div>`;
+      <div class="spatial-options">${optsHTML}</div>
+      <div class="explanation" id="sexp-${qi}">${q.explanation}</div>
+    `;
+    container.appendChild(card);
   });
-  document.getElementById('disc-questions').innerHTML = html;
 }
 
-function selectDisc(qIdx, wordIdx, type) {
-  if (!discSelections[qIdx]) discSelections[qIdx] = {};
-  // Prevent selecting same word as both most and least
-  const other = type === 'most' ? 'least' : 'most';
-  if (discSelections[qIdx][other] === wordIdx) return;
+const spatialAnswers = {};
+function selectSpatial(qi, label) {
+  // Deselect previous
+  ['A','B','C','D'].forEach(l => {
+    const el = document.getElementById(`sopt-${qi}-${l}`);
+    if (el) el.classList.remove('selected');
+  });
+  const el = document.getElementById(`sopt-${qi}-${label}`);
+  if (el) el.classList.add('selected');
+  spatialAnswers[qi] = label;
+}
 
-  // Clear previous selection for this type
-  const prev = discSelections[qIdx][type];
-  if (prev !== undefined) {
-    const el = document.getElementById(`disc-${type}-${qIdx}-${prev}`);
-    if (el) el.classList.remove(type === 'most' ? 'most' : 'least');
+function checkSpatial() {
+  let correct = 0;
+  spatialData.forEach((q, qi) => {
+    const selected = spatialAnswers[qi];
+    ['A','B','C','D'].forEach(l => {
+      const el = document.getElementById(`sopt-${qi}-${l}`);
+      if (!el) return;
+      el.classList.remove('correct','wrong');
+      if (l === q.correct) el.classList.add('correct');
+      else if (l === selected && selected !== q.correct) el.classList.add('wrong');
+    });
+    if (selected === q.correct) correct++;
+    document.getElementById(`sexp-${qi}`).classList.add('show');
+  });
+  const s = document.getElementById('spatial-score');
+  document.getElementById('spatial-score-num').textContent = `${correct} / ${spatialData.length}`;
+  s.classList.add('show');
+}
+
+function resetSpatial() {
+  Object.keys(spatialAnswers).forEach(k => delete spatialAnswers[k]);
+  buildSpatial();
+  document.getElementById('spatial-score').classList.remove('show');
+}
+
+// ══════════════════════════════════════════════════════════
+// PERCEPTUAL SPEED
+// ══════════════════════════════════════════════════════════
+
+const perceptualData = [
+  {
+    ref: 'K9mR#2p',
+    opts: ['K9mR#2p', 'K9mR#2P', 'K9mr#2p', 'K9mR#2p'],
+    correct: [0, 3],
+    explanation: 'Options A and D are identical to the reference. B has capital P (not p), C has lowercase r (not R).'
+  },
+  {
+    ref: 'XL47qZ&',
+    opts: ['XL47qZ&', 'Xl47qZ&', 'XL47qZ&', 'XL47q2&'],
+    correct: [0, 2],
+    explanation: 'A and C match exactly. B has lowercase l, D has 2 instead of Z.'
+  },
+  {
+    ref: 'Bw3$TnF',
+    opts: ['Bw3$tnF', 'Bw3$TnF', 'BW3$TnF', 'Bw3$TnF'],
+    correct: [1, 3],
+    explanation: 'B and D are identical to the reference. A has lowercase t, C has uppercase W.'
+  },
+  {
+    ref: 'mP8@rJv',
+    opts: ['mP8@rJv', 'mp8@rJv', 'mP8@rJv', 'mP8@RJv'],
+    correct: [0, 2],
+    explanation: 'A and C match exactly. B has lowercase p, D has uppercase R.'
+  },
+  {
+    ref: 'Zt6!Wqx',
+    opts: ['Zt6!wqx', 'Zt6!Wqx', 'ZT6!Wqx', 'Zt6!Wqx'],
+    correct: [1, 3],
+    explanation: 'B and D are correct. A has lowercase w, C has uppercase T.'
+  },
+  {
+    ref: 'h2G%nL9',
+    opts: ['h2G%nL9', 'h2G%nl9', 'h2G%nL9', 'H2G%nL9'],
+    correct: [0, 2],
+    explanation: 'A and C are identical. B has lowercase l instead of L. D has uppercase H.'
+  },
+  {
+    ref: 'Qr#5Ybm',
+    opts: ['Qr#5ybm', 'Qr#5Ybm', 'QR#5Ybm', 'Qr#5Ybm'],
+    correct: [1, 3],
+    explanation: 'B and D match the reference. A has lowercase y, C has uppercase R.'
+  },
+  {
+    ref: 'f7&MpK2',
+    opts: ['f7&MpK2', 'f7&mpK2', 'f7&MpK2', 'f7&MpK3'],
+    correct: [0, 2],
+    explanation: 'A and C match. B has lowercase m, D has 3 instead of 2.'
+  },
+  {
+    ref: 'Lv$9Rnc',
+    opts: ['Lv$9RNc', 'Lv$9Rnc', 'lv$9Rnc', 'Lv$9Rnc'],
+    correct: [1, 3],
+    explanation: 'B and D match the reference. A has uppercase N, C has lowercase l.'
+  },
+  {
+    ref: 'wH4^bSj',
+    opts: ['wH4^bSj', 'wH4^BSj', 'wH4^bSj', 'wh4^bSj'],
+    correct: [0, 2],
+    explanation: 'A and C are identical. B has uppercase B, D has lowercase h.'
+  },
+  {
+    ref: 'eU8*TgP',
+    opts: ['eU8*tgP', 'eU8*TgP', 'EU8*TgP', 'eU8*TgP'],
+    correct: [1, 3],
+    explanation: 'B and D match. A has lowercase t, C has uppercase E.'
+  },
+  {
+    ref: 'Dk3@vMr',
+    opts: ['Dk3@vMr', 'Dk3@VMr', 'dk3@vMr', 'Dk3@vMr'],
+    correct: [0, 3],
+    explanation: 'A and D match exactly. B has uppercase V, C has lowercase d.'
+  },
+  {
+    ref: 'Nx7!pRq',
+    opts: ['Nx7!pRQ', 'Nx7!pRq', 'NX7!pRq', 'Nx7!pRq'],
+    correct: [1, 3],
+    explanation: 'B and D are identical to the reference. A has uppercase Q, C has uppercase X.'
+  },
+  {
+    ref: 'Ys5£GhT',
+    opts: ['Ys5£GhT', 'ys5£GhT', 'Ys5£GhT', 'Ys5£GHT'],
+    correct: [0, 2],
+    explanation: 'A and C match. B has lowercase y, D has uppercase H.'
+  },
+  {
+    ref: 'Oc2&nBw',
+    opts: ['Oc2&nBW', 'Oc2&nBw', 'OC2&nBw', 'Oc2&nBw'],
+    correct: [1, 3],
+    explanation: 'B and D are correct. A has uppercase W, C has uppercase C.'
   }
-  discSelections[qIdx][type] = wordIdx;
-  document.getElementById(`disc-${type}-${qIdx}-${wordIdx}`).classList.add(type === 'most' ? 'most' : 'least');
+];
+
+function buildPerceptual() {
+  const container = document.getElementById('perceptual-questions');
+  container.innerHTML = '';
+  perceptualData.forEach((q, qi) => {
+    const card = document.createElement('div');
+    card.className = 'q-card';
+    card.id = `pq-${qi}`;
+
+    const labels = ['A','B','C','D'];
+    const optsHTML = q.opts.map((str, oi) => `
+      <div class="perc-opt" id="popt-${qi}-${oi}" onclick="togglePerc(${qi},${oi})">
+        <div class="perc-opt-str">${str}</div>
+        <div class="perc-opt-key">${labels[oi]}</div>
+      </div>`).join('');
+
+    card.innerHTML = `
+      <div class="q-num">Perceptual Question ${qi+1}</div>
+      <div class="perc-layout">
+        <div class="perc-ref-row">
+          <div class="perc-ref-label">REFERENCE:</div>
+          <div class="perc-box ref">${q.ref}</div>
+        </div>
+        <div style="font-size:0.8rem;color:var(--muted);margin-bottom:8px;">Select the <strong style="color:var(--text)">TWO</strong> that match exactly:</div>
+        <div class="perc-options-row">${optsHTML}</div>
+      </div>
+      <div class="explanation" id="pexp-${qi}">${q.explanation}</div>
+    `;
+    container.appendChild(card);
+  });
 }
 
-function showDiscProfile() {
-  const counts = { D: {most:0, least:0}, I: {most:0, least:0}, S: {most:0, least:0}, C: {most:0, least:0} };
-  discQuestions.forEach((q, i) => {
-    const sel = discSelections[i] || {};
-    if (sel.most !== undefined) counts[q.trait[sel.most]].most++;
-    if (sel.least !== undefined) counts[q.trait[sel.least]].least++;
+const percAnswers = {};
+function togglePerc(qi, oi) {
+  if (!percAnswers[qi]) percAnswers[qi] = new Set();
+  const el = document.getElementById(`popt-${qi}-${oi}`);
+  if (percAnswers[qi].has(oi)) {
+    percAnswers[qi].delete(oi);
+    el.classList.remove('selected');
+  } else {
+    if (percAnswers[qi].size >= 2) return; // max 2
+    percAnswers[qi].add(oi);
+    el.classList.add('selected');
+  }
+}
+
+function checkPerceptual() {
+  let score = 0;
+  perceptualData.forEach((q, qi) => {
+    const selected = percAnswers[qi] || new Set();
+    const correctSet = new Set(q.correct);
+    const isCorrect = selected.size === 2 &&
+      [...selected].every(i => correctSet.has(i)) &&
+      [...correctSet].every(i => selected.has(i));
+    if (isCorrect) score++;
+    q.opts.forEach((_, oi) => {
+      const el = document.getElementById(`popt-${qi}-${oi}`);
+      if (!el) return;
+      el.classList.remove('correct','wrong');
+      if (correctSet.has(oi)) el.classList.add('correct');
+      else if (selected.has(oi)) el.classList.add('wrong');
+    });
+    document.getElementById(`pexp-${qi}`).classList.add('show');
+  });
+  const s = document.getElementById('perc-score');
+  document.getElementById('perc-score-num').textContent = `${score} / ${perceptualData.length}`;
+  s.classList.add('show');
+}
+
+function resetPerceptual() {
+  Object.keys(percAnswers).forEach(k => delete percAnswers[k]);
+  buildPerceptual();
+  document.getElementById('perc-score').classList.remove('show');
+}
+
+// ══════════════════════════════════════════════════════════
+// VERBAL
+// ══════════════════════════════════════════════════════════
+
+const verbalData = [
+  { q: 'Hot is to Cold as Fast is to ___', opts:['Quick','Slow','Warm','Speed'], correct:1, exp:'Antonym pair: hot↔cold, fast↔slow.' },
+  { q: 'Synonym of UBIQUITOUS:', opts:['Rare','Widespread','Hidden','Local'], correct:1, exp:'Ubiquitous = present everywhere = widespread.' },
+  { q: 'Antonym of TACITURN:', opts:['Silent','Reserved','Garrulous','Shy'], correct:2, exp:'Taciturn = untalkative; antonym is garrulous = very talkative.' },
+  { q: 'Doctor is to Hospital as Pilot is to ___', opts:['Sky','Airline','Cockpit','Airport'], correct:2, exp:'A doctor works in a hospital; a pilot works in a cockpit.' },
+  { q: 'Synonym of EPHEMERAL:', opts:['Permanent','Transient','Solid','Ancient'], correct:1, exp:'Ephemeral = lasting a very short time = transient.' },
+  { q: 'Antonym of BENEVOLENT:', opts:['Kind','Generous','Malevolent','Charitable'], correct:2, exp:'Benevolent = kind; malevolent = wishing harm.' },
+  { q: 'Book is to Library as Painting is to ___', opts:['Canvas','Artist','Gallery','Museum'], correct:2, exp:'Books are stored/displayed in libraries; paintings are displayed in galleries.' },
+  { q: 'Synonym of VERBOSE:', opts:['Concise','Wordy','Quiet','Brief'], correct:1, exp:'Verbose = using too many words = wordy.' },
+  { q: 'Antonym of CANDID:', opts:['Frank','Open','Evasive','Honest'], correct:2, exp:'Candid = truthful/frank; antonym is evasive = avoiding directness.' },
+  { q: 'Which word is closest in meaning to PERSPICACIOUS?', opts:['Confused','Shrewd','Lazy','Boisterous'], correct:1, exp:'Perspicacious = having a ready insight into things = shrewd.' },
+  { q: 'Architect is to Blueprint as Composer is to ___', opts:['Concert','Score','Instrument','Orchestra'], correct:1, exp:'An architect creates a blueprint; a composer creates a score.' },
+  { q: 'Antonym of FRUGAL:', opts:['Thrifty','Economical','Extravagant','Careful'], correct:2, exp:'Frugal = careful with money; extravagant = spending excessively.' },
+  { q: 'Synonym of AMELIORATE:', opts:['Worsen','Improve','Ignore','Destroy'], correct:1, exp:'Ameliorate = make better = improve.' },
+  { q: 'Water is to Ice as Steam is to ___', opts:['Gas','Heat','Water','Cloud'], correct:2, exp:'Water cools to form ice; steam cools to form water.' },
+  { q: 'Antonym of AMBIGUOUS:', opts:['Vague','Unclear','Explicit','Confusing'], correct:2, exp:'Ambiguous = unclear; antonym is explicit = clear and direct.' },
+  { q: 'Synonym of LOQUACIOUS:', opts:['Quiet','Talkative','Reserved','Thoughtful'], correct:1, exp:'Loquacious = very talkative.' },
+  { q: 'Pen is to Author as Scalpel is to ___', opts:['Hospital','Patient','Surgeon','Medicine'], correct:2, exp:'A pen is the tool of an author; a scalpel is the tool of a surgeon.' },
+  { q: 'Antonym of IMPETUOUS:', opts:['Rash','Hasty','Deliberate','Spontaneous'], correct:2, exp:'Impetuous = acting quickly without thought; deliberate = done with careful thought.' },
+  { q: 'Synonym of RETICENT:', opts:['Outgoing','Forthright','Reserved','Confident'], correct:2, exp:'Reticent = not revealing thoughts readily = reserved.' },
+  { q: 'Antonym of MAGNANIMOUS:', opts:['Generous','Noble','Petty','Forgiving'], correct:2, exp:'Magnanimous = very generous; antonym is petty = small-minded, ungenerous.' }
+];
+
+const numericalData = [
+  { q: 'What is 15% of 240?', opts:['30','34','36','40'], correct:2, exp:'15% of 240 = 0.15 × 240 = 36.' },
+  { q: 'Next in sequence: 2, 6, 18, 54, ___', opts:['108','162','108','216'], correct:1, exp:'Each term × 3: 2→6→18→54→162.' },
+  { q: 'A train travels 360km in 4 hours. Speed in km/h?', opts:['80','90','100','70'], correct:1, exp:'Speed = 360 ÷ 4 = 90 km/h.' },
+  { q: 'If 8 workers build a wall in 12 days, how many days for 6 workers?', opts:['9','14','16','10'], correct:2, exp:'8×12 = 96 worker-days. 96 ÷ 6 = 16 days.' },
+  { q: 'What is 3/8 as a percentage?', opts:['37.5%','38%','36.5%','40%'], correct:0, exp:'3 ÷ 8 = 0.375 = 37.5%.' },
+  { q: 'Next in sequence: 1, 4, 9, 16, 25, ___', opts:['30','36','32','49'], correct:1, exp:'Square numbers: 1²,2²,3²... next is 6²=36.' },
+  { q: 'A coat costs £80 after 20% discount. Original price?', opts:['£96','£100','£104','£98'], correct:1, exp:'80 = 80% of original → original = 80 ÷ 0.8 = £100.' },
+  { q: 'Simplify: (4² + 3²) × 2', opts:['48','50','60','25'], correct:1, exp:'(16+9)×2 = 25×2 = 50.' },
+  { q: 'If x + 7 = 19, what is 3x?', opts:['36','39','42','33'], correct:0, exp:'x = 12, so 3x = 36.' },
+  { q: 'A shop marks up items by 40%. An item costs £35 wholesale. Selling price?', opts:['£45','£49','£50','£14'], correct:1, exp:'35 × 1.4 = £49.' },
+  { q: 'Next in sequence: 3, 7, 13, 21, 31, ___', opts:['41','43','45','47'], correct:1, exp:'Differences: 4,6,8,10,12 → next is 31+12=43.' },
+  { q: 'What percentage is 45 of 180?', opts:['20%','22%','25%','30%'], correct:2, exp:'45/180 × 100 = 25%.' },
+  { q: 'If a car uses 8L per 100km, how many litres for 350km?', opts:['24L','28L','32L','30L'], correct:1, exp:'8 × 3.5 = 28 litres.' },
+  { q: 'What is the average of 14, 27, 33, 42, 19?', opts:['25','27','26','28'], correct:1, exp:'Sum = 135. 135 ÷ 5 = 27.' },
+  { q: 'Next in sequence: 100, 95, 85, 70, 50, ___', opts:['25','30','20','35'], correct:0, exp:'Differences: -5,-10,-15,-20,-25 → 50-25=25.' },
+  { q: 'A rectangle is 12cm × 8cm. If both sides increase by 25%, new area?', opts:['120cm²','150cm²','160cm²','144cm²'], correct:1, exp:'15cm × 10cm = 150cm².' },
+  { q: 'What is 17 × 24?', opts:['398','408','402','412'], correct:1, exp:'17×24 = 17×20 + 17×4 = 340+68 = 408.' },
+  { q: 'If 30% of a number is 45, what is 70% of that number?', opts:['95','100','105','110'], correct:2, exp:'Number = 150. 70% of 150 = 105.' },
+  { q: 'Next: 2, 3, 5, 8, 13, 21, ___', opts:['29','31','34','33'], correct:2, exp:'Fibonacci sequence: 13+21=34.' },
+  { q: 'A project takes 5 days with 3 people. How many days with 5 people?', opts:['2','3','4','6'], correct:1, exp:'3×5=15 person-days. 15÷5=3 days.' }
+];
+
+function buildTextSection(sectionId, data) {
+  const container = document.getElementById(`${sectionId}-questions`);
+  container.innerHTML = '';
+  data.forEach((q, qi) => {
+    const card = document.createElement('div');
+    card.className = 'q-card';
+    card.id = `${sectionId}-q-${qi}`;
+    const labels = ['A','B','C','D'];
+    const opts = q.opts.map((o, oi) => `
+      <label class="option" id="${sectionId}-opt-${qi}-${oi}">
+        <input type="radio" name="${sectionId}-q${qi}" value="${oi}" onchange="recordAnswer('${sectionId}',${qi},${oi})">
+        <span><strong>${labels[oi]}.</strong> ${o}</span>
+      </label>`).join('');
+    card.innerHTML = `
+      <div class="q-num">${sectionId.charAt(0).toUpperCase()+sectionId.slice(1)} Question ${qi+1}</div>
+      <div class="q-text">${q.q}</div>
+      <div class="options">${opts}</div>
+      <div class="explanation" id="${sectionId}-exp-${qi}">${q.exp}</div>
+    `;
+    container.appendChild(card);
+  });
+}
+
+const answers = { verbal: {}, numerical: {} };
+
+function recordAnswer(section, qi, oi) {
+  answers[section][qi] = oi;
+}
+
+function checkSection(section) {
+  const data = section === 'verbal' ? verbalData : numericalData;
+  let correct = 0;
+  data.forEach((q, qi) => {
+    const selected = answers[section][qi];
+    const labels = ['A','B','C','D'];
+    q.opts.forEach((_, oi) => {
+      const el = document.getElementById(`${section}-opt-${qi}-${oi}`);
+      if (!el) return;
+      el.classList.remove('correct','wrong','selected-wrong');
+      if (oi === q.correct) el.classList.add('correct');
+      else if (oi === selected) el.classList.add('selected-wrong');
+    });
+    if (selected === q.correct) correct++;
+    document.getElementById(`${section}-exp-${qi}`).classList.add('show');
+  });
+  const s = document.getElementById(`${section}-score`);
+  document.getElementById(`${section}-score-num`).textContent = `${correct} / ${data.length}`;
+  s.classList.add('show');
+}
+
+function resetSection(section) {
+  answers[section] = {};
+  const data = section === 'verbal' ? verbalData : numericalData;
+  buildTextSection(section, data);
+  document.getElementById(`${section}-score`).classList.remove('show');
+}
+
+// ══════════════════════════════════════════════════════════
+// DISC PPA
+// ══════════════════════════════════════════════════════════
+
+const discGroups = [
+  { words: [{w:'Dominant',d:'D'},{w:'Inspiring',d:'I'},{w:'Supportive',d:'S'},{w:'Careful',d:'C'}] },
+  { words: [{w:'Direct',d:'D'},{w:'Enthusiastic',d:'I'},{w:'Patient',d:'S'},{w:'Accurate',d:'C'}] },
+  { words: [{w:'Bold',d:'D'},{w:'Optimistic',d:'I'},{w:'Loyal',d:'S'},{w:'Analytical',d:'C'}] },
+  { words: [{w:'Decisive',d:'D'},{w:'Persuasive',d:'I'},{w:'Steady',d:'S'},{w:'Methodical',d:'C'}] },
+  { words: [{w:'Assertive',d:'D'},{w:'Sociable',d:'I'},{w:'Cooperative',d:'S'},{w:'Precise',d:'C'}] },
+  { words: [{w:'Competitive',d:'D'},{w:'Lively',d:'I'},{w:'Accommodating',d:'S'},{w:'Systematic',d:'C'}] },
+  { words: [{w:'Forceful',d:'D'},{w:'Charming',d:'I'},{w:'Gentle',d:'S'},{w:'Disciplined',d:'C'}] },
+  { words: [{w:'Commanding',d:'D'},{w:'Playful',d:'I'},{w:'Agreeable',d:'S'},{w:'Thorough',d:'C'}] },
+  { words: [{w:'Ambitious',d:'D'},{w:'Expressive',d:'I'},{w:'Calm',d:'S'},{w:'Detailed',d:'C'}] },
+  { words: [{w:'Results-oriented',d:'D'},{w:'Vibrant',d:'I'},{w:'Reliable',d:'S'},{w:'Conscientious',d:'C'}] },
+  { words: [{w:'Demanding',d:'D'},{w:'Spontaneous',d:'I'},{w:'Sincere',d:'S'},{w:'Cautious',d:'C'}] },
+  { words: [{w:'Driven',d:'D'},{w:'Warm',d:'I'},{w:'Consistent',d:'S'},{w:'Logical',d:'C'}] }
+];
+
+const discState = {}; // {gi: {most: wordIndex, least: wordIndex}}
+
+function buildDisc() {
+  const container = document.getElementById('disc-groups');
+  container.innerHTML = '';
+  discGroups.forEach((g, gi) => {
+    const div = document.createElement('div');
+    div.className = 'disc-group';
+    div.id = `dg-${gi}`;
+    const wordsHTML = g.words.map((w, wi) => `
+      <div class="disc-word-row">
+        <span class="disc-word">${w.w}</span>
+        <div class="disc-btns">
+          <button class="disc-btn most" id="dm-${gi}-${wi}" onclick="selectDisc(${gi},${wi},'most')">MOST</button>
+          <button class="disc-btn least" id="dl-${gi}-${wi}" onclick="selectDisc(${gi},${wi},'least')">LEAST</button>
+        </div>
+      </div>`).join('');
+    div.innerHTML = `<div class="disc-group-num">Group ${gi+1}</div><div class="disc-words">${wordsHTML}</div>`;
+    container.appendChild(div);
+  });
+}
+
+function selectDisc(gi, wi, type) {
+  if (!discState[gi]) discState[gi] = {};
+  const other = type === 'most' ? 'least' : 'most';
+  // Deselect previous in same type
+  discGroups[gi].words.forEach((_, i) => {
+    const el = document.getElementById(type === 'most' ? `dm-${gi}-${i}` : `dl-${gi}-${i}`);
+    if (el) el.classList.remove('active');
+  });
+  // Don't allow same word for most and least
+  if (discState[gi][other] === wi) return;
+  discState[gi][type] = wi;
+  const el = document.getElementById(type === 'most' ? `dm-${gi}-${wi}` : `dl-${gi}-${wi}`);
+  if (el) el.classList.add('active');
+}
+
+function calcDisc() {
+  const scores = {D:0, I:0, S:0, C:0};
+  let complete = 0;
+  discGroups.forEach((g, gi) => {
+    const state = discState[gi];
+    if (state && state.most !== undefined && state.least !== undefined) {
+      complete++;
+      const mostD = g.words[state.most].d;
+      const leastD = g.words[state.least].d;
+      scores[mostD] += 2;
+      scores[leastD] -= 1;
+    }
   });
 
-  const descriptions = {
-    D: { name: "Dominance", color: "#f87171", desc: "You are results-oriented, direct, and decisive. You take initiative, work well under pressure, and prefer to be in control of outcomes." },
-    I: { name: "Influence", color: "#fbbf24", desc: "You are enthusiastic, sociable, and people-focused. You communicate well, build relationships easily, and bring energy to teams." },
-    S: { name: "Steadiness", color: "#4ade80", desc: "You are reliable, patient, and collaborative. You value consistency, work well in stable environments, and are a dependable team member." },
-    C: { name: "Compliance", color: "#a594f9", desc: "You are accurate, analytical, and quality-driven. You follow rules, think carefully before acting, and maintain high standards." },
+  const total = Object.values(scores).reduce((a,b)=>a+Math.max(0,b),0) || 1;
+  const labels = {
+    D: { name:'Dominance', color:'#ef4444', desc:'Direct, results-oriented, firm, strong-willed, forceful' },
+    I: { name:'Influence', color:'#f59e0b', desc:'Optimistic, outgoing, charismatic, enthusiastic, collaborative' },
+    S: { name:'Steadiness', color:'#22c55e', desc:'Patient, loyal, supportive, calm, methodical, consistent' },
+    C: { name:'Conscientiousness', color:'#7c6fef', desc:'Accurate, analytical, reserved, detail-oriented, private' }
   };
 
-  let html = '';
-  ['D','I','S','C'].forEach(trait => {
-    const score = counts[trait].most - counts[trait].least;
-    const d = descriptions[trait];
-    const barWidth = Math.max(10, Math.min(100, ((score + 12) / 24) * 100));
-    html += `<div style="margin-bottom:16px;">
-      <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
-        <strong style="color:${d.color}">${trait} — ${d.name}</strong>
-        <span style="font-size:0.8rem;color:var(--muted)">Most: ${counts[trait].most} | Least: ${counts[trait].least}</span>
-      </div>
-      <div style="height:8px;background:var(--border);border-radius:4px;margin-bottom:6px;">
-        <div style="height:100%;width:${barWidth}%;background:${d.color};border-radius:4px;transition:width 0.5s;"></div>
-      </div>
-      <div style="font-size:0.85rem;color:#bbb;">${d.desc}</div>
+  const maxScore = Math.max(...Object.values(scores));
+  const primary = Object.entries(scores).find(([,v])=>v===maxScore)[0];
+
+  let html = `<h3 style="color:var(--accent2);margin-bottom:16px;">Your DISC Profile</h3>`;
+  html += `<div style="margin-bottom:16px;padding:12px;background:var(--surface2);border-radius:8px;border:1px solid var(--border);">
+    <div style="font-size:0.8rem;color:var(--muted);margin-bottom:4px;">PRIMARY STYLE</div>
+    <div style="font-size:1.1rem;font-weight:700;color:${labels[primary].color}">${labels[primary].name} (${primary})</div>
+    <div style="font-size:0.85rem;color:var(--muted);margin-top:4px;">${labels[primary].desc}</div>
+  </div>`;
+  html += `<div class="disc-bars">`;
+  ['D','I','S','C'].forEach(k => {
+    const pct = Math.max(0, Math.round((scores[k] / (discGroups.length * 2)) * 100));
+    html += `<div class="disc-bar-row">
+      <div class="disc-bar-label" style="color:${labels[k].color}">${labels[k].name.split(' ')[0]} (${k})</div>
+      <div class="disc-bar-track"><div class="disc-bar-fill" style="width:${Math.min(100,Math.max(0,pct+30))}%;background:${labels[k].color}"></div></div>
+      <div class="disc-bar-val">${scores[k]}</div>
     </div>`;
   });
+  html += `</div>`;
 
-  html += `<div class="tip-box" style="margin-top:16px;">
-    <strong>Note:</strong> This is a simplified practice profile. The real Thomas PPA uses 24 groups and produces a validated behavioral graph. Use this to get familiar with the format, not as a definitive assessment.
+  if (complete < discGroups.length) {
+    html += `<div style="margin-top:12px;padding:8px 12px;border-radius:6px;background:rgba(251,191,36,0.1);border:1px solid #fbbf24;font-size:0.8rem;color:#fbbf24;">
+      Note: ${discGroups.length - complete} group(s) incomplete — results may not be fully accurate.</div>`;
+  }
+
+  html += `<div style="margin-top:16px;font-size:0.8rem;color:var(--muted);line-height:1.6;">
+    <strong style="color:var(--text)">Canonical context:</strong> No DISC profile is "right" or "wrong" — the PPA measures behavioural preferences, not ability. 
+    Canonical values a mix of styles. The assessment reveals how you prefer to work, communicate, and handle pressure.
+    Be authentic — inconsistent answers are detected algorithmically.
   </div>`;
 
-  document.getElementById('disc-profile-content').innerHTML = html;
-  document.getElementById('disc-profile').style.display = 'block';
+  const result = document.getElementById('disc-result');
+  result.innerHTML = html;
+  result.classList.add('show');
 }
 
 function resetDisc() {
-  discSelections = {};
-  discQuestions.forEach((q, i) => {
-    q.words.forEach((_, j) => {
-      ['most','least'].forEach(type => {
-        const el = document.getElementById(`disc-${type}-${i}-${j}`);
-        if (el) el.classList.remove('most','least');
-      });
-    });
-  });
-  document.getElementById('disc-profile').style.display = 'none';
+  Object.keys(discState).forEach(k => delete discState[k]);
+  buildDisc();
+  document.getElementById('disc-result').classList.remove('show');
 }
 
-// ===================== INIT =====================
-renderMCQ(gvQuestions, 'gv', 'gv-questions');
-renderMCQ(gnQuestions, 'gn', 'gn-questions');
-renderMCQ(gpQuestions, 'gp', 'gp-questions');
-renderMCQ(gsQuestions, 'gs', 'gs-questions');
-renderDisc();
+// ══════════════════════════════════════════════════════════
+// TIPS
+// ══════════════════════════════════════════════════════════
+
+const tips = [
+  { icon:'⏱️', title:'GIA is strictly timed', text:'Each sub-test has a fixed time limit (typically 3–5 minutes). Speed AND accuracy both matter. The test adapts — wrong answers reduce your score more in some formats. Keep moving; don\'t fixate on one question.' },
+  { icon:'🔷', title:'Spatial: think in rotations', text:'Never flip/mirror in your mind — only rotate. Anchor a distinctive corner or feature of the reference shape. Trace mentally: if I turn this 90° CW, where does that corner go? Eliminate mirrors first.' },
+  { icon:'⚡', title:'Perceptual: scan systematically', text:'Use a consistent left-to-right character scan. Don\'t read for meaning — treat each character as a symbol. Pay attention to case (R vs r), digits (0 vs O), and symbols. Two correct matches per question.' },
+  { icon:'📖', title:'Verbal: know your word pairs', text:'For analogies, identify the relationship type (part-of, antonym, function, degree). For synonyms/antonyms, eliminate obviously wrong answers first. Watch for near-synonyms that differ in intensity.' },
+  { icon:'🔢', title:'Numerical: no calculator tricks', text:'Practise mental arithmetic. For percentages: 10% first, then scale. For sequences: find the difference pattern (arithmetic, geometric, or second-order). For word problems: underline key numbers and relationships.' },
+  { icon:'🎭', title:'PPA: be authentic', text:'The DISC PPA is not a test you can "pass". Inconsistent or random answers are flagged. Choose words that genuinely reflect how you behave at work, not your ideal self. The debrief is a conversation, not a verdict.' },
+  { icon:'😴', title:'Test conditions matter', text:'Take GIA when well-rested and in a quiet environment. The timed nature means distractions cost points. Use a fast, stable internet connection. Close other tabs.' },
+  { icon:'🎯', title:'Canonical\'s use of GIA', text:'Canonical uses Thomas GIA to evaluate learning agility and problem-solving speed — not existing knowledge. A high GIA score suggests you can adapt and learn quickly in a fast-moving engineering environment.' },
+  { icon:'📊', title:'Score percentiles', text:'GIA scores are compared to a norm group (often graduates or professionals). Aim for the 70th+ percentile. Spatial and Perceptual Speed are the hardest for most people — practise these most.' },
+  { icon:'🔄', title:'Practice effect is real', text:'GIA scores improve with practice. Doing 3–5 practice sessions before the real test typically boosts scores by 5–15 percentile points. Focus on the sub-tests where you score lowest.' }
+];
+
+function buildTips() {
+  const container = document.getElementById('tips-grid');
+  tips.forEach(t => {
+    const card = document.createElement('div');
+    card.className = 'tip-card';
+    card.innerHTML = `<div class="tip-icon">${t.icon}</div><div class="tip-title">${t.title}</div><div class="tip-text">${t.text}</div>`;
+    container.appendChild(card);
+  });
+}
+
+// ══════════════════════════════════════════════════════════
+// INIT
+// ══════════════════════════════════════════════════════════
+buildSpatial();
+buildPerceptual();
+buildTextSection('verbal', verbalData);
+buildTextSection('numerical', numericalData);
+buildDisc();
+buildTips();
 </script>
 </body>
 </html>
