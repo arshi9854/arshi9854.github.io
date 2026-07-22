@@ -1,29 +1,22 @@
-// Navbar scroll effect
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
-  if (window.scrollY > 50) navbar.classList.add('scrolled');
-  else navbar.classList.remove('scrolled');
+  navbar.classList.toggle('scrolled', window.scrollY > 50);
 });
 
-// Hamburger menu
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.querySelector('.nav-links');
 hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
-navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+navLinks.querySelectorAll('a').forEach(a =>
+  a.addEventListener('click', () => navLinks.classList.remove('open'))
+);
 
-// Scroll reveal — stagger visible entries so they cascade in nicely
 const observer = new IntersectionObserver((entries) => {
-  let i = 0;
   entries.forEach((entry) => {
-    if (entry.isIntersecting && !entry.target.classList.contains('visible')) {
-      setTimeout(() => entry.target.classList.add('visible'), i * 90);
-      i++;
-    }
+    if (entry.isIntersecting) entry.target.classList.add('visible');
   });
-}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-// Smooth active nav link highlighting
 const sections = document.querySelectorAll('section[id]');
 window.addEventListener('scroll', () => {
   let current = '';
@@ -31,16 +24,27 @@ window.addEventListener('scroll', () => {
     if (window.scrollY >= s.offsetTop - 120) current = s.getAttribute('id');
   });
   document.querySelectorAll('.nav-links a').forEach(a => {
-    a.style.color = a.getAttribute('href') === `#${current}` ? 'white' : '';
+    a.style.color = a.getAttribute('href') === `#${current}` ? 'var(--white)' : '';
   });
 });
 
-// Typing effect for hero tagline
-const tagline = document.querySelector('.hero-tagline');
-if (tagline) {
-  tagline.style.opacity = '0';
-  setTimeout(() => {
-    tagline.style.transition = 'opacity 1s ease';
-    tagline.style.opacity = '1';
-  }, 500);
+// Rotating hero accent text
+const phrases = [
+  'scale under pressure.',
+  'catch their own bugs.',
+  'turn data into decisions.',
+  'ship with confidence.'
+];
+const typed = document.getElementById('typed-text');
+if (typed) {
+  let i = 0;
+  setInterval(() => {
+    typed.style.opacity = '0';
+    setTimeout(() => {
+      i = (i + 1) % phrases.length;
+      typed.textContent = phrases[i];
+      typed.style.opacity = '1';
+    }, 400);
+  }, 3000);
+  typed.style.transition = 'opacity 0.4s ease';
 }
